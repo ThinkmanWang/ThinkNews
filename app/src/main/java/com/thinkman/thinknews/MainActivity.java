@@ -1,9 +1,15 @@
 package com.thinkman.thinknews;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,13 +19,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.thinkman.thinkactivity.BaseActivity;
+import com.thinkman.thinknews.fragment.NewsFragment;
+import com.thinkman.thinkviewpagerindicator.view.indicator.FragmentListPageAdapter;
+import com.thinkman.thinkviewpagerindicator.view.indicator.Indicator;
+import com.thinkman.thinkviewpagerindicator.view.indicator.IndicatorViewPager;
+import com.thinkman.thinkviewpagerindicator.view.indicator.ScrollIndicatorView;
+import com.thinkman.thinkviewpagerindicator.view.indicator.slidebar.ColorBar;
+import com.thinkman.thinkviewpagerindicator.view.indicator.slidebar.SpringBar;
+import com.thinkman.thinkviewpagerindicator.view.indicator.transition.OnTransitionTextListener;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout mDrawer = null;
+
+    private IndicatorViewPager indicatorViewPager;
+    private LayoutInflater inflate;
+    private String[] names = { "CUPCAKE", "DONUT", "FROYO", "GINGERBREAD", "HONEYCOMB", "ICE CREAM SANDWICH", "JELLY BEAN", "KITKAT" };
+    private ScrollIndicatorView indicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +72,64 @@ public class MainActivity extends BaseActivity
                 mDrawer.openDrawer(Gravity.LEFT);
             }
         });
+
+        initViewPager();
     }
+
+    private void initViewPager() {
+        ViewPager viewPager = (ViewPager) findViewById(R.id.main_viewPager);
+        indicator = (ScrollIndicatorView) findViewById(R.id.main_indicator);
+        indicator.setScrollBar(new ColorBar(this, Color.RED, 5));
+
+        // 设置滚动监听
+        int selectColorId = R.color.tab_top_text_2;
+        int unSelectColorId = R.color.tab_top_text_1;
+        indicator.setOnTransitionListener(new OnTransitionTextListener().setColorId(this, selectColorId, unSelectColorId));
+
+        viewPager.setOffscreenPageLimit(2);
+        indicatorViewPager = new IndicatorViewPager(indicator, viewPager);
+        inflate = LayoutInflater.from(getApplicationContext());
+        indicatorViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+
+    }
+
+    private class MyAdapter extends IndicatorViewPager.IndicatorFragmentPagerAdapter {
+
+        public MyAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        @Override
+        public int getCount() {
+            return 6;
+        }
+
+        @Override
+        public View getViewForTab(int position, View convertView, ViewGroup container) {
+            if (convertView == null) {
+                convertView = inflate.inflate(R.layout.tab_top, container, false);
+            }
+            TextView textView = (TextView) convertView;
+            textView.setText(names[position % names.length]);
+            textView.setPadding(20, 0, 20, 0);
+            return convertView;
+        }
+
+        @Override
+        public Fragment getFragmentForPage(int position) {
+            NewsFragment fragment = new NewsFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt(NewsFragment.INTENT_INT_INDEX, position);
+            fragment.setArguments(bundle);
+            return fragment;
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return FragmentListPageAdapter.POSITION_NONE;
+        }
+
+    };
 
     @Override
     public void onBackPressed() {
