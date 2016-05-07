@@ -251,4 +251,8 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    public void setActionBarBG(int nResID) {
+        mCommonActionBar1.setBackgroundResource(nResID);
+    }
+
 }
