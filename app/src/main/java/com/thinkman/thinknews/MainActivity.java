@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity
 
     private IndicatorViewPager indicatorViewPager;
     private LayoutInflater inflate;
-    private String[] names = { "CUPCAKE", "DONUT", "FROYO", "GINGERBREAD", "HONEYCOMB", "ICE CREAM SANDWICH", "JELLY BEAN", "KITKAT" };
+    private String[] names = { "热门精选", "国内", "国际", "体育", "科技", "娱乐"};
     private ScrollIndicatorView indicator;
 
     @Override
@@ -101,7 +101,7 @@ public class MainActivity extends BaseActivity
 
         @Override
         public int getCount() {
-            return 6;
+            return names.length;
         }
 
         @Override
@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity
             }
             TextView textView = (TextView) convertView;
             textView.setText(names[position % names.length]);
-            textView.setPadding(20, 0, 20, 0);
+            textView.setTextColor(MainActivity.this.getResources().getColor(R.color.tab_top_text_1));
             return convertView;
         }
 
