@@ -49,6 +49,7 @@ public class NewsFragment extends LazyFragment {
 	private RecyclerView mRecyclerView = null;
 	private NewsAdapter mAdapter = null;
 	LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this.getActivity());
+	PtrFrameLayout ptrFrameLayout = null;
 
 	//for OKHttp
 	OkHttpClient mOkHttpClient = new OkHttpClient();
@@ -81,7 +82,7 @@ public class NewsFragment extends LazyFragment {
 		});
 		mRecyclerView.setAdapter(mAdapter);
 
-		final PtrFrameLayout ptrFrameLayout = (PtrFrameLayout) findViewById(R.id.material_style_ptr_frame);
+		ptrFrameLayout = (PtrFrameLayout) findViewById(R.id.material_style_ptr_frame);
 		// header
 		final MaterialHeader header = new MaterialHeader(this.getActivity());
 		//header.setColorSchemeColors(new int[]{R.color.line_color_run_speed_13});
@@ -96,32 +97,36 @@ public class NewsFragment extends LazyFragment {
 		ptrFrameLayout.setHeaderView(header);
 		ptrFrameLayout.addPtrUIHandler(header);
 		ptrFrameLayout.setEnabledNextPtrAtOnce(false);
-		ptrFrameLayout.setPtrHandler(new PtrHandler() {
-			@Override
-			public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
-				return mLoadMoreListener.checkCanDoRefresh();
-			}
-
-			@Override
-			public void onRefreshBegin(PtrFrameLayout frame) {
-				mLoadMoreListener.setPagination(1);//恢复第一页
-				ptrFrameLayout.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						ptrFrameLayout.refreshComplete();
-
-						//TODO refresh datas
-
-						mAdapter.hideFooterView();
-						mAdapter.notifyDataSetChanged();
-						mRecyclerView.scrollToPosition(0);
-					}
-				}, 500);
-			}
-		});
+		ptrFrameLayout.setPtrHandler(mPtrHandler);
 
 		mRecyclerView.addOnScrollListener(mLoadMoreListener);
+		ptrFrameLayout.refreshComplete();
+		mLoadMoreListener.loadComplete();
 	}
+
+	PtrHandler mPtrHandler = new PtrHandler() {
+		@Override
+		public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+			return mLoadMoreListener.checkCanDoRefresh();
+		}
+
+		@Override
+		public void onRefreshBegin(PtrFrameLayout frame) {
+			mLoadMoreListener.setPagination(1);//恢复第一页
+			ptrFrameLayout.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					ptrFrameLayout.refreshComplete();
+
+					//TODO refresh datas
+
+					mAdapter.hideFooterView();
+					mAdapter.notifyDataSetChanged();
+					mRecyclerView.scrollToPosition(0);
+				}
+			}, 500);
+		}
+	};
 
 	private LinearLayoutWithRecyclerOnScrollListener mLoadMoreListener = new LinearLayoutWithRecyclerOnScrollListener(mLinearLayoutManager) {
 
