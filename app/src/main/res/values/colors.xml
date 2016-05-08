@@ -3,4 +3,22 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="light_grey">#cccccc</color>
+
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="grey">#a3afb3</color>
+    <color name="grey2">#ddd</color>
+    <color name="red">#ff4343</color>
+    <color name="green">#ff4ed17e</color>
+    <color name="blue">#3259ff</color>
+    <color name="yellow">#FFF7D23E</color>
+
+    <integer-array name="google_colors">
+        <item>@color/red</item>
+        <!--<item>@color/blue</item>-->
+        <!--<item>@color/yellow</item>-->
+        <!--<item>@color/green</item>-->
+    </integer-array>
 </resources>
