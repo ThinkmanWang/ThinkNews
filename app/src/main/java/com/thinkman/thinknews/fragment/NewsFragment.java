@@ -4,17 +4,22 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.captain_miao.recyclerviewutils.common.BaseLoadMoreFooterView;
 import com.github.captain_miao.recyclerviewutils.listener.LinearLayoutWithRecyclerOnScrollListener;
 import com.thinkman.thinknews.R;
 import com.thinkman.thinknews.adapter.NewsAdapter;
+import com.thinkman.thinknews.models.NewsListModel;
 import com.thinkman.thinknews.models.NewsModel;
 import com.thinkman.thinkviewpagerindicator.fragment.LazyFragment;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -22,6 +27,16 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
 import in.srain.cube.views.ptr.header.MaterialHeader;
 import in.srain.cube.views.ptr.util.PtrLocalDisplay;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+import com.google.gson.Gson;
 
 
 public class NewsFragment extends LazyFragment {
@@ -35,6 +50,9 @@ public class NewsFragment extends LazyFragment {
 	private NewsAdapter mAdapter = null;
 	LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this.getActivity());
 
+	//for OKHttp
+	OkHttpClient mOkHttpClient = new OkHttpClient();
+
 	@Override
 	protected void onCreateViewLazy(Bundle savedInstanceState) {
 		super.onCreateViewLazy(savedInstanceState);
@@ -43,7 +61,10 @@ public class NewsFragment extends LazyFragment {
 		progressBar = (ProgressBar) findViewById(R.id.fragment_mainTab_item_progressBar);
 
 		mMainLayout = (RelativeLayout) findViewById(R.id.main_layout);
-		handler.sendEmptyMessageDelayed(1, 2000);
+		mHandler.sendEmptyMessageDelayed(1, 2000);
+
+		initView();
+		initData();
 	}
 
 	private void initView() {
@@ -58,6 +79,7 @@ public class NewsFragment extends LazyFragment {
 				return R.layout.list_load_more;
 			}
 		});
+		mRecyclerView.setAdapter(mAdapter);
 
 		final PtrFrameLayout ptrFrameLayout = (PtrFrameLayout) findViewById(R.id.material_style_ptr_frame);
 		// header
@@ -148,13 +170,59 @@ public class NewsFragment extends LazyFragment {
 	@Override
 	public void onDestroyViewLazy() {
 		super.onDestroyViewLazy();
-		handler.removeMessages(1);
+		mHandler.removeMessages(1);
 	}
 
-	private Handler handler = new Handler() {
+	private Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			progressBar.setVisibility(View.GONE);
 			mMainLayout.setVisibility(View.VISIBLE);
 		}
 	};
+
+	private void initData() {
+		Request.Builder requestBuilder = new Request.Builder().url("http://api.huceo.com/wxnew/?key=0ea9db515854676cc3b8059966c77c2a&num=20");
+		Request request = requestBuilder.build();
+		Call httpCall= mOkHttpClient.newCall(request);
+
+		httpCall.enqueue(new Callback() {
+			@Override
+			public void onFailure(Call call, IOException e) {
+
+			}
+
+			@Override
+			public void onResponse(Call call, Response response) throws IOException {
+				if (null != response.cacheResponse()) {
+					String str = response.cacheResponse().toString();
+				} else {
+					final String szJson = response.body().string();
+					//String str = response.networkResponse().toString();
+
+					try {
+						JSONObject jsonNewsList = new JSONObject(szJson);
+
+						if (200 != jsonNewsList.getInt("code")) {
+							return;
+						}
+
+						Gson gson = new Gson();
+						final NewsListModel newsList = gson.fromJson(szJson, NewsListModel.class);
+						mHandler.post(new Runnable() {
+							@Override
+							public void run() {
+								Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
+								mAdapter.clear();
+								mAdapter.addAll(newsList.getNewslist());
+							}
+						});
+					} catch (JSONException ex) {
+
+					}
+				}
+
+
+			}
+		});
+	}
 }

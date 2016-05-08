@@ -36,7 +36,7 @@ public class NewsAdapter extends BaseWrapperRecyclerAdapter<NewsModel, NewsAdapt
 
     @Override
     public void onBindItemViewHolder(NewsAdapter.ItemViewHolder vh, int position) {
-        //vh.mTvContent.setText(getItem(position));
+        vh.mTvContent.setText(getItem(position).getTitle());
     }
 
     @Override
