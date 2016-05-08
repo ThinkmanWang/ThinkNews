@@ -34,4 +34,5 @@ dependencies {
     compile 'com.orhanobut:dialogplus:1.11@aar'
     compile project(':thinkactivity')
     compile project(':thinkviewpagerindicator')
+    compile project(':RecyclerViewUtils')
 }

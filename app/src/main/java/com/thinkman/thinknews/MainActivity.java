@@ -2,9 +2,6 @@ package com.thinkman.thinknews;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -14,24 +11,17 @@ import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.thinkman.thinkactivity.BaseActivity;
 import com.thinkman.thinknews.fragment.NewsFragment;
 import com.thinkman.thinkviewpagerindicator.view.indicator.FragmentListPageAdapter;
-import com.thinkman.thinkviewpagerindicator.view.indicator.Indicator;
 import com.thinkman.thinkviewpagerindicator.view.indicator.IndicatorViewPager;
 import com.thinkman.thinkviewpagerindicator.view.indicator.ScrollIndicatorView;
 import com.thinkman.thinkviewpagerindicator.view.indicator.slidebar.ColorBar;
-import com.thinkman.thinkviewpagerindicator.view.indicator.slidebar.SpringBar;
 import com.thinkman.thinkviewpagerindicator.view.indicator.transition.OnTransitionTextListener;
 
 public class MainActivity extends BaseActivity
@@ -39,10 +29,10 @@ public class MainActivity extends BaseActivity
 
     DrawerLayout mDrawer = null;
 
-    private IndicatorViewPager indicatorViewPager;
-    private LayoutInflater inflate;
-    private String[] names = { "热门精选", "国内", "国际", "体育", "科技", "娱乐"};
-    private ScrollIndicatorView indicator;
+    private IndicatorViewPager mIndicatorViewPager;
+    private LayoutInflater mInflate;
+    private String[] mTabNames = { "热门精选", "国内", "国际", "体育", "科技", "娱乐"};
+    private ScrollIndicatorView mIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,18 +68,18 @@ public class MainActivity extends BaseActivity
 
     private void initViewPager() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.main_viewPager);
-        indicator = (ScrollIndicatorView) findViewById(R.id.main_indicator);
-        indicator.setScrollBar(new ColorBar(this, Color.RED, 5));
+        mIndicator = (ScrollIndicatorView) findViewById(R.id.main_indicator);
+        mIndicator.setScrollBar(new ColorBar(this, Color.RED, 5));
 
         // 设置滚动监听
         int selectColorId = R.color.tab_top_text_2;
         int unSelectColorId = R.color.tab_top_text_1;
-        indicator.setOnTransitionListener(new OnTransitionTextListener().setColorId(this, selectColorId, unSelectColorId));
+        mIndicator.setOnTransitionListener(new OnTransitionTextListener().setColorId(this, selectColorId, unSelectColorId));
 
         viewPager.setOffscreenPageLimit(2);
-        indicatorViewPager = new IndicatorViewPager(indicator, viewPager);
-        inflate = LayoutInflater.from(getApplicationContext());
-        indicatorViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+        mIndicatorViewPager = new IndicatorViewPager(mIndicator, viewPager);
+        mInflate = LayoutInflater.from(getApplicationContext());
+        mIndicatorViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
 
     }
 
@@ -101,16 +91,16 @@ public class MainActivity extends BaseActivity
 
         @Override
         public int getCount() {
-            return names.length;
+            return mTabNames.length;
         }
 
         @Override
         public View getViewForTab(int position, View convertView, ViewGroup container) {
             if (convertView == null) {
-                convertView = inflate.inflate(R.layout.tab_top, container, false);
+                convertView = mInflate.inflate(R.layout.tab_top, container, false);
             }
             TextView textView = (TextView) convertView;
-            textView.setText(names[position % names.length]);
+            textView.setText(mTabNames[position % mTabNames.length]);
             textView.setTextColor(MainActivity.this.getResources().getColor(R.color.tab_top_text_1));
             return convertView;
         }
