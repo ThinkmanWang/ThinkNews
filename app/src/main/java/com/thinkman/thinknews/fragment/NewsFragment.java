@@ -139,6 +139,7 @@ public class NewsFragment extends LazyFragment {
 			mRecyclerView.post(new Runnable() {
 				@Override
 				public void run() {
+					mAdapter.showLoadMoreView();
 //					if (mAdapter.getItemCount() < MAX_ITEM_COUNT) {
 //						mAdapter.showLoadMoreView();
 //					} else {
@@ -165,6 +166,8 @@ public class NewsFragment extends LazyFragment {
 //						mAdapter.hideFooterView();
 //					}
 
+					mAdapter.notifyDataSetChanged();
+					mAdapter.hideFooterView();
 					loadComplete();
 
 				}
