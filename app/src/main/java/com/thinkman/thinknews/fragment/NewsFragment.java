@@ -62,7 +62,7 @@ public class NewsFragment extends LazyFragment {
 		progressBar = (ProgressBar) findViewById(R.id.fragment_mainTab_item_progressBar);
 
 		mMainLayout = (RelativeLayout) findViewById(R.id.main_layout);
-		mHandler.sendEmptyMessageDelayed(1, 2000);
+		//mHandler.sendEmptyMessageDelayed(1, 2000);
 
 		initView();
 		initData();
@@ -222,6 +222,7 @@ public class NewsFragment extends LazyFragment {
 								Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
 								mAdapter.clear();
 								mAdapter.addAll(newsList.getNewslist());
+								mHandler.sendEmptyMessageDelayed(1, 1000);
 							}
 						});
 					} catch (JSONException ex) {

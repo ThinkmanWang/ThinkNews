@@ -24,6 +24,9 @@ import com.thinkman.thinkviewpagerindicator.view.indicator.ScrollIndicatorView;
 import com.thinkman.thinkviewpagerindicator.view.indicator.slidebar.ColorBar;
 import com.thinkman.thinkviewpagerindicator.view.indicator.transition.OnTransitionTextListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -85,6 +88,8 @@ public class MainActivity extends BaseActivity
 
     private class MyAdapter extends IndicatorViewPager.IndicatorFragmentPagerAdapter {
 
+        HashMap<Integer, Fragment> mMapFragments = new HashMap<Integer, Fragment>();
+
         public MyAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
         }
@@ -107,10 +112,15 @@ public class MainActivity extends BaseActivity
 
         @Override
         public Fragment getFragmentForPage(int position) {
+            if (mMapFragments.containsKey(position)) {
+                return mMapFragments.get(position);
+            }
+
             NewsFragment fragment = new NewsFragment();
             Bundle bundle = new Bundle();
             bundle.putInt(NewsFragment.INTENT_INT_INDEX, position);
             fragment.setArguments(bundle);
+            mMapFragments.put(position, fragment);
             return fragment;
         }
 

@@ -69,6 +69,23 @@ public class BaseActivity extends AppCompatActivity {
         mCommonActionBar1.hiddenRightCtv();
     }
 
+    public void setActionBar(int nResLeft, String szTitle) {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setCustomView(mCommonActionBar1);
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayUseLogoEnabled(false);
+        actionBar.setDisplayShowCustomEnabled(true);
+
+        mCommonActionBar1.setLeftDrawable(getResources().getDrawable(nResLeft));
+        mCommonActionBar1.showLeftCtv();
+
+        mCommonActionBar1.setTitleText(szTitle);
+        mCommonActionBar1.showTitleCtv();
+
+        mCommonActionBar1.hiddenRightCtv();
+    }
+
     public void setActionBar(int nResLeft, int nResTitle) {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setCustomView(mCommonActionBar1);
