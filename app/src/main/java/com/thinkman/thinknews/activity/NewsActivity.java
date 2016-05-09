@@ -40,7 +40,13 @@ public class NewsActivity extends BaseActivity {
         });
 
         mTitle = getIntent().getStringExtra(TITLE);
-        this.setActionBar(R.mipmap.ic_launcher, mTitle);
+        this.setActionBar(R.mipmap.ic_arrow_back_white, mTitle);
+        this.setOnActionBarLeftClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NewsActivity.this.finish();
+            }
+        });
 
         mUrl = getIntent().getStringExtra(URL);
 
