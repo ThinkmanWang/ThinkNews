@@ -5,17 +5,16 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.github.captain_miao.recyclerviewutils.common.BaseLoadMoreFooterView;
 import com.github.captain_miao.recyclerviewutils.listener.LinearLayoutWithRecyclerOnScrollListener;
 import com.thinkman.fragment.BaseFragment;
+import com.thinkman.thinknews.Contant;
 import com.thinkman.thinknews.R;
 import com.thinkman.thinknews.adapter.NewsAdapter;
 import com.thinkman.thinknews.models.NewsListModel;
@@ -45,14 +44,15 @@ import com.google.gson.Gson;
 public class NewsFragment extends BaseFragment {
 	private ProgressBar progressBar;
 	private RelativeLayout mMainLayout;
-	private int tabIndex = 0;
+	private int mTabIndex = 0;
 	public static final String INTENT_INT_INDEX = "intent_int_index";
 
 	//for show news list
 	private RecyclerView mRecyclerView = null;
 	private NewsAdapter mAdapter = null;
-	LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this.getActivity());
-	PtrFrameLayout ptrFrameLayout = null;
+	private LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this.getActivity());
+	private PtrFrameLayout ptrFrameLayout = null;
+	private int m_nCurrentPage = 1;
 
 	//for OKHttp
 	OkHttpClient mOkHttpClient = new OkHttpClient();
@@ -67,7 +67,7 @@ public class NewsFragment extends BaseFragment {
 		}
 
 		View view = inflater.inflate(R.layout.fragment_news, null);
-		tabIndex = getArguments().getInt(INTENT_INT_INDEX);
+		mTabIndex = getArguments().getInt(INTENT_INT_INDEX);
 		progressBar = (ProgressBar) view.findViewById(R.id.fragment_mainTab_item_progressBar);
 
 		mMainLayout = (RelativeLayout) view.findViewById(R.id.main_layout);
@@ -125,12 +125,14 @@ public class NewsFragment extends BaseFragment {
 		@Override
 		public void onRefreshBegin(PtrFrameLayout frame) {
 			mLoadMoreListener.setPagination(1);//恢复第一页
+
+			//TODO refresh datas
+			initData();
+
 			ptrFrameLayout.postDelayed(new Runnable() {
 				@Override
 				public void run() {
 					ptrFrameLayout.refreshComplete();
-
-					//TODO refresh datas
 
 					mAdapter.hideFooterView();
 					mAdapter.notifyDataSetChanged();
@@ -145,45 +147,77 @@ public class NewsFragment extends BaseFragment {
 		@Override
 		public void onLoadMore(final int pagination, int pageSize) {
 
-			//TODO get more data and append to tail
-
-
 			mRecyclerView.post(new Runnable() {
 				@Override
 				public void run() {
 					mAdapter.showLoadMoreView();
-//					if (mAdapter.getItemCount() < MAX_ITEM_COUNT) {
-//						mAdapter.showLoadMoreView();
-//					} else {
-//						mAdapter.showNoMoreDataView();
-//					}
+				}
+			});
+
+			//TODO get more data and append to tail
+			Request.Builder requestBuilder = new Request.Builder().url(Contant.URLS[mTabIndex]
+					.replaceAll("($1)", Contant.APPKEY)
+					.replaceAll("($2)", ""+Contant.PAGE_SIZE)
+					.replaceAll("($3)", ""+(m_nCurrentPage+1)));
+
+			Request request = requestBuilder.build();
+			Call httpCall= mOkHttpClient.newCall(request);
+
+			httpCall.enqueue(new Callback() {
+				@Override
+				public void onFailure(Call call, IOException e) {
+
+				}
+
+				@Override
+				public void onResponse(Call call, Response response) throws IOException {
+					if (null != response.cacheResponse()) {
+						String str = response.cacheResponse().toString();
+					} else {
+						final String szJson = response.body().string();
+						//String str = response.networkResponse().toString();
+
+						try {
+							JSONObject jsonNewsList = new JSONObject(szJson);
+
+							if (200 != jsonNewsList.getInt("code")) {
+								return;
+							}
+
+							Gson gson = new Gson();
+							final NewsListModel newsList = gson.fromJson(szJson, NewsListModel.class);
+							mHandler.postDelayed(new Runnable() {
+								@Override
+								public void run() {
+									m_nCurrentPage += 1;
+									mAdapter.addAll(newsList.getNewslist());
+									mHandler.sendEmptyMessageDelayed(1, 1000);
+
+									mAdapter.notifyDataSetChanged();
+									mAdapter.hideFooterView();
+									loadComplete();
+								}
+							}, 1000);
+						} catch (JSONException ex) {
+
+						}
+					}
+
 
 				}
 			});
 
 
-			mRecyclerView.postDelayed(new Runnable() {
-				@Override
-				public void run() {
-
-//					if (mAdapter.getItemCount() >= MAX_ITEM_COUNT) {
-//						mAdapter.showNoMoreDataView();
-//					} else {
-//						mAdapter.append(pagination + " page -> " + mAdapter.getItemCount());
-//						mAdapter.append(pagination + " page -> " + mAdapter.getItemCount());
-//						mAdapter.append(pagination + " page -> " + mAdapter.getItemCount());
-//						mAdapter.append(pagination + " page -> " + mAdapter.getItemCount());
-//						mAdapter.append(pagination + " page -> " + mAdapter.getItemCount());
-//						mAdapter.notifyDataSetChanged();
-//						mAdapter.hideFooterView();
-//					}
-
-					mAdapter.notifyDataSetChanged();
-					mAdapter.hideFooterView();
-					loadComplete();
-
-				}
-			}, 1500);
+//			mRecyclerView.postDelayed(new Runnable() {
+//				@Override
+//				public void run() {
+//
+//					mAdapter.notifyDataSetChanged();
+//					mAdapter.hideFooterView();
+//					loadComplete();
+//
+//				}
+//			}, 1500);
 		}
 	};
 
@@ -195,7 +229,13 @@ public class NewsFragment extends BaseFragment {
 	};
 
 	private void initData() {
-		Request.Builder requestBuilder = new Request.Builder().url("http://api.huceo.com/wxnew/?key=0ea9db515854676cc3b8059966c77c2a&num=20");
+		m_nCurrentPage = 1;
+		Request.Builder requestBuilder = new Request.Builder().url(Contant.URLS[mTabIndex]
+				.replaceAll("\\(\\$1\\)", Contant.APPKEY)
+				.replaceAll("\\(\\$2\\)", ""+Contant.PAGE_SIZE)
+				.replaceAll("\\(\\$3\\)", ""+m_nCurrentPage));
+
+
 		Request request = requestBuilder.build();
 		Call httpCall= mOkHttpClient.newCall(request);
 
