@@ -1,4 +1,4 @@
-package com.thinkman.thinknews.fragment;
+package com.thinkman.fragment;
 
 
 import android.support.v4.app.Fragment;

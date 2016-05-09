@@ -15,12 +15,11 @@ import android.widget.Toast;
 
 import com.github.captain_miao.recyclerviewutils.common.BaseLoadMoreFooterView;
 import com.github.captain_miao.recyclerviewutils.listener.LinearLayoutWithRecyclerOnScrollListener;
+import com.thinkman.fragment.BaseFragment;
 import com.thinkman.thinknews.R;
 import com.thinkman.thinknews.adapter.NewsAdapter;
 import com.thinkman.thinknews.models.NewsListModel;
 import com.thinkman.thinknews.models.NewsModel;
-
-import com.thinkman.thinkviewpagerindicator.fragment.LazyFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
