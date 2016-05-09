@@ -45,10 +45,10 @@ public class NewsAdapter extends BaseWrapperRecyclerAdapter<NewsModel, NewsAdapt
             case R.id.tv_content:
                 Toast.makeText(v.getContext(), "on click " + position, Toast.LENGTH_SHORT).show();
                 break;
-            default:
+            //default:
                 //mock click todo  last item
-                remove(position);
-                notifyItemRemoved(position);
+//                remove(position);
+//                notifyItemRemoved(position);
         }
     }
 
