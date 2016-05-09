@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.thinkman.thinkactivity.BaseActivity;
 import com.thinkman.thinknews.fragment.NewsFragment;
@@ -26,6 +27,8 @@ import com.thinkman.thinkviewpagerindicator.view.indicator.transition.OnTransiti
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -131,13 +134,25 @@ public class MainActivity extends BaseActivity
 
     };
 
+    private static boolean mBackKeyPressed = false;
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if(!mBackKeyPressed){
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                mBackKeyPressed = true;
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        mBackKeyPressed = false;
+                    }
+                }, 1000);
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 

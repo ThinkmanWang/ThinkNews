@@ -3,6 +3,7 @@ package com.thinkman.thinkutils.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 public class ProgressWebView extends WebView {
@@ -12,19 +13,29 @@ public class ProgressWebView extends WebView {
         super(context);
         addProgressBar();
         setWebChromeClient(new WebChromeClient());
+        setWebViewClient(mWebViewClient);
     }
 
     public ProgressWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
         addProgressBar();
         setWebChromeClient(new WebChromeClient());
+        setWebViewClient(mWebViewClient);
     }
 
     public ProgressWebView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         addProgressBar();
         setWebChromeClient(new WebChromeClient());
+        setWebViewClient(mWebViewClient);
     }
+
+    WebViewClient mWebViewClient = new WebViewClient() {
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            ProgressWebView.this.loadUrl(url);
+            return true;
+        }
+    };
 
     @SuppressWarnings("deprecation")
     private void addProgressBar() {

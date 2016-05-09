@@ -23,6 +23,7 @@ public class BaseActivity extends AppCompatActivity {
 
         //mCommonActionBar = new CommonActionBar(this);
         mCommonActionBar1 = new CommonActionBar1(this);
+
     }
 
     public CommonActionBar1 getCustomActionBar(){

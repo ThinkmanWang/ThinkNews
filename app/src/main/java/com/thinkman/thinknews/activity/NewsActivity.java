@@ -7,10 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 import com.thinkman.thinkactivity.BaseActivity;
 import com.thinkman.thinknews.R;
 import com.thinkman.thinkutils.view.ProgressWebView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class NewsActivity extends BaseActivity {
 
@@ -60,4 +64,28 @@ public class NewsActivity extends BaseActivity {
         }
     }
 
+    private static boolean mBackKeyPressed = false;
+    @Override
+    public void onBackPressed() {
+
+        if(!mBackKeyPressed){
+            //Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            mBackKeyPressed = true;
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    mBackKeyPressed = false;
+                }
+            }, 1000);
+        } else {
+            super.onBackPressed();
+        }
+
+        if (mProgressWebView.canGoBack()) {
+            mProgressWebView.goBack();
+            return;
+        }
+
+        super.onBackPressed();
+    }
 }

@@ -65,7 +65,7 @@ public class NewsAdapter extends BaseWrapperRecyclerAdapter<NewsModel, NewsAdapt
             case R.id.iv_left_image:
             case R.id.tv_content: {
                 NewsModel news = getItem(position);
-                
+
                 Intent intent = new Intent(mActivity, NewsActivity.class);
                 intent.putExtra(NewsActivity.TITLE, news.getTitle());
                 intent.putExtra(NewsActivity.URL, news.getUrl());
