@@ -156,9 +156,9 @@ public class NewsFragment extends BaseFragment {
 
 			//TODO get more data and append to tail
 			Request.Builder requestBuilder = new Request.Builder().url(Contant.URLS[mTabIndex]
-					.replaceAll("($1)", Contant.APPKEY)
-					.replaceAll("($2)", ""+Contant.PAGE_SIZE)
-					.replaceAll("($3)", ""+(m_nCurrentPage+1)));
+					.replaceAll("\\(\\$1\\)", Contant.APPKEY)
+					.replaceAll("\\(\\$2\\)", "" + Contant.PAGE_SIZE)
+					.replaceAll("\\(\\$3\\)", ""+(m_nCurrentPage+1)));
 
 			Request request = requestBuilder.build();
 			Call httpCall= mOkHttpClient.newCall(request);
