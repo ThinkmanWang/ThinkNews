@@ -70,7 +70,7 @@ public class NewsAdapter extends BaseWrapperRecyclerAdapter<NewsModel, NewsAdapt
                 Intent intent = new Intent(mActivity, NewsActivity.class);
                 intent.putExtra(NewsActivity.TITLE, news.getTitle());
                 intent.putExtra(NewsActivity.URL, news.getUrl());
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mActivity.startActivity(intent);
                 break;
             }

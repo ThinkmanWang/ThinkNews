@@ -2,10 +2,13 @@ package com.thinkman.thinknews.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -16,6 +19,7 @@ import com.thinkman.thinknews.R;
 import com.thinkman.thinknews.adapter.NewsAdapter;
 import com.thinkman.thinknews.models.NewsListModel;
 import com.thinkman.thinknews.models.NewsModel;
+
 import com.thinkman.thinkviewpagerindicator.fragment.LazyFragment;
 
 import org.json.JSONException;
@@ -39,7 +43,7 @@ import okhttp3.Response;
 import com.google.gson.Gson;
 
 
-public class NewsFragment extends LazyFragment {
+public class NewsFragment extends BaseFragment {
 	private ProgressBar progressBar;
 	private RelativeLayout mMainLayout;
 	private int tabIndex = 0;
@@ -55,21 +59,30 @@ public class NewsFragment extends LazyFragment {
 	OkHttpClient mOkHttpClient = new OkHttpClient();
 
 	@Override
-	protected void onCreateViewLazy(Bundle savedInstanceState) {
-		super.onCreateViewLazy(savedInstanceState);
-		setContentView(R.layout.fragment_news);
-		tabIndex = getArguments().getInt(INTENT_INT_INDEX);
-		progressBar = (ProgressBar) findViewById(R.id.fragment_mainTab_item_progressBar);
+	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+							 Bundle savedInstanceState) {
+		super.onCreateView(inflater, container, savedInstanceState);
 
-		mMainLayout = (RelativeLayout) findViewById(R.id.main_layout);
+		if (null != getContentView()) {
+			return getContentView();
+		}
+
+		View view = inflater.inflate(R.layout.fragment_news, null);
+		tabIndex = getArguments().getInt(INTENT_INT_INDEX);
+		progressBar = (ProgressBar) view.findViewById(R.id.fragment_mainTab_item_progressBar);
+
+		mMainLayout = (RelativeLayout) view.findViewById(R.id.main_layout);
 		//mHandler.sendEmptyMessageDelayed(1, 2000);
 
-		initView();
+		initView(view);
 		initData();
+
+		setContentView(view);
+		return view;
 	}
 
-	private void initView() {
-		mRecyclerView =  (RecyclerView) findViewById(R.id.recycler_view);
+	private void initView(View view) {
+		mRecyclerView =  (RecyclerView) view.findViewById(R.id.recycler_view);
 		//mLinearLayoutManager = new LinearLayoutManager(this.getActivity());
 		mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
@@ -82,7 +95,7 @@ public class NewsFragment extends LazyFragment {
 		});
 		mRecyclerView.setAdapter(mAdapter);
 
-		ptrFrameLayout = (PtrFrameLayout) findViewById(R.id.material_style_ptr_frame);
+		ptrFrameLayout = (PtrFrameLayout) view.findViewById(R.id.material_style_ptr_frame);
 		// header
 		final MaterialHeader header = new MaterialHeader(this.getActivity());
 		//header.setColorSchemeColors(new int[]{R.color.line_color_run_speed_13});
@@ -175,12 +188,6 @@ public class NewsFragment extends LazyFragment {
 		}
 	};
 
-	@Override
-	public void onDestroyViewLazy() {
-		super.onDestroyViewLazy();
-		mHandler.removeMessages(1);
-	}
-
 	private Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			progressBar.setVisibility(View.GONE);
@@ -219,7 +226,7 @@ public class NewsFragment extends LazyFragment {
 						mHandler.post(new Runnable() {
 							@Override
 							public void run() {
-								Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
+
 								mAdapter.clear();
 								mAdapter.addAll(newsList.getNewslist());
 								mHandler.sendEmptyMessageDelayed(1, 1000);
@@ -233,5 +240,13 @@ public class NewsFragment extends LazyFragment {
 
 			}
 		});
+	}
+
+	public void onDestroyView() {
+		super.onDestroyView();
+	}
+
+	public void onDestroy() {
+		super.onDestroy();
 	}
 }
