@@ -45,7 +45,9 @@ public class NewsActivity extends BaseActivity {
         mUrl = getIntent().getStringExtra(URL);
 
         mProgressWebView = (ProgressWebView)findViewById(R.id.mian_webview);
+        mProgressWebView.getSettings().setJavaScriptEnabled(true);
         mProgressWebView.getSettings().setDomStorageEnabled(true);
+        mProgressWebView.getSettings().setBlockNetworkImage(false);
 
         if (false == TextUtils.isEmpty(mUrl)) {
             mProgressWebView.loadUrl(mUrl);
