@@ -29,7 +29,7 @@ public class ProgressWebView extends WebView {
     @SuppressWarnings("deprecation")
     private void addProgressBar() {
         mProgressbar = new ProgressBar(getContext(), null, android.R.attr.progressBarStyleHorizontal);
-        mProgressbar.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 3, 0, 0));
+        mProgressbar.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 30, 0, 0));
         addView(mProgressbar);
     }
 
