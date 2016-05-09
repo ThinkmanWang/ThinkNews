@@ -73,7 +73,7 @@ public class NewsFragment extends LazyFragment {
 		//mLinearLayoutManager = new LinearLayoutManager(this.getActivity());
 		mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-		mAdapter = new NewsAdapter(new ArrayList<NewsModel>());
+		mAdapter = new NewsAdapter(this.getActivity(), new ArrayList<NewsModel>());
 		mAdapter.setLoadMoreFooterView(new BaseLoadMoreFooterView(this.getActivity()) {
 			@Override
 			public int getLoadMoreLayoutResource() {
