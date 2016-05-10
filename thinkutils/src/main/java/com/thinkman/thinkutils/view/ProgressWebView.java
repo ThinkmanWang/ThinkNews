@@ -2,11 +2,14 @@ package com.thinkman.thinkutils.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-public class ProgressWebView extends WebView {
+import java.util.Stack;
+
+public class ProgressWebView extends WebView implements View.OnClickListener {
     private ProgressBar mProgressbar;
 
     public ProgressWebView(Context context) {
@@ -32,8 +35,13 @@ public class ProgressWebView extends WebView {
 
     WebViewClient mWebViewClient = new WebViewClient() {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            ProgressWebView.this.loadUrl(url);
-            return true;
+            //ProgressWebView.this.loadUrl(url);
+
+            return false;
+        }
+
+        public void onPageFinished(WebView view, String url) {
+            
         }
     };
 
@@ -42,6 +50,11 @@ public class ProgressWebView extends WebView {
         mProgressbar = new ProgressBar(getContext(), null, android.R.attr.progressBarStyleHorizontal);
         mProgressbar.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 30, 0, 0));
         addView(mProgressbar);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     public class WebChromeClient extends android.webkit.WebChromeClient {
@@ -68,5 +81,16 @@ public class ProgressWebView extends WebView {
         mProgressbar.setLayoutParams(lp);
         super.onScrollChanged(l, t, oldl, oldt);
     }
+
+//    private Stack<String> mHistory = new Stack<String>();
+//    public boolean canGoBack() {
+//        return (mHistory.size() > 1);
+//    }
+//
+//    public void goBack() {
+//        mHistory.pop();  //current page
+//
+//        loadUrl(mHistory.pop());
+//    }
 
 }
