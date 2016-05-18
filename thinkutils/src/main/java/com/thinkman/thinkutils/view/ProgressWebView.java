@@ -14,23 +14,27 @@ public class ProgressWebView extends WebView implements View.OnClickListener {
 
     public ProgressWebView(Context context) {
         super(context);
-        addProgressBar();
-        setWebChromeClient(new WebChromeClient());
-        setWebViewClient(mWebViewClient);
+        init();
     }
 
     public ProgressWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        addProgressBar();
-        setWebChromeClient(new WebChromeClient());
-        setWebViewClient(mWebViewClient);
+        init();
     }
 
     public ProgressWebView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        init();
+    }
+
+    public void init() {
         addProgressBar();
         setWebChromeClient(new WebChromeClient());
         setWebViewClient(mWebViewClient);
+
+        getSettings().setJavaScriptEnabled(true);
+        getSettings().setDomStorageEnabled(true);
+        getSettings().setBlockNetworkImage(false);
     }
 
     WebViewClient mWebViewClient = new WebViewClient() {
@@ -41,7 +45,7 @@ public class ProgressWebView extends WebView implements View.OnClickListener {
         }
 
         public void onPageFinished(WebView view, String url) {
-            
+
         }
     };
 
