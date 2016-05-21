@@ -1,6 +1,8 @@
 package com.thinkman.thinknews.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +23,7 @@ import java.util.TimerTask;
 public class NewsActivity extends BaseActivity {
 
     private ProgressWebView mProgressWebView = null;
+    FloatingActionButton m_fabFavorite = null;
 
     private NewsModel mNews = new NewsModel();
 
@@ -41,7 +44,7 @@ public class NewsActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        m_fabFavorite = (FloatingActionButton) findViewById(R.id.fab);
 
         mNews.setCtime(getIntent().getStringExtra(CTIME));
         mNews.setTitle(getIntent().getStringExtra(TITLE));
@@ -49,17 +52,23 @@ public class NewsActivity extends BaseActivity {
         mNews.setPicUrl(getIntent().getStringExtra(PIC_URL));
         mNews.setUrl(getIntent().getStringExtra(URL));
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        m_fabFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long nRet = FavoritesDbUtils.insertFavorite(NewsActivity.this, mNews);
-                if (-2 == nRet) {
-                    Snackbar.make(view, "Favorites already exists", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                } else {
-                    Snackbar.make(view, "Add to Favorites success!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        long nRet = FavoritesDbUtils.insertFavorite(NewsActivity.this, mNews);
+                        if (-2 == nRet) {
+                            mHandler.sendEmptyMessage(MSG_FAVORITE_ALREADY_EXISTS);
+                        } else if (-1 == nRet || 0 == nRet) {
+                            mHandler.sendEmptyMessage(MSG_ADD_FAVORITE_FAILED);
+                        } else {
+                            mHandler.sendEmptyMessage(MSG_ADD_FAVORITE_SUCCESS);
+                        }
+                    }
+                }).start();
+
 
             }
         });
@@ -108,4 +117,26 @@ public class NewsActivity extends BaseActivity {
 
         super.onBackPressed();
     }
+
+    public static final int MSG_ADD_FAVORITE_SUCCESS = 1;
+    public static final int MSG_ADD_FAVORITE_FAILED = 2;
+    public static final int MSG_FAVORITE_ALREADY_EXISTS = 3;
+    Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_ADD_FAVORITE_SUCCESS:
+                    Snackbar.make(m_fabFavorite, "Add to Favorites success!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    break;
+                case MSG_ADD_FAVORITE_FAILED:
+                    Snackbar.make(m_fabFavorite, "Add to Favorites failed!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    break;
+                case MSG_FAVORITE_ALREADY_EXISTS:
+                    Snackbar.make(m_fabFavorite, "Favorites already exists", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    break;
+            }
+        }
+    };
 }
