@@ -47,6 +47,7 @@ public class NewsAdapter extends BaseWrapperRecyclerAdapter<NewsModel, NewsAdapt
     @Override
     public void onBindItemViewHolder(NewsAdapter.ItemViewHolder vh, int position) {
         vh.tv_content.setText(getItem(position).getTitle());
+        vh.tv_time.setText(getItem(position).getCtime());
 
         NewsModel news = getItem(position);
         if (news != null && false == TextUtils.isEmpty(news.getPicUrl())) {
@@ -67,7 +68,10 @@ public class NewsAdapter extends BaseWrapperRecyclerAdapter<NewsModel, NewsAdapt
                 NewsModel news = getItem(position);
 
                 Intent intent = new Intent(mActivity, NewsActivity.class);
+                intent.putExtra(NewsActivity.CTIME, news.getCtime());
                 intent.putExtra(NewsActivity.TITLE, news.getTitle());
+                intent.putExtra(NewsActivity.DESCRIPTION, news.getDescription());
+                intent.putExtra(NewsActivity.PIC_URL, news.getPicUrl());
                 intent.putExtra(NewsActivity.URL, news.getUrl());
                 //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mActivity.startActivity(intent);
@@ -84,6 +88,7 @@ public class NewsAdapter extends BaseWrapperRecyclerAdapter<NewsModel, NewsAdapt
     public class ItemViewHolder extends ClickableViewHolder {
         public ImageView iv_left_image;
         public TextView tv_content;
+        public TextView tv_time;
 
         public ItemViewHolder(View view) {
             super(view);
@@ -91,6 +96,8 @@ public class NewsAdapter extends BaseWrapperRecyclerAdapter<NewsModel, NewsAdapt
             iv_left_image = (ImageView) view.findViewById(R.id.iv_left_image);
 
             tv_content = (TextView) view.findViewById(R.id.tv_content);
+            tv_time = (TextView) view.findViewById(R.id.tv_time);
+
             setOnRecyclerItemClickListener(NewsAdapter.this);
             addOnItemViewClickListener();
             addOnViewClickListener(tv_content);

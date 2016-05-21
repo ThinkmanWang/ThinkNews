@@ -39,7 +39,6 @@ public class ProgressWebView extends WebView implements View.OnClickListener {
 
     WebViewClient mWebViewClient = new WebViewClient() {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            //ProgressWebView.this.loadUrl(url);
 
             return false;
         }
