@@ -46,7 +46,7 @@ public class FavoritesDbUtils {
         }
     }
 
-    public List<NewsModel> getFavorite(Context context, int nOffset, int nLimit) {
+    public static List<NewsModel> getFavorite(Context context, int nOffset, int nLimit) {
 
         ArrayList<NewsModel> listNews = new ArrayList<NewsModel>();
 
