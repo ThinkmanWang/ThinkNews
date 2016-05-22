@@ -37,7 +37,7 @@ public class FavoriteActivity extends BaseActivity {
     private LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
     private PtrFrameLayout ptrFrameLayout = null;
 
-    private static final int PAGE_SIZE = 100;
+    private static final int PAGE_SIZE = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,12 @@ public class FavoriteActivity extends BaseActivity {
         mMainLayout = (RelativeLayout) findViewById(R.id.main_layout);
 
         this.setActionBar(R.mipmap.ic_arrow_back_white, R.string.app_name);
+        this.setOnActionBarLeftClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FavoriteActivity.this.finish();
+            }
+        });
 
         initView();
         initData();

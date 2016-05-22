@@ -36,6 +36,7 @@ public class NewsActivity extends BaseActivity {
     public static final String DESCRIPTION = "description";
     public static final String PIC_URL = "picUrl";
     public static final String URL = "url";
+    public static final String SHOW_FAVORITE = "show_favorite";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +69,15 @@ public class NewsActivity extends BaseActivity {
                         }
                     }
                 }).start();
-
-
             }
         });
+
+        boolean bShowFavorite = getIntent().getBooleanExtra(SHOW_FAVORITE, true);
+        if (bShowFavorite) {
+            m_fabFavorite.setVisibility(View.VISIBLE);
+        } else {
+            m_fabFavorite.setVisibility(View.GONE);
+        }
 
         mTitle = getIntent().getStringExtra(TITLE);
         this.setActionBar(R.mipmap.ic_arrow_back_white, mTitle);
