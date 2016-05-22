@@ -70,6 +70,7 @@ public class FavoriteActivity extends BaseActivity {
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
         mAdapter = new NewsAdapter(this, new ArrayList<NewsModel>());
+        mAdapter.setShowFavorite(false);
         mAdapter.setLoadMoreFooterView(new BaseLoadMoreFooterView(this) {
             @Override
             public int getLoadMoreLayoutResource() {

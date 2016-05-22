@@ -29,10 +29,19 @@ import java.util.List;
 public class NewsAdapter extends BaseWrapperRecyclerAdapter<NewsModel, NewsAdapter.ItemViewHolder> implements OnRecyclerItemClickListener {
 
     private Activity mActivity = null;
+    private boolean m_bShowFavorite = true;
 
     public NewsAdapter(Activity activity, List<NewsModel> items) {
         mActivity = activity;
         appendToList(items);
+    }
+
+    public boolean isShowFavorite() {
+        return m_bShowFavorite;
+    }
+
+    public void setShowFavorite(boolean bShown) {
+        m_bShowFavorite = bShown;
     }
 
     @Override
@@ -73,15 +82,11 @@ public class NewsAdapter extends BaseWrapperRecyclerAdapter<NewsModel, NewsAdapt
                 intent.putExtra(NewsActivity.DESCRIPTION, news.getDescription());
                 intent.putExtra(NewsActivity.PIC_URL, news.getPicUrl());
                 intent.putExtra(NewsActivity.URL, news.getUrl());
-                intent.putExtra(NewsActivity.SHOW_FAVORITE, false);
+                intent.putExtra(NewsActivity.SHOW_FAVORITE, m_bShowFavorite);
                 //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mActivity.startActivity(intent);
                 break;
             }
-            //default:
-                //mock click todo  last item
-//                remove(position);
-//                notifyItemRemoved(position);
         }
     }
 
