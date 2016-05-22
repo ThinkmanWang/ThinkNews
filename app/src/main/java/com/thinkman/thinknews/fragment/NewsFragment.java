@@ -207,17 +207,6 @@ public class NewsFragment extends BaseFragment {
 				}
 			});
 
-
-//			mRecyclerView.postDelayed(new Runnable() {
-//				@Override
-//				public void run() {
-//
-//					mAdapter.notifyDataSetChanged();
-//					mAdapter.hideFooterView();
-//					loadComplete();
-//
-//				}
-//			}, 1500);
 		}
 	};
 

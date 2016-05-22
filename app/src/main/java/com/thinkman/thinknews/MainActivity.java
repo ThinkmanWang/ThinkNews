@@ -1,5 +1,6 @@
 package com.thinkman.thinknews;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.thinkman.thinkactivity.BaseActivity;
+import com.thinkman.thinknews.activity.FavoriteActivity;
 import com.thinkman.thinknews.fragment.NewsFragment;
 import com.thinkman.thinkviewpagerindicator.view.indicator.FragmentListPageAdapter;
 import com.thinkman.thinkviewpagerindicator.view.indicator.IndicatorViewPager;
@@ -25,7 +27,6 @@ import com.thinkman.thinkviewpagerindicator.view.indicator.ScrollIndicatorView;
 import com.thinkman.thinkviewpagerindicator.view.indicator.slidebar.ColorBar;
 import com.thinkman.thinkviewpagerindicator.view.indicator.transition.OnTransitionTextListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -161,9 +162,10 @@ public class MainActivity extends BaseActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            Intent intent = new Intent(MainActivity.this, FavoriteActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
