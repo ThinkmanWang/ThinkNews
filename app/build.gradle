@@ -32,6 +32,12 @@ android {
         }
     }
 
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
     dexOptions {
         javaMaxHeapSize "4g"
     }

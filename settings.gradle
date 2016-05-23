@@ -1,1 +1,1 @@
-include ':app', ':thinkactivity', ':thinkutils', ':thinkviewpagerindicator', ':RecyclerViewUtils'
+include ':app', ':thinkactivity', ':thinkutils', ':thinkviewpagerindicator', ':RecyclerViewUtils', ':JPushExample'
