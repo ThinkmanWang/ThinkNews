@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,11 +11,18 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.thinkman.thinkactivity.BaseActivity;
 import com.thinkman.thinknews.R;
 import com.thinkman.thinknews.models.NewsModel;
 import com.thinkman.thinknews.utils.FavoritesDbUtils;
 import com.thinkman.thinkutils.view.ProgressWebView;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.utils.Log;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,7 +30,10 @@ import java.util.TimerTask;
 public class NewsActivity extends BaseActivity {
 
     private ProgressWebView mProgressWebView = null;
+
+    FloatingActionsMenu menuMultipleActions = null;
     FloatingActionButton m_fabFavorite = null;
+    FloatingActionButton m_fabShare = null;
 
     private NewsModel mNews = new NewsModel();
 
@@ -46,7 +55,8 @@ public class NewsActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        m_fabFavorite = (FloatingActionButton) findViewById(R.id.fab);
+        m_fabFavorite = (FloatingActionButton) findViewById(R.id.action_b);
+        m_fabShare = (FloatingActionButton) findViewById(R.id.action_a);
 
         mNews.setCtime(getIntent().getStringExtra(CTIME));
         mNews.setTitle(getIntent().getStringExtra(TITLE));
@@ -57,6 +67,7 @@ public class NewsActivity extends BaseActivity {
         m_fabFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                menuMultipleActions.collapse();
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -70,6 +81,19 @@ public class NewsActivity extends BaseActivity {
                         }
                     }
                 }).start();
+            }
+        });
+
+        m_fabShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                menuMultipleActions.collapse();
+                UMImage image = new UMImage(NewsActivity.this, mNews.getPicUrl());
+                new ShareAction(NewsActivity.this).setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE,SHARE_MEDIA.SMS, SHARE_MEDIA.EMAIL)
+                        .withText(mNews.getUrl())
+                        .withMedia(image)
+                        .setCallback(umShareListener)
+                        .open();
             }
         });
 
@@ -99,6 +123,33 @@ public class NewsActivity extends BaseActivity {
             mProgressWebView.loadUrl(mUrl);
         }
 
+        initFloatActionMenu();
+    }
+
+    private UMShareListener umShareListener = new UMShareListener() {
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Log.d("plat", "platform" + platform);
+            if(platform.name().equals("WEIXIN_FAVORITE")){
+                Toast.makeText(NewsActivity.this,platform + " 收藏成功啦",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(NewsActivity.this, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            Toast.makeText(NewsActivity.this,platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            Toast.makeText(NewsActivity.this,platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private void initFloatActionMenu() {
+        menuMultipleActions = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
     }
 
     private static boolean mBackKeyPressed = false;
@@ -116,6 +167,11 @@ public class NewsActivity extends BaseActivity {
             }, 1000);
         } else {
             super.onBackPressed();
+        }
+
+        if (menuMultipleActions.isExpanded()) {
+            menuMultipleActions.collapse();
+            return;
         }
 
         if (mProgressWebView.canGoBack()) {

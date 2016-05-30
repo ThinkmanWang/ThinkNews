@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.umeng.socialize.utils.DeviceConfig;
-import com.umeng.soexample.R;
+import com.thinkman.thinknews.R;
 
 
 /**

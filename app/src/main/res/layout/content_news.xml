@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -14,5 +15,39 @@
         android:layout_height="match_parent">
 
     </com.thinkman.thinkutils.view.ProgressWebView>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/multiple_actions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        fab:fab_addButtonColorNormal="@color/pink"
+        fab:fab_addButtonColorPressed="@color/pink_pressed"
+        fab:fab_addButtonPlusIconColor="@color/white"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/action_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/pink"
+            fab:fab_title="分享"
+            android:src="@mipmap/ic_share_white"
+            fab:fab_colorPressed="@color/pink_pressed"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/action_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_star_border_white"
+            fab:fab_colorNormal="@color/pink"
+            fab:fab_title="收藏"
+            fab:fab_colorPressed="@color/pink_pressed"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </RelativeLayout>

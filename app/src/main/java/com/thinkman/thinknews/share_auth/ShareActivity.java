@@ -19,7 +19,7 @@ import com.umeng.socialize.media.UMusic;
 import com.umeng.socialize.shareboard.SnsPlatform;
 import com.umeng.socialize.utils.Log;
 import com.umeng.socialize.utils.ShareBoardlistener;
-import com.umeng.soexample.R;
+import com.thinkman.thinknews.R;
 
 /**
  * Created by umeng on 15/9/14.
