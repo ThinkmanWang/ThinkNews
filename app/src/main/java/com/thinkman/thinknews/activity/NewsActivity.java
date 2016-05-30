@@ -1,5 +1,6 @@
 package com.thinkman.thinknews.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -97,6 +98,7 @@ public class NewsActivity extends BaseActivity {
         if (false == TextUtils.isEmpty(mUrl)) {
             mProgressWebView.loadUrl(mUrl);
         }
+
     }
 
     private static boolean mBackKeyPressed = false;
