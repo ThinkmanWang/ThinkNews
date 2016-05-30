@@ -21,7 +21,7 @@ public class MyApp extends Application {
         JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);     		// 初始化 JPush
 
-        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+        PlatformConfig.setWeixin("wxad8f4f480c2310bb", "f7970cef1547d76f2e4b7d995df53fae");
         //豆瓣RENREN平台目前只能在服务器端配置
         //新浪微博
         PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad");

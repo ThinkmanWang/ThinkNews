@@ -310,7 +310,7 @@
         <!-- umengAppKey，replace to yours -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="561cae6ae0f55abd990035bf" >
+            android:value="5749c47e67e58e82cc00635a" >
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
