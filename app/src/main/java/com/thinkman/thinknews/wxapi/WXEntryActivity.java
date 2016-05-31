@@ -1,6 +1,8 @@
 package com.thinkman.thinknews.wxapi;
 
 
+import android.os.Bundle;
+
 import com.umeng.socialize.weixin.view.WXCallbackActivity;
 
 /**
@@ -8,4 +10,7 @@ import com.umeng.socialize.weixin.view.WXCallbackActivity;
  */
 public class WXEntryActivity extends WXCallbackActivity {
 
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 }

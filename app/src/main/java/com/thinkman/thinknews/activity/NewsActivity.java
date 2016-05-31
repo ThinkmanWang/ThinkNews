@@ -88,11 +88,13 @@ public class NewsActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 menuMultipleActions.collapse();
-                
+
                 menuMultipleActions.collapse();
                 UMImage image = new UMImage(NewsActivity.this, mNews.getPicUrl());
                 new ShareAction(NewsActivity.this).setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE,SHARE_MEDIA.SMS, SHARE_MEDIA.EMAIL)
                         .withText(mNews.getUrl())
+                        .withTitle(mNews.getTitle())
+                        .withTargetUrl(mNews.getUrl())
                         .withMedia(image)
                         .setCallback(umShareListener)
                         .open();
