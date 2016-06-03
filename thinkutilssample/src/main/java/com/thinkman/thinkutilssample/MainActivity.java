@@ -30,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
         btnInputDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommonDialogUtils.showInputDialog(MainActivity.this, "Title", "Hello World", "haha", new CommonDialogUtils.OnInputDialogResult() {
+                CommonDialogUtils.showInputDialog(MainActivity.this
+                        , "Title", "Hello World", "haha"
+                        , new CommonDialogUtils.OnInputDialogResult() {
                     @Override
                     public void onOk(String szText) {
                         m_etResult.setText(szText);
