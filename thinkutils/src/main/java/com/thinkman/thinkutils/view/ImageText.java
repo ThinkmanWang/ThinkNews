@@ -35,7 +35,7 @@ public class ImageText extends LinearLayout {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
-        contentView = LayoutInflater.from(context).inflate(R.layout.layout_circleimage_text, this, true);
+        contentView = LayoutInflater.from(context).inflate(R.layout.layout_image_text, this, true);
         m_ivIcon = (ImageView) contentView.findViewById(R.id.iv_icon);
         m_tvLabel = (TextView) contentView.findViewById(R.id.tv_label);
     }
