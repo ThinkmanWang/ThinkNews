@@ -20,58 +20,58 @@ public class ZhengzeValidate {
     }
     //------------------常量定义
     /**
-     * Email正则表达式=^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+     * Email正则表达式
      */
     public static final String EMAIL = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
 
     /**
-     * 电话号码正则表达式= (^(\d{2,4}[-_－—]?)?\d{3,8}([-_－—]?\d{3,8})?([-_－—]?\d{1,7})?$)|(^0?1[35]\d{9}$)
+     * 电话号码正则表达式
      */
     public static final String PHONE = "(^(\\d{2,4}[-_－—]?)?\\d{3,8}([-_－—]?\\d{3,8})?([-_－—]?\\d{1,7})?$)|(^0?1[35]\\d{9}$)" ;
     /**
-     * 手机号码正则表达式=^(13[0-9]|15[0|3|6|7|8|9]|18[0,5-9])\d{8}$
+     * 手机号码正则表达式
      */
     public static final String MOBILE ="^(13[0-9]|15[0|3|6|7|8|9]|18[8|9])\\d{8}$";
 
     /**
-     * IP地址正则表达式 ((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))
+     * IP地址正则表达式
      */
     public static final String IPADDRESS = "((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))";
 
     /**
-     * Integer正则表达式 ^-?(([1-9]\d*$)|0)
+     * Integer正则表达式
      */
     public static final String  INTEGER = "^-?(([1-9]\\d*$)|0)";
     /**
-     * 正整数正则表达式 >=0 ^[1-9]\d*|0$
+     * 正整数正则表达式
      */
     public static final String  INTEGER_NEGATIVE = "^[1-9]\\d*|0$";
     /**
-     * 负整数正则表达式 <=0 ^-[1-9]\d*|0$
+     * 负整数正则表达式
      */
     public static final String  INTEGER_POSITIVE = "^-[1-9]\\d*|0$";
     /**
-     * Double正则表达式 ^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$
+     * Double正则表达式
      */
     public static final String  DOUBLE ="^-?([1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*|0?\\.0+|0)$";
     /**
-     * 正Double正则表达式 >=0  ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$　
+     * 正Double正则表达式
      */
     public static final String  DOUBLE_NEGATIVE ="^[1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*|0?\\.0+|0$";
     /**
-     * 负Double正则表达式 <= 0  ^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$
+     * 负Double正则表达式
      */
     public static final String  DOUBLE_POSITIVE ="^(-([1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*))|0?\\.0+|0$";
     /**
-     * 年龄正则表达式 ^(?:[1-9][0-9]?|1[01][0-9]|120)$ 匹配0-120岁
+     * 年龄正则表达式
      */
     public static final String  AGE="^(?:[1-9][0-9]?|1[01][0-9]|120)$";
     /**
-     * 邮编正则表达式  [1-9]\d{5}(?!\d) 国内6位邮编
+     * 邮编正则表达式
      */
     public static final String  CODE="[1-9]\\d{5}(?!\\d)";
     /**
-     * 匹配由数字、26个英文字母或者下划线组成的字符串 ^\w+$
+     * 匹配由数字、26个英文字母或者下划线组成的字符串
      */
     public static final String STR_ENG_NUM_="^\\w+$";
     /**
@@ -88,7 +88,6 @@ public class ZhengzeValidate {
     public static final String STR_CHINA="^[\\Α-\\￥]+$";
     /**
      * 过滤特殊字符串正则
-     * regEx="[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
      */
     public static final String STR_SPECIAL="[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
     /**
@@ -133,22 +132,22 @@ public class ZhengzeValidate {
             "[Xx0-9])|([0-9]{2}[0|1][0-9][0-3][0-9][0-9]{3}))";
     /**
      * 1.匹配科学计数 e或者E必须出现有且只有一次 不含Dd
-     * 正则 ^[-+]?(\d+(\.\d*)?|\.\d+)([eE]([-+]?([012]?\d{1,2}|30[0-7])|-3([01]?[4-9]|[012]?[0-3])))$
+     * 正则
      */
     public final static String SCIENTIFIC_A ="^[-+]?(\\d+(\\.\\d*)?|\\.\\d+)([eE]([-+]?([012]?\\d{1,2}|30[0-7])|-3([01]?[4-9]|[012]?[0-3])))$";
     /**
      * 2.匹配科学计数 e或者E必须出现有且只有一次 结尾包含Dd
-     * 正则 ^[-+]?(\d+(\.\d*)?|\.\d+)([eE]([-+]?([012]?\d{1,2}|30[0-7])|-3([01]?[4-9]|[012]?[0-3])))[dD]?$
+     * 正则
      */
     public final static String SCIENTIFIC_B ="^[-+]?(\\d+(\\.\\d*)?|\\.\\d+)([eE]([-+]?([012]?\\d{1,2}|30[0-7])|-3([01]?[4-9]|[012]?[0-3])))[dD]?$";
     /**
      * 3.匹配科学计数 是否含有E或者e都通过 结尾含有Dd的也通过（针对Double类型）
-     * 正则 ^[-+]?(\d+(\.\d*)?|\.\d+)([eE]([-+]?([012]?\d{1,2}|30[0-7])|-3([01]?[4-9]|[012]?[0-3])))?[dD]?$
+     * 正则
      */
     public final static String SCIENTIFIC_C ="^[-+]?(\\d+(\\.\\d*)?|\\.\\d+)([eE]([-+]?([012]?\\d{1,2}|30[0-7])|-3([01]?[4-9]|[012]?[0-3])))?[dD]?$";
     /**
      * 4.匹配科学计数 是否含有E或者e都通过 结尾不含Dd
-     * 正则 ^[-+]?(\d+(\.\d*)?|\.\d+)([eE]([-+]?([012]?\d{1,2}|30[0-7])|-3([01]?[4-9]|[012]?[0-3])))?$
+     * 正则
      */
     public final static String SCIENTIFIC_D ="^[-+]?(\\d+(\\.\\d*)?|\\.\\d+)([eE]([-+]?([012]?\\d{1,2}|30[0-7])|-3([01]?[4-9]|[012]?[0-3])))?$";
 
@@ -243,7 +242,7 @@ public class ZhengzeValidate {
         return Regular(str,INTEGER);
     }
     /**
-     * 判断字段是否为正整数正则表达式 >=0 符合返回ture
+     * 判断字段是否为正整数正则表达式
      * @param str
      * @return boolean
      */
@@ -251,7 +250,7 @@ public class ZhengzeValidate {
         return Regular(str,INTEGER_NEGATIVE);
     }
     /**
-     * 判断字段是否为负整数正则表达式 <=0 符合返回ture
+     * 判断字段是否为负整数正则表达式
      * @param str
      * @return boolean
      */
@@ -267,7 +266,7 @@ public class ZhengzeValidate {
         return Regular(str,DOUBLE);
     }
     /**
-     * 判断字段是否为正浮点数正则表达式 >=0 符合返回ture
+     * 判断字段是否为正浮点数正则表达式
      * @param str
      * @return boolean
      */
@@ -275,7 +274,7 @@ public class ZhengzeValidate {
         return Regular(str,DOUBLE_NEGATIVE);
     }
     /**
-     * 判断字段是否为负浮点数正则表达式 <=0 符合返回ture
+     * 判断字段是否为负浮点数正则表达式
      * @param str
      * @return boolean
      */

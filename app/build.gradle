@@ -69,5 +69,6 @@ dependencies {
     compile project(':thinkactivity')
     compile project(':thinkviewpagerindicator')
     compile project(':RecyclerViewUtils')
+
     compile project(':thinkutils')
 }
