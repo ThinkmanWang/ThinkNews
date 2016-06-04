@@ -11,39 +11,39 @@ import android.widget.TextView;
 import com.thinkman.thinkutils.R;
 
 /**
- * Created by wangx on 2016/5/27.
+ * Created by wangx on 2016/6/4.
  */
-public class CommonMultiTextBar extends LinearLayout {
+public class CommonTextBar extends LinearLayout {
 
     private Context mContext = null;
     private View contentView = null;
+
     private ImageView m_ivLeftIcon = null;
-    private TextView m_tvLabel1 = null;
-    private TextView m_tvLabel2 = null;
+    private TextView m_tvLabel = null;
     private ImageView m_ivRightIcon = null;
 
-    public CommonMultiTextBar(Context context) {
+
+    public CommonTextBar(Context context) {
         super(context);
         init(context, null, 0);
     }
 
-    public CommonMultiTextBar(Context context, AttributeSet attrs) {
+    public CommonTextBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs, 0);
     }
 
-    public CommonMultiTextBar(Context context, AttributeSet attrs, int defStyle) {
+    public CommonTextBar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context, attrs, defStyle);
     }
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
         mContext = context;
-        contentView = LayoutInflater.from(context).inflate(R.layout.layout_common_multi_text_bar, this, true);
+        contentView = LayoutInflater.from(context).inflate(R.layout.layout_common_text_bar, this, true);
 
         m_ivLeftIcon = (ImageView) contentView.findViewById(R.id.iv_left_icon);
-        m_tvLabel1 = (TextView) contentView.findViewById(R.id.tv_label1);
-        m_tvLabel2 = (TextView) contentView.findViewById(R.id.tv_label2);
+        m_tvLabel = (TextView) contentView.findViewById(R.id.tv_label);
         m_ivRightIcon = (ImageView) contentView.findViewById(R.id.iv_right_icon);
     }
 
@@ -55,24 +55,15 @@ public class CommonMultiTextBar extends LinearLayout {
     }
 
     public void setLabel1(int nResId) {
-        m_tvLabel1.setText(nResId);
+        m_tvLabel.setText(nResId);
     }
 
     public void setLabel1(String szLabel) {
-        m_tvLabel1.setText(szLabel);
+        m_tvLabel.setText(szLabel);
     }
 
     public void setLabel1Color(int nResId) {
-        m_tvLabel1.setTextColor(mContext.getResources().getColor(nResId));
+        m_tvLabel.setTextColor(mContext.getResources().getColor(nResId));
     }
 
-    public void setLabel2(int nResId) {
-        m_tvLabel2.setText(nResId);
-    }
-    public void setLabel2(String szLabel) {
-        m_tvLabel2.setText(szLabel);
-    }
-    public void setLabel2Color(int nResId) {
-        m_tvLabel2.setTextColor(mContext.getResources().getColor(nResId));
-    }
 }

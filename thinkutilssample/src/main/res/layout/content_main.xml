@@ -31,5 +31,14 @@
         android:layout_height="wrap_content"
         android:text="Progress Layout"/>
 
+    <com.thinkman.thinkutils.view.CommonMultiTextBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.thinkman.thinkutils.view.CommonTextBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
 </LinearLayout>
 </com.thinkman.thinkutils.view.VerticalScrollView>
