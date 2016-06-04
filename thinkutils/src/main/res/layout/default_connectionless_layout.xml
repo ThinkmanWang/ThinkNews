@@ -6,13 +6,19 @@
     android:gravity="center"
     android:orientation="vertical">
 
-  <TextView
-      android:text="@string/retry_message"
-      style="@style/hint_style"/>
+    <ImageView
+        android:layout_width="@dimen/material_64dp"
+        android:layout_height="@dimen/material_64dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_net_error"/>
 
-  <TextView
-      style="@style/message_style"
-      android:text="@string/net_error_message"
-  />
+    <TextView
+        android:text="@string/retry_message"
+        style="@style/hint_style"/>
+
+    <TextView
+        style="@style/message_style"
+        android:text="@string/net_error_message"
+        />
 
 </LinearLayout>

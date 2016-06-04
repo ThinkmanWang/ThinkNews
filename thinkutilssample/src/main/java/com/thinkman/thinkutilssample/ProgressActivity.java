@@ -27,6 +27,7 @@ public class ProgressActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ButterKnife.bind(this);
+
     }
 
     @NonNull

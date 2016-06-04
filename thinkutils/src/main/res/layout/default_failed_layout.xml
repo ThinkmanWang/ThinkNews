@@ -7,13 +7,19 @@
     android:orientation="vertical">
 
 
-  <TextView
-      android:text="@string/retry_message"
-      style="@style/hint_style"/>
+    <ImageView
+        android:layout_width="@dimen/material_64dp"
+        android:layout_height="@dimen/material_64dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_failed"/>
 
-  <TextView
-      style="@style/message_style"
-      android:text="@string/failed_message"
-  />
+    <TextView
+        android:text="@string/retry_message"
+        style="@style/hint_style"/>
+
+    <TextView
+        style="@style/message_style"
+        android:text="@string/failed_message"
+        />
 
 </LinearLayout>
