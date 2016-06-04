@@ -10,12 +10,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import butterknife.BindView;
+import butterknife.OnClick;
+import butterknife.ButterKnife;
 
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText m_etResult = null;
+    @BindView(R.id.et_result) EditText m_etResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,24 +27,23 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        m_etResult = (EditText) findViewById(R.id.et_result);
+        ButterKnife.bind(this);
+        
+    }
 
-        Button btnInputDialog = (Button) findViewById(R.id.btn_input_dlg);
-        btnInputDialog.setOnClickListener(new View.OnClickListener() {
+    @OnClick(R.id.btn_input_dlg)
+    public void onInputDlgClick() {
+        CommonDialogUtils.showInputDialog(MainActivity.this
+                , "Title", "Hello World", "haha"
+                , new CommonDialogUtils.OnInputDialogResult() {
             @Override
-            public void onClick(View v) {
-                CommonDialogUtils.showInputDialog(MainActivity.this
-                        , "Title", "Hello World", "haha"
-                        , new CommonDialogUtils.OnInputDialogResult() {
-                    @Override
-                    public void onOk(String szText) {
-                        m_etResult.setText(szText);
-                    }
-                });
+            public void onOk(String szText) {
+                m_etResult.setText(szText);
             }
         });
-
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -36,6 +36,7 @@ public class CommonDialogUtils {
                 .show();
     }
 
+
     public interface OnInputDialogResult {
         public void onOk(String szText);
     }

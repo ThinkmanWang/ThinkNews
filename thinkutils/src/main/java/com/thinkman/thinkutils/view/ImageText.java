@@ -15,6 +15,7 @@ import com.thinkman.thinkutils.R;
  */
 public class ImageText extends LinearLayout {
 
+    private Context mContext = null;
     private View contentView = null;
     private ImageView m_ivIcon = null;
     private TextView m_tvLabel = null;
@@ -35,6 +36,7 @@ public class ImageText extends LinearLayout {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
+        mContext = context;
         contentView = LayoutInflater.from(context).inflate(R.layout.layout_image_text, this, true);
         m_ivIcon = (ImageView) contentView.findViewById(R.id.iv_icon);
         m_tvLabel = (TextView) contentView.findViewById(R.id.tv_label);
@@ -50,5 +52,9 @@ public class ImageText extends LinearLayout {
 
     public void setLabel(String szLabel) {
         m_tvLabel.setText(szLabel);
+    }
+
+    public void setLabelColor(int nResId) {
+        m_tvLabel.setTextColor(mContext.getResources().getColor(nResId));
     }
 }

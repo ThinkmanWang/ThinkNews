@@ -6,4 +6,17 @@
         <attr name="civ_border_overlay" format="boolean" />
         <attr name="civ_fill_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="ProgressLayout">
+        <!--正在加载-->
+        <attr name="loading_layout" format="integer"/>
+        <!--无内容-->
+        <attr name="none_content" format="integer"/>
+        <!--网络错误-->
+        <attr name="network_content" format="integer"/>
+        <!--加载失败-->
+        <attr name="failed_content" format="integer"/>
+    </declare-styleable>
+
+    <attr name="progressLayoutDefStyle" format="reference"/>
 </resources>
