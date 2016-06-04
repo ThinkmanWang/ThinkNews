@@ -50,4 +50,24 @@ public class LoginView extends RelativeLayout {
         m_tvForgetPwd = (TextView) contentView.findViewById(R.id.tv_forget_pwd);
         m_tvRegister = (TextView) contentView.findViewById(R.id.tv_register);
     }
+
+    public void setOnLoginClickListener(View.OnClickListener listener) {
+        m_btnLogin.setOnClickListener(listener);
+    }
+
+    public void setOnForgetPwdClickListener(View.OnClickListener listener) {
+        m_tvForgetPwd.setOnClickListener(listener);
+    }
+
+    public void setOnRegisterClickListener(View.OnClickListener listener) {
+        m_tvRegister.setOnClickListener(listener);
+    }
+
+    public String getAccountId() {
+        return m_etId.getText().toString();
+    }
+
+    public String getPassword() {
+        return m_etPwd.getText().toString();
+    }
 }
