@@ -23,6 +23,7 @@ public class PasswordView extends AppCompatEditText {
     private boolean isPasswordVisible = true;
     private Drawable icon;
     private IconPosition iconPosition;
+    private Typeface typeface;
 
     private int showPasswordIcon;
     private int hidePasswordIcon;

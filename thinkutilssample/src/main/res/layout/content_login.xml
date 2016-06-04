@@ -8,11 +8,9 @@
     tools:context="com.thinkman.thinkutilssample.LoginActivity"
     tools:showIn="@layout/activity_login">
 
-    <com.thinkman.thinkutils.view.PasswordView
+    <com.thinkman.thinkutils.view.LoginView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
-         />
+        />
 
 </RelativeLayout>
