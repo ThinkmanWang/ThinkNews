@@ -50,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    @OnClick(R.id.btn_login)
+    public void onLoginClick() {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        this.startActivity(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

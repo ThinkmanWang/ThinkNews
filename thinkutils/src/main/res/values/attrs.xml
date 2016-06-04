@@ -19,4 +19,14 @@
     </declare-styleable>
 
     <attr name="progressLayoutDefStyle" format="reference"/>
+
+    <declare-styleable name="PasswordView">
+        <attr name="showPasswordIcon" format="reference" />
+        <attr name="hidePasswordIcon" format="reference" />
+        <attr name="iconPosition" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="fontPath" format="string" />
+    </declare-styleable>
 </resources>

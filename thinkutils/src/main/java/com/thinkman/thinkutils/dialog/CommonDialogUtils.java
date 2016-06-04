@@ -22,14 +22,14 @@ public class CommonDialogUtils {
                 .setTitle(szTitle)
                 .setMessage(szMsg)
                 .setView(etText)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         if (null != result) {
                             result.onOk(etText.getText().toString());
                         }
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                     }
                 })
