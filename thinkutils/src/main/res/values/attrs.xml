@@ -29,4 +29,15 @@
         </attr>
         <attr name="fontPath" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="LoginView">
+        <attr name="loginBtnBDRes" format="reference" />
+        <attr name="loginBtnLabel" format="reference" />
+        <attr name="accountLabel" format="reference" />
+        <attr name="accountHint" format="reference" />
+        <attr name="passwordText" format="reference" />
+        <attr name="passwordHint" format="reference" />
+        <attr name="forgetPwdLabel" format="reference" />
+        <attr name="registerLabel" format="reference" />
+    </declare-styleable>
 </resources>
