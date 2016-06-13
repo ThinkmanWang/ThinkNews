@@ -45,5 +45,9 @@
         android:layout_height="wrap_content"
         android:text="Common Login UI"/>
 
+    <com.thinkman.thinkutils.view.ImagePickerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
 </com.thinkman.thinkutils.view.VerticalScrollView>
