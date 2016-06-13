@@ -65,6 +65,8 @@ public class ImagePickerView extends RelativeLayout implements AdapterView.OnIte
     private final int REQUEST_CODE_CROP = 1002;
     private final int REQUEST_CODE_EDIT = 1003;
 
+    private List<PhotoInfo> mPhotoList = new ArrayList<>();
+
 
     public ImagePickerView(Context context) {
         super(context);
@@ -134,7 +136,7 @@ public class ImagePickerView extends RelativeLayout implements AdapterView.OnIte
         functionConfigBuilder.setEnableCrop(true);
         functionConfigBuilder.setEnableCamera(true);
         functionConfigBuilder.setEnablePreview(true);
-        functionConfigBuilder.setSelected(mAdapter.getItems());//添加过滤集合
+        functionConfigBuilder.setSelected(mPhotoList);//添加过滤集合
         functionConfigBuilder.setMutiSelectMaxSize(9);
         mFunctionConfig = functionConfigBuilder.build();
 
@@ -159,6 +161,14 @@ public class ImagePickerView extends RelativeLayout implements AdapterView.OnIte
             if (resultList != null) {
 //                mPhotoList.addAll(resultList);
 //                mChoosePhotoListAdapter.notifyDataSetChanged();
+
+                mPhotoList.addAll(resultList);
+                mAdapter.getItems().clear();
+                mAdapter.getItems().addAll(resultList);
+
+                PhotoInfo ivAdd = new PhotoInfo();
+                ivAdd.setPhotoPath(ImagePicketAdapter.IMAGEITEM_DEFAULT_ADD);
+                mAdapter.add(ivAdd);
             }
         }
 
