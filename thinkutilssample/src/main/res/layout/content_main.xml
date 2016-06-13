@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.thinkman.thinkutils.view.VerticalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.thinkman.thinkutils.view.VerticalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -46,6 +47,7 @@
         android:text="Common Login UI"/>
 
     <com.thinkman.thinkutils.view.ImagePickerView
+        android:id="@+id/ipv_image_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

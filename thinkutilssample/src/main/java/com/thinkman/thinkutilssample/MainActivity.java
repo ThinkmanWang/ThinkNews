@@ -16,10 +16,13 @@ import butterknife.OnClick;
 import butterknife.ButterKnife;
 
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
+import com.thinkman.thinkutils.view.ImagePickerView;
 
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.et_result) EditText m_etResult;
+    @BindView(R.id.ipv_image_picker)
+    ImagePickerView m_ipvImagePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        m_ipvImagePicker.init(this);
     }
 
     @OnClick(R.id.btn_input_dlg)
