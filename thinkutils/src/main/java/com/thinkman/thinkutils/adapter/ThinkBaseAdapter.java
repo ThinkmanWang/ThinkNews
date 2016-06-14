@@ -144,7 +144,9 @@ public abstract class ThinkBaseAdapter<T> extends BaseAdapter {
      */
     public void remove(T item) {
         mItems.remove(item);
-        mSelect.remove(item);
+        if (mSelect.contains(item)) {
+            mSelect.remove(item);
+        }
         notifyDataSetChanged();
     }
 
@@ -152,8 +154,10 @@ public abstract class ThinkBaseAdapter<T> extends BaseAdapter {
      * Removes the element at the specified position in the list
      */
     public void remove(int position) {
+        if (mSelect.contains(mItems.get(position))) {
+            mSelect.remove(mItems.get(position));
+        }
         mItems.remove(position);
-        mSelect.remove(position);
         notifyDataSetChanged();
     }
 
@@ -165,8 +169,10 @@ public abstract class ThinkBaseAdapter<T> extends BaseAdapter {
         Collections.sort(positionsList);
         Collections.reverse(positionsList);
         for (int position : positionsList) {
+            if (mSelect.contains(mItems.get(position))) {
+                mSelect.remove(mItems.get(position));
+            }
             mItems.remove(position);
-            mSelect.remove(position);
         }
         notifyDataSetChanged();
     }

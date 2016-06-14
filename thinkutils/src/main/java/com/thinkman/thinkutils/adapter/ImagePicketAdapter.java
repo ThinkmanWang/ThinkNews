@@ -5,6 +5,8 @@ package com.thinkman.thinkutils.adapter;
  */
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -24,15 +26,17 @@ public class ImagePicketAdapter extends ThinkBaseAdapter<PhotoInfo> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.layout_ip_image_item, parent, false);
         }
 
         ImageView ivImg = (ImageView) ViewHolder.get(convertView, R.id.iv_img);
+        ImageView ivDel = (ImageView) ViewHolder.get(convertView, R.id.iv_del);
 
         if (IMAGEITEM_DEFAULT_ADD.equals(this.getItem(position).getPhotoPath())) {
             ivImg.setImageResource(R.drawable.selector_image_add);
+            ivDel.setVisibility(View.GONE);
         } else {
             Glide.with(mContext)                             //配置上下文
                     .load("file://" + this.getItem(position).getPhotoPath())                  //设置图片路径
@@ -40,6 +44,27 @@ public class ImagePicketAdapter extends ThinkBaseAdapter<PhotoInfo> {
                     .placeholder(R.drawable.default_image)     //设置占位图片
                     .diskCacheStrategy(DiskCacheStrategy.ALL)//缓存全尺寸
                     .into(ivImg);
+
+            ivDel.setVisibility(View.VISIBLE);
+            ivDel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new AlertDialog.Builder(mContext)
+                            .setTitle("")
+                            .setMessage("确认要删除这张照片吗？")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    remove(position);
+                                }
+                            })
+                            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+
+                                }
+                            })
+                            .show();
+                }
+            });
         }
 
         return convertView;
