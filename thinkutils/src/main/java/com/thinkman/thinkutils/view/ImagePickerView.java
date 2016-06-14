@@ -3,6 +3,7 @@ package com.thinkman.thinkutils.view;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.thinkman.thinkutils.R;
 import com.thinkman.thinkutils.adapter.ImagePicketAdapter;
 
+import cn.finalteam.galleryfinal.PhotoPreviewActivity;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -65,9 +67,6 @@ public class ImagePickerView extends RelativeLayout {
     private final int REQUEST_CODE_CROP = 1002;
     private final int REQUEST_CODE_EDIT = 1003;
 
-    private List<PhotoInfo> mPhotoList = new ArrayList<>();
-
-
     public ImagePickerView(Context context) {
         super(context);
         init(context, null, 0);
@@ -102,6 +101,9 @@ public class ImagePickerView extends RelativeLayout {
                     openGalleryFinal();
                 } else {
                     //show preview
+                    Intent intent = new Intent(mContext, PhotoPreviewActivity.class);
+                    intent.putExtra("photo_list", (ArrayList<PhotoInfo>)mAdapter.getItems());
+                    mContext.startActivity(intent);
                 }
             }
         });
@@ -127,7 +129,7 @@ public class ImagePickerView extends RelativeLayout {
         functionConfigBuilder.setEnableCrop(true);
         functionConfigBuilder.setEnableCamera(true);
         functionConfigBuilder.setEnablePreview(true);
-        functionConfigBuilder.setSelected(mPhotoList);//添加过滤集合
+        functionConfigBuilder.setSelected(mAdapter.getItems());//添加过滤集合
 
         mFunctionConfig = functionConfigBuilder.build();
 
