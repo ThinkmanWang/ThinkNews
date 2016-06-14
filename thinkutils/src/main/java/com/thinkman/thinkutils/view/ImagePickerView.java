@@ -53,7 +53,7 @@ import org.xutils.x;
 /**
  * Created by wangx on 2016/6/13.
  */
-public class ImagePickerView extends RelativeLayout implements AdapterView.OnItemClickListener {
+public class ImagePickerView extends RelativeLayout {
 
     Context mContext = null;
     private View contentView = null;
@@ -114,16 +114,6 @@ public class ImagePickerView extends RelativeLayout implements AdapterView.OnIte
         initGalleryFinal();
     }
 
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        PhotoInfo item = mAdapter.getItem(position);
-        if (ImagePicketAdapter.IMAGEITEM_DEFAULT_ADD.equals(item.getPhotoPath())) {
-            //open gallery final
-            openGalleryFinal();
-        } else {
-            //show preview
-        }
-    }
-
     FunctionConfig mFunctionConfig = null;
     private void initGalleryFinal() {
         ThemeConfig themeConfig = ThemeConfig.DEFAULT;
@@ -132,12 +122,13 @@ public class ImagePickerView extends RelativeLayout implements AdapterView.OnIte
 
         FunctionConfig.Builder functionConfigBuilder = new FunctionConfig.Builder();
         //functionConfigBuilder.setEnableEdit(true);
+        functionConfigBuilder.setMutiSelectMaxSize(9);
         functionConfigBuilder.setRotateReplaceSource(true);
         functionConfigBuilder.setEnableCrop(true);
         functionConfigBuilder.setEnableCamera(true);
         functionConfigBuilder.setEnablePreview(true);
         functionConfigBuilder.setSelected(mPhotoList);//添加过滤集合
-        functionConfigBuilder.setMutiSelectMaxSize(9);
+
         mFunctionConfig = functionConfigBuilder.build();
 
         PauseOnScrollListener pauseOnScrollListener = new GlidePauseOnScrollListener(false, true);
@@ -152,6 +143,7 @@ public class ImagePickerView extends RelativeLayout implements AdapterView.OnIte
     }
 
     private void openGalleryFinal() {
+        initGalleryFinal();
         GalleryFinal.openGalleryMuti(REQUEST_CODE_GALLERY, mFunctionConfig, mOnHanlderResultCallback);
     }
 
