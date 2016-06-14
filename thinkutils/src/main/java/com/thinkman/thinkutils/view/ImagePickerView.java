@@ -222,4 +222,23 @@ public class ImagePickerView extends RelativeLayout {
     public void setOnImagePickListener(OnImagePickListener listener) {
         this.mListener = listener;
     }
+
+    public void setMaxCount(int nCount) {
+        m_nMaxCount = nCount;
+    }
+
+    public int getMaxCount() {
+        return m_nMaxCount;
+    }
+
+    public void preview() {
+        Intent intent = new Intent(mContext, PhotoPreviewActivity.class);
+        intent.putExtra("photo_list", (ArrayList<PhotoInfo>)getSelectedPhotos());
+        mContext.startActivity(intent);
+    }
+
+    public void openCamera() {
+        initGalleryFinal();
+        GalleryFinal.openCamera(REQUEST_CODE_CAMERA, mFunctionConfig, mOnHanlderResultCallback);
+    }
 }
