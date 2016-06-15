@@ -5,7 +5,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.neenbedankt.android-apt'
 
 
-version = "1.1.7"
+version = "1.1.8"
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 23
-        versionCode 11
+        versionCode 12
         versionName version
     }
     buildTypes {
