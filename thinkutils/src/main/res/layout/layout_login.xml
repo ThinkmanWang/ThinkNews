@@ -17,14 +17,14 @@
         <TextView
             android:id="@+id/tv_id"
             android:layout_width="0dp"
-            android:layout_weight="0.3"
+            android:layout_weight="0.2"
             android:layout_height="wrap_content"
             android:text="账户"/>
 
         <EditText
             android:id="@+id/et_id"
             android:layout_width="0dp"
-            android:layout_weight="0.7"
+            android:layout_weight="0.8"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"/>
     </LinearLayout>
@@ -52,14 +52,14 @@
         <TextView
             android:id="@+id/tv_pwd"
             android:layout_width="0dp"
-            android:layout_weight="0.3"
+            android:layout_weight="0.2"
             android:layout_height="wrap_content"
             android:text="登录密码"/>
 
         <com.thinkman.thinkutils.view.PasswordView
             android:id="@+id/et_pwd"
             android:layout_width="0dp"
-            android:layout_weight="0.7"
+            android:layout_weight="0.8"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:hint="password"
