@@ -45,27 +45,38 @@
         <attr name="maxCount" format="integer|reference" />
     </declare-styleable>
 
+
+    <attr name="labelText" format="reference"/>
+    <attr name="labelTextSize" format="reference"/>
+    <attr name="labelColor" format="reference"/>
+    <attr name="contentText" format="reference"/>
+    <attr name="contentTextSize" format="reference"/>
+    <attr name="contentColor" format="reference"/>
+    <attr name="hintColor" format="reference"/>
+    <attr name="hintText" format="reference"/>
+    <attr name="isPassword" format="boolean"/>
+
     <declare-styleable name="CommonEditTextLine">
-        <attr name="labelText" format="reference"/>
-        <attr name="labelTextSize" format="reference"/>
-        <attr name="labelColor" format="reference"/>
-        <attr name="contentText" format="reference"/>
-        <attr name="contentTextSize" format="reference"/>
-        <attr name="contentColor" format="reference"/>
-        <attr name="hintColor" format="reference"/>
-        <attr name="hintText" format="reference"/>
-        <attr name="isPassword" format="boolean"/>
+        <attr name="labelText" />
+        <attr name="labelTextSize" />
+        <attr name="labelColor" />
+        <attr name="contentText" />
+        <attr name="contentTextSize" />
+        <attr name="contentColor" />
+        <attr name="hintColor" />
+        <attr name="hintText" />
+        <attr name="isPassword" />
         <!--直接使用系统中已定义的语意明确的属性，不用设置format-->
         <attr name="android:inputType" />
     </declare-styleable>
 
     <declare-styleable name="CommonPasswordLine">
-        <attr name="labelText" format="reference"/>
-        <attr name="labelTextSize" format="reference"/>
-        <attr name="labelColor" format="reference"/>
-        <attr name="contentText" format="reference"/>
-        <attr name="contentTextSize" format="reference"/>
-        <attr name="hintColor" format="reference"/>
-        <attr name="hintText" format="reference"/>
+        <attr name="labelText" />
+        <attr name="labelTextSize" />
+        <attr name="labelColor" />
+        <attr name="contentText" />
+        <attr name="contentTextSize" />
+        <attr name="hintColor" />
+        <attr name="hintText" />
     </declare-styleable>
 </resources>
