@@ -58,4 +58,14 @@
         <!--直接使用系统中已定义的语意明确的属性，不用设置format-->
         <attr name="android:inputType" />
     </declare-styleable>
+
+    <declare-styleable name="CommonPasswordLine">
+        <attr name="labelText" format="reference"/>
+        <attr name="labelTextSize" format="reference"/>
+        <attr name="labelColor" format="reference"/>
+        <attr name="contentText" format="reference"/>
+        <attr name="contentTextSize" format="reference"/>
+        <attr name="hintColor" format="reference"/>
+        <attr name="hintText" format="reference"/>
+    </declare-styleable>
 </resources>
