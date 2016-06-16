@@ -31,7 +31,8 @@ public class ZhengzeValidate {
     /**
      * 手机号码正则表达式
      */
-    public static final String MOBILE ="^(13[0-9]|15[0|3|6|7|8|9]|18[8|9])\\d{8}$";
+//    public static final String MOBILE ="^(13[0-9]|15[0|3|6|7|8|9]|18[8|9])\\d{8}$";
+    public static final String MOBILE = "^((13[0-9])|(14[5,7])|(15[^4,\\D])|(17[6-8])|(18[0-9]))\\d{8}$";
 
     /**
      * IP地址正则表达式

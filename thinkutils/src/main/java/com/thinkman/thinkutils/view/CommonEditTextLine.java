@@ -123,7 +123,7 @@ public class CommonEditTextLine extends LinearLayout {
         m_tvLabel.setTextColor(mContext.getResources().getColor(nResId));
     }
 
-    public String getCOntent() {
+    public String getContent() {
         return m_etContent.getText().toString();
     }
 
