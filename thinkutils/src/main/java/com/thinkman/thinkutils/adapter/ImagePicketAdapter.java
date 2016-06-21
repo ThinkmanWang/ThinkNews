@@ -16,13 +16,22 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.thinkman.thinkutils.R;
+import com.thinkman.thinkutils.view.ImagePickerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ImagePicketAdapter extends ThinkBaseAdapter<PhotoInfo> {
 
     public static final String IMAGEITEM_DEFAULT_ADD = "default_add";
+    private ImagePickerView.OnImagePickListener mListener = null;
 
     public ImagePicketAdapter(Context context) {
         super(context);
+    }
+
+    public void setOnOnImagePickListener(ImagePickerView.OnImagePickListener listener) {
+        mListener = listener;
     }
 
     @Override
@@ -55,6 +64,14 @@ public class ImagePicketAdapter extends ThinkBaseAdapter<PhotoInfo> {
                             .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     remove(position);
+
+                                    if (mListener != null) {
+                                        List<PhotoInfo> resultList = new ArrayList<PhotoInfo>();
+                                        resultList.addAll(ImagePicketAdapter.this.getItems());
+                                        resultList.remove(resultList.size() - 1);
+
+                                        mListener.onImagePick(resultList);
+                                    }
                                 }
                             })
                             .setNegativeButton("取消", new DialogInterface.OnClickListener() {

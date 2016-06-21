@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,8 @@ public class ImagePickerView extends RelativeLayout {
     private final int REQUEST_CODE_GALLERY = 1001;
     private final int REQUEST_CODE_CROP = 1002;
     private final int REQUEST_CODE_EDIT = 1003;
+
+    Handler mHandler = new Handler();
 
     public ImagePickerView(Context context) {
         super(context);
@@ -169,6 +172,13 @@ public class ImagePickerView extends RelativeLayout {
                 if (mListener != null) {
                     mListener.onImagePick(resultList);
                 }
+
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter.notifyDataSetChanged();
+                    }
+                }, 1000);
             }
         }
 
@@ -221,6 +231,7 @@ public class ImagePickerView extends RelativeLayout {
 
     public void setOnImagePickListener(OnImagePickListener listener) {
         this.mListener = listener;
+        mAdapter.setOnOnImagePickListener(mListener);
     }
 
     public void setMaxCount(int nCount) {
