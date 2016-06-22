@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.ftr_layout)
     PtrClassicFrameLayout m_ptrLayout = null;
 
+    @BindView(R.id.btn_recyclerview)
+    Button m_btnThinkRecyclerView = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,5 +132,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick(R.id.btn_recyclerview)
+    public void onRecyclerViewTestClick() {
+        Intent intent = new Intent(MainActivity.this, ThinkRecyclerViewActivity.class);
+        this.startActivity(intent);
     }
 }
