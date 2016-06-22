@@ -18,11 +18,19 @@ import butterknife.ButterKnife;
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 import com.thinkman.thinkutils.view.ImagePickerView;
 
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
+import in.srain.cube.views.ptr.PtrDefaultHandler;
+import in.srain.cube.views.ptr.PtrDefaultHandler2;
+import in.srain.cube.views.ptr.PtrFrameLayout;
+
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.et_result) EditText m_etResult;
     @BindView(R.id.ipv_image_picker)
     ImagePickerView m_ipvImagePicker;
+
+    @BindView(R.id.ftr_layout)
+    PtrClassicFrameLayout m_ptrLayout = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,47 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         m_ipvImagePicker.init(this);
+
+        m_ptrLayout.setLastUpdateTimeRelateObject(this);
+        m_ptrLayout.setPtrHandler(new PtrDefaultHandler2() {
+
+            @Override
+            public void onLoadMoreBegin(PtrFrameLayout frame) {
+                updateData();
+            }
+
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                updateData();
+            }
+
+        });
+        // the following are default settings
+        m_ptrLayout.setResistance(1.7f); // you can also set foot and header separately
+        m_ptrLayout.setRatioOfHeaderHeightToRefresh(1.2f);
+        m_ptrLayout.setDurationToClose(1000);  // you can also set foot and header separately
+        // default is false
+        m_ptrLayout.setPullToRefresh(false);
+
+        // default is true
+        m_ptrLayout.setKeepHeaderWhenRefresh(true);
+        m_ptrLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // mPtrFrame.autoRefresh();
+            }
+        }, 100);
+    }
+
+    protected void updateData() {
+
+        m_ptrLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                m_ptrLayout.refreshComplete();
+            }
+        }, 3000);
+
     }
 
     @OnClick(R.id.btn_input_dlg)

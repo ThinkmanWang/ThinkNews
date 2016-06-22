@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.thinkman.thinkutils.view.VerticalScrollView
+<in.srain.cube.views.ptr.PtrClassicFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:ImagePickerView="http://schemas.android.com/apk/res-auto"
+    xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ftr_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    cube_ptr:ptr_duration_to_close_either="1000"
+    cube_ptr:ptr_keep_header_when_refresh="true"
+    cube_ptr:ptr_pull_to_fresh="false"
+    cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+    cube_ptr:ptr_resistance="1.7"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.thinkman.thinkutilssample.MainActivity"
     tools:showIn="@layout/activity_main">
+
+<com.thinkman.thinkutils.view.VerticalScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -54,4 +67,6 @@
         ImagePickerView:maxCount="6"/>
 
 </LinearLayout>
+
 </com.thinkman.thinkutils.view.VerticalScrollView>
+</in.srain.cube.views.ptr.PtrClassicFrameLayout>
