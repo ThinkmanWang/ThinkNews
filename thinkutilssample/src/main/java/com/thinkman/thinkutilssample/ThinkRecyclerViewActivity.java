@@ -13,8 +13,14 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
+import in.srain.cube.views.ptr.PtrDefaultHandler2;
+import in.srain.cube.views.ptr.PtrFrameLayout;
 
 public class ThinkRecyclerViewActivity extends AppCompatActivity {
+
+    @BindView(R.id.ftr_layout)
+    PtrClassicFrameLayout m_ptrLayout = null;
 
     @BindView(R.id.recycler_view)
     ThinkRecyclerView mRecyclerView = null;
@@ -34,7 +40,48 @@ public class ThinkRecyclerViewActivity extends AppCompatActivity {
                 this.getResources().getDimensionPixelOffset(R.dimen.border_vertical_padding),
                 this.getResources().getDimensionPixelOffset(R.dimen.border_horizontal_padding)));
 
+        m_ptrLayout.setLastUpdateTimeRelateObject(this);
+        m_ptrLayout.setPtrHandler(new PtrDefaultHandler2() {
+
+            @Override
+            public void onLoadMoreBegin(PtrFrameLayout frame) {
+                updateData();
+            }
+
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                updateData();
+            }
+
+        });
+        // the following are default settings
+        m_ptrLayout.setResistance(1.7f); // you can also set foot and header separately
+        m_ptrLayout.setRatioOfHeaderHeightToRefresh(1.2f);
+        m_ptrLayout.setDurationToClose(1000);  // you can also set foot and header separately
+        // default is false
+        m_ptrLayout.setPullToRefresh(false);
+
+        // default is true
+        m_ptrLayout.setKeepHeaderWhenRefresh(true);
+        m_ptrLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // mPtrFrame.autoRefresh();
+            }
+        }, 100);
+
         this.initData();
+    }
+
+    protected void updateData() {
+
+        m_ptrLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                m_ptrLayout.refreshComplete();
+            }
+        }, 3000);
+
     }
 
     private void initData() {
