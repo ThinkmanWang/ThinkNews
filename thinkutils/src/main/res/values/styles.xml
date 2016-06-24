@@ -1,5 +1,17 @@
 <resources>
 
+  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+  <style name="AppTheme.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+  </style>
+
   <!--Default Style-->
   <style name="DefaultSmartStyle">
     <item name="loading_layout">@layout/default_loading_layout</item>
@@ -23,5 +35,6 @@
     <item name="android:textColor">@android:color/darker_gray</item>
     <item name="android:textSize">@dimen/material_13sp</item>
   </style>
+
 </resources>
 

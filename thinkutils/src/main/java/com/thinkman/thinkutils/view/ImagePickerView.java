@@ -6,7 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +43,6 @@ import cn.finalteam.galleryfinal.PauseOnScrollListener;
 import cn.finalteam.galleryfinal.ThemeConfig;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
 
-import com.baoyz.actionsheet.ActionSheet;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -49,6 +53,8 @@ import com.thinkman.thinkutils.listener.GlidePauseOnScrollListener;
 import com.thinkman.thinkutils.loader.GlideImageLoader;
 
 import java.io.File;
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import org.xutils.x;
@@ -108,7 +114,33 @@ public class ImagePickerView extends RelativeLayout {
                 PhotoInfo item = mAdapter.getItem(position);
                 if (ImagePicketAdapter.IMAGEITEM_DEFAULT_ADD.equals(item.getPhotoPath())) {
                     //open gallery final
-                    openGalleryFinal();
+                    ActionSheet.createBuilder(mContext, ((AppCompatActivity)mContext).getSupportFragmentManager())
+                            .setCancelButtonTitle("取消")
+                            .setOtherButtonTitles("打开相册", "拍照")
+                            .setCancelableOnTouchOutside(true)
+                            .setListener(new ActionSheet.ActionSheetListener() {
+                                @Override
+                                public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+
+                                }
+
+                                @Override
+                                public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+                                    switch (index) {
+                                        case 0:
+                                            openGalleryFinal();
+                                            break;
+                                        case 1:
+                                            initGalleryFinal();
+                                            GalleryFinal.openCamera(REQUEST_CODE_CAMERA, mFunctionConfig, mOnHanlderResultCallback);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            })
+                            .show();
+
                 } else {
                     //show preview
                     Intent intent = new Intent(mContext, PhotoPreviewActivity.class);
@@ -119,7 +151,7 @@ public class ImagePickerView extends RelativeLayout {
         });
     }
 
-    public void init(Activity activity) {
+    public void init(AppCompatActivity activity) {
         initImageLoader(mContext);
         initFresco();
         x.Ext.init(activity.getApplication());

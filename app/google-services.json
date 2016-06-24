@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "213090744317",
+    "project_id": "thinknews-3d70"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213090744317:android:e5a10b27f72a633b",
+        "android_client_info": {
+          "package_name": "com.thinkman.thinknews"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcgmn0rfa2BuoWv41PyH9DvcocK7gCQoE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
