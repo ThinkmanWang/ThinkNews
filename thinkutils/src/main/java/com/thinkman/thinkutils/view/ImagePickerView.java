@@ -49,6 +49,7 @@ import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.thinkman.thinkutils.commonutils.ToastUtils;
 import com.thinkman.thinkutils.listener.GlidePauseOnScrollListener;
 import com.thinkman.thinkutils.loader.GlideImageLoader;
 
@@ -131,6 +132,10 @@ public class ImagePickerView extends RelativeLayout {
                                             openGalleryFinal();
                                             break;
                                         case 1:
+                                            if (ImagePickerView.this.getSelectedCount() >= m_nMaxCount) {
+                                                ToastUtils.showToast(mContext, "已达到最大选择数量");
+                                                return;
+                                            }
                                             initGalleryFinal();
                                             GalleryFinal.openCamera(REQUEST_CODE_CAMERA, mFunctionConfig, mOnHanlderResultCallback);
                                             break;
@@ -194,8 +199,13 @@ public class ImagePickerView extends RelativeLayout {
         @Override
         public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
             if (resultList != null) {
-                mAdapter.getItems().clear();
-                mAdapter.getItems().addAll(resultList);
+                if (REQUEST_CODE_GALLERY == reqeustCode) {
+                    mAdapter.getItems().clear();
+                    mAdapter.getItems().addAll(resultList);
+                } else {
+                    mAdapter.getItems().remove(mAdapter.getCount() - 1);
+                    mAdapter.getItems().addAll(resultList);
+                }
 
                 PhotoInfo ivAdd = new PhotoInfo();
                 ivAdd.setPhotoPath(ImagePicketAdapter.IMAGEITEM_DEFAULT_ADD);
