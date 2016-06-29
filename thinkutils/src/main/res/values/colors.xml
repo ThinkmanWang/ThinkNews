@@ -3,4 +3,72 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="tab_main_text_1">#aaa</color>
+    <color name="tab_main_text_2">#74b5f7</color>
+    <color name="tab_top_text_1">#aaa</color>
+    <color name="tab_top_text_2">#000</color>
+    <color name="tab_top2_text_1">#000</color>
+    <color name="black">#000</color>
+    <color name="tab_top2_text_2">#fff</color>
+    <color name="white">#fff</color>
+    <color name="title_color">#f7f7f7</color>
+    <color name="release_bar_bg_color">#f9f9f9</color>
+    <color name="title_text_color">#303030</color>
+
+    <!-- 全透明 -->
+    <color name="transparent">#00000000</color>
+
+    <!-- 半透明白色 -->
+    <color name="white50">#7fffffff</color>
+
+    <color name="text_dark_333">#333333</color>
+    <color name="text_dark_666">#666666</color>
+    <color name="text_dark_999">#999999</color>
+    <color name="text_dark_blue">#66AEF4</color>
+    <color name="text_dark_ccc">#cccccc</color>
+    <color name="text_white">#ffffff</color>
+    <color name="text_red">#FF0000</color>
+
+    <color name="blue_order">#64CFC6</color>
+
+    <color name="text_green">#00CC33</color>
+    <color name="text_whitee">#FFffff</color>
+    <color name="text_purle">#766295</color>
+
+    <color name="text_gongkai">#ff6600</color>
+    <color name="primary_title_text_color">#ffeeeeee</color>
+
+    <color name="achieve_text_pink">#fff4f4</color>
+    <color name="achieve_item_color">#fff7ee</color>
+    <color name="achieve_item_sign">#f5fafe</color>
+    <color name="achieve_show_text">#FF6600</color>
+
+    <color name="blue">#66aef4</color>
+    <color name="tv_frinds_name">#66aff4</color>
+    <!--90%透明度-->
+    <color name="blue_90">#e566AEF4</color>
+    <!-- 灰色35%透明度 -->
+    <color name="grey30">#33CCCCCC</color>
+    <color name="grey">@android:color/darker_gray</color>
+    <!-- 蓝色90%透明度 -->
+    <color name="blue90">#E566AEF4</color>
+
+    <color name="bg_grey">#E9E9E9</color>
+    <color name="bg_grey_efeff4">#efeff4</color>
+
+    <color name="bkg">#efeff4</color>
+    <color name="bar">#f7f7f7</color>
+
+    <color name="circle_scheduled">#F09E15</color>
+    <color name="line">#e0e0e0</color>
+    <color name="comment_bg">#eeeeee</color>
+    <color name="working_sircle_listview_bg">#fcfcfc</color>
+    <color name="working_sircle_comment_bg">#e6e6e6</color>
+    <color name="working_sircle_view_line_bg">#E3E1DE</color>
+    <color name="popup_bg">#f2f2f2</color>
+    <color name="light_black">#a8a8a8</color>
+    <color name="dark_white">#dddddd</color>
+    <color name="province_line_border">#D0D0D0</color>
+
 </resources>

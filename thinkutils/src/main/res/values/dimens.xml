@@ -43,5 +43,107 @@
   <dimen name="material_elevation_2dp">2dip</dimen>
   <dimen name="material_elevation_4dp">4dip</dimen>
   <dimen name="material_elevation_6dp">6dip</dimen>
-  
+
+  <dimen name="textsize_large">24sp</dimen>
+  <dimen name="textsize_big">20sp</dimen>
+  <dimen name="textsize_mid">16sp</dimen>
+  <dimen name="textsize_normal">13sp</dimen>
+
+  <dimen name="textsize_28">14sp</dimen>
+  <dimen name="textsize_26">13sp</dimen>
+  <dimen name="textsize_24">12sp</dimen>
+  <dimen name="textsize_22">11sp</dimen>
+  <dimen name="textsize_20">10sp</dimen>
+  <dimen name="textsize_18">9sp</dimen>
+  <dimen name="textsize_16">8sp</dimen>
+  <dimen name="textsize_30">15sp</dimen>
+  <dimen name="textsize_32">16sp</dimen>
+  <dimen name="textsize_34">17sp</dimen>
+  <dimen name="textsize_36">18sp</dimen>
+  <dimen name="textsize_46">23sp</dimen>
+  <dimen name="textsize_48">24sp</dimen>
+  <dimen name="textsize_50">25sp</dimen>
+  <dimen name="textsize_52">26sp</dimen>
+  <dimen name="textsize_60">30sp</dimen>
+  <dimen name="textsize_38">19sp</dimen>
+
+  <dimen name="underbar_marginleft_short">13dp</dimen>
+  <dimen name="underbar_marginleft_long">39dp</dimen>
+
+  <dimen name="dimen6">3dp</dimen>
+  <dimen name="dimen10">5dp</dimen>
+  <dimen name="dimen14">7dp</dimen>
+  <dimen name="dimen15">8dp</dimen>
+  <dimen name="dimen18">9dp</dimen>
+  <dimen name="dimen20">10dp</dimen>
+  <dimen name="dimen22">11dp</dimen>
+  <dimen name="dimen24">12dp</dimen>
+  <dimen name="dimen25">13dp</dimen>
+  <dimen name="dimen26">13dp</dimen>
+  <dimen name="dimen30">15dp</dimen>
+  <dimen name="dimen32">16dp</dimen>
+  <dimen name="dimen34">17dp</dimen>
+  <dimen name="dimen35">18dp</dimen>
+  <dimen name="dimen38">19dp</dimen>
+  <dimen name="dimen40">20dp</dimen>
+  <dimen name="dimen45">23dp</dimen>
+  <dimen name="dimen50">25dp</dimen>
+  <dimen name="dimen52">26dp</dimen>
+  <dimen name="dimen55">28dp</dimen>
+  <dimen name="dimen56">28dp</dimen>
+
+  <dimen name="dimen60">30dp</dimen>
+  <dimen name="dimen63">32dp</dimen>
+  <dimen name="dimen65">33dp</dimen>
+  <dimen name="dimen70">35dp</dimen>
+  <dimen name="dimen72">36dp</dimen>
+  <dimen name="dimen75">38dp</dimen>
+  <dimen name="dimen78">39dp</dimen>
+  <dimen name="dimen80">40dp</dimen>
+  <dimen name="dimen87">44dp</dimen>
+  <dimen name="dimen90">45dp</dimen>
+  <dimen name="dimen94">47dp</dimen>
+  <dimen name="dimen95">48dp</dimen>
+  <dimen name="dimen47">24dp</dimen>
+  <dimen name="dimen100">50dp</dimen>
+  <dimen name="dimen110">55dp</dimen>
+  <dimen name="dimen115">53dp</dimen>
+  <dimen name="dimen118">59dp</dimen>
+  <dimen name="dimen120">60dp</dimen>
+  <dimen name="dimen122">61dp</dimen>
+  <dimen name="dimen125">63dp</dimen>
+  <dimen name="dimen130">65dp</dimen>
+  <dimen name="dimen140">70dp</dimen>
+  <dimen name="dimen145">73dp</dimen>
+  <dimen name="dimen150">75dp</dimen>
+  <dimen name="dimen158">79dp</dimen>
+  <dimen name="dimen166">83dp</dimen>
+  <dimen name="dimen160">80dp</dimen>
+  <dimen name="dimen170">85dp</dimen>
+  <dimen name="dimen173">86dp</dimen>
+  <dimen name="dimen175">88dp</dimen>
+  <dimen name="dimen183">92dp</dimen>
+
+
+  <dimen name="dimen152">76dp</dimen>
+  <dimen name="dimen200">100dp</dimen>
+
+  <dimen name="dimen210">105dp</dimen>
+  <dimen name="dimen222">111dp</dimen>
+  <dimen name="dimen250">125dp</dimen>
+  <dimen name="dimen313">156dp</dimen>
+
+  <dimen name="dimen238">119dp</dimen>
+  <dimen name="dimen400">200dp</dimen>
+  <dimen name="dimen478">239dp</dimen>
+  <dimen name="dimen300">150dp</dimen>
+  <dimen name="dimen540">270dp</dimen>
+  <dimen name="dimen500">250dp</dimen>
+  <dimen name="dimen560">280dp</dimen>
+
+  <dimen name="dimen12">6dp</dimen>
+
+  <dimen name="bar_height">48dp</dimen>
+
+
 </resources>
