@@ -56,6 +56,20 @@
     <attr name="hintText" format="reference"/>
     <attr name="isPassword" format="boolean"/>
 
+    <attr name="hasLeftIcon" format="boolean" />
+    <attr name="leftIconDrawable" format="color|reference" />
+    <attr name="hasRightIcon" format="boolean" />
+    <attr name="rightIconDrawable" format="color|reference" />
+    <attr name="contentHint" format="string" />
+    <attr name="hintTextSize" format="dimension" />
+    <attr name="noticeText" format="string" />
+    <attr name="noticeTextSize" format="dimension" />
+    <attr name="noticeColor" format="color" />
+    <attr name="clickable" format="boolean" />
+    <attr name="hasUnderBar" format="boolean" />
+    <attr name="maxLength" format="integer" />
+
+
     <declare-styleable name="CommonEditTextLine">
         <attr name="labelText" />
         <attr name="labelTextSize" />
@@ -79,4 +93,52 @@
         <attr name="hintColor" />
         <attr name="hintText" />
     </declare-styleable>
+
+    <declare-styleable name="CustomBar">
+        <attr name="hasLeftIcon" />
+        <attr name="leftIconDrawable" />
+        <attr name="hasRightIcon" />
+        <attr name="rightIconDrawable" />
+        <attr name="labelText" />
+        <attr name="labelTextSize" />
+        <attr name="labelColor" />
+        <attr name="contentText" />
+        <attr name="contentTextSize" />
+        <attr name="contentColor" />
+        <attr name="hintText" />
+        <attr name="hintTextSize" />
+        <attr name="hintColor" />
+        <attr name="hasUnderBar" />
+        <attr name="clickable" />
+        <attr name="contentHint" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomEditBar">
+        <attr name="labelText" />
+        <attr name="labelTextSize" />
+        <attr name="labelColor" />
+        <attr name="contentText" />
+        <attr name="contentTextSize" />
+        <attr name="contentColor" />
+        <attr name="hintColor" />
+        <attr name="hintText" />
+        <attr name="hasUnderBar" />
+        <attr name="isPassword" />
+        <!--直接使用系统中已定义的语意明确的属性，不用设置format-->
+        <attr name="android:inputType" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomNoteBar">
+        <attr name="labelText" />
+        <attr name="labelTextSize" />
+        <attr name="labelColor" />
+        <attr name="noticeText" />
+        <attr name="noticeTextSize" />
+        <attr name="noticeColor" />
+        <attr name="hintColor" />
+        <attr name="hintText" />
+        <attr name="hasUnderBar" />
+        <attr name="maxLength" />
+    </declare-styleable>
+
 </resources>
