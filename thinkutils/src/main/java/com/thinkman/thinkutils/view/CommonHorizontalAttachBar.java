@@ -101,13 +101,15 @@ public class CommonHorizontalAttachBar extends HorizontalScrollView {
         LinearLayout.LayoutParams layoutParams
            = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        layoutParams.setMargins((int)mContent.getResources().getDimension(R.dimen.horizontal_attach_bar_margin)
+        layoutParams.setMargins((int) mContent.getResources().getDimension(R.dimen.horizontal_attach_bar_margin)
                 , 0
-                , (int)mContent.getResources().getDimension(R.dimen.horizontal_attach_bar_margin)
+                , (int) mContent.getResources().getDimension(R.dimen.horizontal_attach_bar_margin)
                 , 0);
 
         m_llContent.addView(view, layoutParams);
     }
 
-
+    public void clear() {
+        m_llContent.removeAllViews();
+    }
 }
