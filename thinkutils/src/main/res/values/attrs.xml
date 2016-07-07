@@ -141,4 +141,9 @@
         <attr name="maxLength" />
     </declare-styleable>
 
+    <declare-styleable name="CommonHorizontalAttachBar">
+        <attr name="labelColor" />
+        <attr name="labelTextSize" />
+    </declare-styleable>
+
 </resources>

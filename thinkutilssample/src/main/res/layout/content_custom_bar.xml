@@ -50,6 +50,13 @@
             thinkutils:labelText="hehe"
             thinkutils:hintText="HAHA"/>
 
+        <com.thinkman.thinkutils.view.CommonHorizontalAttachBar
+            android:id="@+id/chab_attachment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/white"
+            thinkutils:labelColor="@android:color/black" />
     </LinearLayout>
 
 </RelativeLayout>
