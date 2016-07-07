@@ -64,10 +64,18 @@ public class CommonHorizontalAttachBar extends HorizontalScrollView {
     public void addItem(String szUrl, String szText) {
         addItem(szUrl, szText
                 , (int) mContent.getResources().getDimension(R.dimen.avatar_size)
-                , (int) mContent.getResources().getDimension(R.dimen.avatar_size));
+                , (int) mContent.getResources().getDimension(R.dimen.avatar_size)
+                , null);
     }
 
-    public void addItem(String szUrl, String szText, int nWidth, int nHeight) {
+    public void addItem(String szUrl, String szText, View.OnClickListener listener) {
+        addItem(szUrl, szText
+                , (int) mContent.getResources().getDimension(R.dimen.avatar_size)
+                , (int) mContent.getResources().getDimension(R.dimen.avatar_size)
+                , listener);
+    }
+
+    public void addItem(String szUrl, String szText, int nWidth, int nHeight, View.OnClickListener listener) {
         CircleImageText citItem = new CircleImageText(mContent);
         citItem.getTextView().setTextColor(m_nTextColor);
         citItem.getTextView().setTextSize(TypedValue.COMPLEX_UNIT_PX, m_fLabelTextSize);
@@ -77,6 +85,10 @@ public class CommonHorizontalAttachBar extends HorizontalScrollView {
                 .load(szUrl)
                 .override(nWidth, nHeight)
                 .into(citItem.getImageView());
+
+        if (null != listener) {
+            citItem.setOnClickListener(listener);
+        }
 
         addItem(citItem);
     }
