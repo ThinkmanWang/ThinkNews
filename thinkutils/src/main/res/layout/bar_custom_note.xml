@@ -18,7 +18,7 @@
             android:layout_marginStart="13dp"
             android:text="Label"
             android:textColor="@color/text_dark_333"
-            android:textSize="@dimen/textsize_26" />
+            android:textSize="@dimen/text_size_small" />
 
         <TextView
             android:id="@+id/notice"
@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:text="Notice"
             android:textColor="@color/blue"
-            android:textSize="@dimen/textsize_26" />
+            android:textSize="@dimen/text_size_micro" />
     </LinearLayout>
 
     <EditText
@@ -48,5 +48,5 @@
         android:overScrollMode="always"
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
-        android:textSize="@dimen/textsize_26" />
+        android:textSize="@dimen/text_size_small" />
 </LinearLayout>

@@ -102,7 +102,7 @@ public class CustomBar extends FrameLayout {
             hasLeftIcon = false;
         }
 
-        hasRightIcon = a.getBoolean(R.styleable.CustomBar_hasRightIcon, true);
+        hasRightIcon = a.getBoolean(R.styleable.CustomBar_hasRightIcon, false);
 
         if (a.hasValue(R.styleable.CustomBar_rightIconDrawable)) {
             rightIconDrawable = a.getDrawable(R.styleable.CustomBar_rightIconDrawable);
@@ -161,18 +161,13 @@ public class CustomBar extends FrameLayout {
 
         hasUnderBar = a.getBoolean(R.styleable.CustomBar_hasUnderBar, true);
         if (hasUnderBar) {
-            float startX;
-            if (hasLeftIcon) {
-                startX = getResources().getDimension(R.dimen.underbar_marginleft_long);
-            } else {
-                startX = getResources().getDimension(R.dimen.underbar_marginleft_short);
-            }
+            float startX = getResources().getDimension(R.dimen.underbar_marginleft_short);
 
             View view = new View(context);
             view.setBackgroundResource(R.color.line);
             LayoutParams layoutParams1
                     = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1, Gravity.BOTTOM);
-            layoutParams1.setMargins((int) startX, 0, 0, 0);
+            layoutParams1.setMargins((int) startX, 0, (int)startX, 0);
             addView(view, layoutParams1);
 
         }

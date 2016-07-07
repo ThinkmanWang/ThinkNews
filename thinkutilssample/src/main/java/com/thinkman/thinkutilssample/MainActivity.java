@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btn_recyclerview)
     Button m_btnThinkRecyclerView = null;
 
+    @BindView(R.id.btn_custombar)
+    Button m_btnCustomBar = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,6 +140,12 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_recyclerview)
     public void onRecyclerViewTestClick() {
         Intent intent = new Intent(MainActivity.this, ThinkRecyclerViewActivity.class);
+        this.startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_custombar)
+    public void onCustomBarClisk() {
+        Intent intent = new Intent(MainActivity.this, CustomBarActivity.class);
         this.startActivity(intent);
     }
 }

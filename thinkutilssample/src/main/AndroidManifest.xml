@@ -30,7 +30,11 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ThinkRecyclerViewActivity"></activity>
+        <activity android:name=".ThinkRecyclerViewActivity" />
+        <activity
+            android:name=".CustomBarActivity"
+            android:label="@string/title_activity_custom_bar"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

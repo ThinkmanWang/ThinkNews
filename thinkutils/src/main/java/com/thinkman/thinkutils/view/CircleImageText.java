@@ -50,4 +50,12 @@ public class CircleImageText extends LinearLayout {
     public void setLabel(String szLabel) {
         m_tvLabel.setText(szLabel);
     }
+
+    public CircleImageView getImageView() {
+        return m_ivIcon;
+    }
+
+    public TextView getTextView() {
+        return m_tvLabel;
+    }
 }

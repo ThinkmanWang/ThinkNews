@@ -72,6 +72,12 @@
         android:layout_height="wrap_content"
         android:text="Think Recycler View"/>
 
+    <Button
+        android:id="@+id/btn_custombar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CustomBar"/>
+
 </LinearLayout>
 
 </com.thinkman.thinkutils.view.VerticalScrollView>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/bar_height"
+    android:layout_height="?android:attr/actionBarSize"
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
@@ -13,8 +13,8 @@
         android:layout_marginStart="13dp"
         android:minWidth="60dp"
         android:text="label"
-        android:textColor="@color/text_dark_666"
-        android:textSize="13sp" />
+        android:textColor="@color/text_dark_333"
+        android:textSize="@dimen/text_size_small" />
 
     <EditText
         android:id="@+id/edittext"
@@ -27,5 +27,5 @@
         android:layout_weight="1"
         android:background="@android:color/transparent"
         android:hint="hint"
-        android:textSize="12sp" />
+        android:textSize="@dimen/text_size_small" />
 </LinearLayout>

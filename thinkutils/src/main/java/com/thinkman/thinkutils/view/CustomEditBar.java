@@ -122,7 +122,7 @@ public class CustomEditBar extends FrameLayout {
             view.setBackgroundResource(R.color.line);
             LayoutParams layoutParams1
                     = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1, Gravity.BOTTOM);
-            layoutParams1.setMargins((int) startX, 0, 0, 0);
+            layoutParams1.setMargins((int) startX, 0, (int) startX, 0);
             addView(view, layoutParams1);
         }
 
