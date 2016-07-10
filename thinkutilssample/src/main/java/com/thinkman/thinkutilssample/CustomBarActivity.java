@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.thinkman.thinkutils.commonutils.ToastUtils;
+import com.thinkman.thinkutils.view.CircleImageText;
 import com.thinkman.thinkutils.view.CommonHorizontalAttachBar;
 
 import butterknife.BindView;
@@ -30,7 +32,7 @@ public class CustomBarActivity extends AppCompatActivity {
 
     private void init() {
         m_chabAttachment.addItem("https://www.baidu.com/img/bd_logo1.png", "百度0");
-        m_chabAttachment.addItem("https://www.baidu.com/img/bd_logo1.png", "百度1");
+        m_chabAttachment.addItem("https://o1wh05aeh.qnssl.com/image/view/app_icons/d6e5302682efc074ee6ac2a5c21374fb/120", "小宝");
         m_chabAttachment.addItem("https://www.baidu.com/img/bd_logo1.png", "百度2");
         m_chabAttachment.addItem("https://www.baidu.com/img/bd_logo1.png", "百度3");
         m_chabAttachment.addItem("https://www.baidu.com/img/bd_logo1.png", "百度4");
@@ -40,6 +42,13 @@ public class CustomBarActivity extends AppCompatActivity {
         m_chabAttachment.addItem("https://www.baidu.com/img/bd_logo1.png", "百度7");
         m_chabAttachment.addItem("https://www.baidu.com/img/bd_logo1.png", "百度8");
         m_chabAttachment.addItem("https://www.baidu.com/img/bd_logo1.png", "百度9");
+
+        m_chabAttachment.setOnItemClickListener(new CommonHorizontalAttachBar.OnItemClickedListener() {
+            @Override
+            public void onItemClick(int nPostion, CircleImageText view) {
+                ToastUtils.showToast(CustomBarActivity.this, "" + nPostion + " " + view.getTextView().getText());
+            }
+        });
     }
 
 }

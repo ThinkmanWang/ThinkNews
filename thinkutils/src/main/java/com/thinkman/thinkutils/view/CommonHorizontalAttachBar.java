@@ -16,7 +16,7 @@ import com.thinkman.thinkutils.R;
 /**
  * Created by wangx on 2016/7/7.
  */
-public class CommonHorizontalAttachBar extends HorizontalScrollView {
+public class CommonHorizontalAttachBar extends HorizontalScrollView implements View.OnClickListener{
 
     Context mContent = null;
     View m_ContentView = null;
@@ -64,36 +64,25 @@ public class CommonHorizontalAttachBar extends HorizontalScrollView {
     public void addItem(String szUrl, String szText) {
         addItem(szUrl, szText
                 , (int) mContent.getResources().getDimension(R.dimen.avatar_size)
-                , (int) mContent.getResources().getDimension(R.dimen.avatar_size)
-                , null);
+                , (int) mContent.getResources().getDimension(R.dimen.avatar_size));
     }
 
-    public void addItem(String szUrl, String szText, View.OnClickListener listener) {
-        addItem(szUrl, szText
-                , (int) mContent.getResources().getDimension(R.dimen.avatar_size)
-                , (int) mContent.getResources().getDimension(R.dimen.avatar_size)
-                , listener);
-    }
-
-    public void addItem(String szUrl, String szText, int nWidth, int nHeight, View.OnClickListener listener) {
+    public void addItem(String szUrl, String szText, int nWidth, int nHeight) {
         CircleImageText citItem = new CircleImageText(mContent);
         citItem.getTextView().setTextColor(m_nTextColor);
         citItem.getTextView().setTextSize(TypedValue.COMPLEX_UNIT_PX, m_fLabelTextSize);
         citItem.getTextView().setText(szText);
+        citItem.setOnClickListener(this);
 
         Glide.with(mContent)
                 .load(szUrl)
                 .override(nWidth, nHeight)
                 .into(citItem.getImageView());
 
-        if (null != listener) {
-            citItem.setOnClickListener(listener);
-        }
-
         addItem(citItem);
     }
 
-    public void addItem(View view) {
+    private void addItem(View view) {
         if (null == view) {
             return;
         }
@@ -111,5 +100,35 @@ public class CommonHorizontalAttachBar extends HorizontalScrollView {
 
     public void clear() {
         m_llContent.removeAllViews();
+    }
+
+    public int getCount() {
+        return m_llContent.getChildCount();
+    }
+
+    public CircleImageText getItem(int nPosition) {
+        if (nPosition < 0 || nPosition >= m_llContent.getChildCount()) {
+            return null;
+        }
+
+        return (CircleImageText)m_llContent.getChildAt(nPosition);
+    }
+
+    private OnItemClickedListener mOnItemClickListener = null;
+    public interface OnItemClickedListener {
+        void onItemClick(int nPostion, CircleImageText view);
+    }
+
+    public void setOnItemClickListener(OnItemClickedListener listener) {
+        mOnItemClickListener = listener;
+    }
+
+    public void onClick(View v) {
+        for (int i = 0; i < m_llContent.getChildCount(); ++i) {
+            if (v == m_llContent.getChildAt(i) && mOnItemClickListener != null) {
+                mOnItemClickListener.onItemClick(i, (CircleImageText)v);
+                break;
+            }
+        }
     }
 }
