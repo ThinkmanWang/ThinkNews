@@ -15,8 +15,12 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.ButterKnife;
 
+import com.bigkoo.pickerview.TimePickerView;
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 import com.thinkman.thinkutils.view.ImagePickerView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
@@ -37,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.btn_custombar)
     Button m_btnCustomBar = null;
+
+    @BindView(R.id.btn_date_time)
+    Button m_btnDateTime = null;
+
+    TimePickerView pvTime = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +87,28 @@ public class MainActivity extends AppCompatActivity {
                 // mPtrFrame.autoRefresh();
             }
         }, 100);
+
+        initView();
+    }
+
+    public void initView() {
+        //init time picker
+        pvTime = new TimePickerView(this, TimePickerView.Type.ALL);
+        pvTime.setTime(new Date());
+        pvTime.setCyclic(false);
+        pvTime.setCancelable(true);
+        pvTime.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
+
+            @Override
+            public void onTimeSelect(Date date) {
+                m_btnDateTime.setText(getTime(date));
+            }
+        });
+    }
+
+    public static String getTime(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return format.format(date);
     }
 
     protected void updateData() {
@@ -147,5 +178,10 @@ public class MainActivity extends AppCompatActivity {
     public void onCustomBarClisk() {
         Intent intent = new Intent(MainActivity.this, CustomBarActivity.class);
         this.startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_date_time)
+    public void onDateTimeClick() {
+        pvTime.show();
     }
 }

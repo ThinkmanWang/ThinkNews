@@ -106,6 +106,14 @@ public class CommonHorizontalAttachBar extends HorizontalScrollView implements V
         return m_llContent.getChildCount();
     }
 
+    public void removeAt(int nPosition) {
+        if (nPosition < 0 || nPosition >= m_llContent.getChildCount()) {
+            return;
+        }
+
+        m_llContent.removeViewAt(nPosition);
+    }
+
     public CircleImageText getItem(int nPosition) {
         if (nPosition < 0 || nPosition >= m_llContent.getChildCount()) {
             return null;

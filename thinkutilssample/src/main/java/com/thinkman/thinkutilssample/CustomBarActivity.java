@@ -47,6 +47,7 @@ public class CustomBarActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int nPostion, CircleImageText view) {
                 ToastUtils.showToast(CustomBarActivity.this, "" + nPostion + " " + view.getTextView().getText());
+                m_chabAttachment.removeAt(nPostion);
             }
         });
     }

@@ -31,6 +31,7 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
 
     compile 'in.srain.cube:ptr-load-more:1.0.3'
+    compile 'com.bigkoo:pickerview:2.0.9'
 
     compile project(':thinkutils')
 }

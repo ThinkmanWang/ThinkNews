@@ -78,6 +78,12 @@
         android:layout_height="wrap_content"
         android:text="CustomBar"/>
 
+    <Button
+        android:id="@+id/btn_date_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date Time Picker"/>
+
 </LinearLayout>
 
 </com.thinkman.thinkutils.view.VerticalScrollView>
