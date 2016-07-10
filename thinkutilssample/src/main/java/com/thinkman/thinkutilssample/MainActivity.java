@@ -19,6 +19,7 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 import com.thinkman.thinkutils.view.ImagePickerView;
+import com.thinkman.thinkutilssample.bean.ProvinceBean;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     Button m_btnAreaPicker = null;
 
     OptionsPickerView pvOptions;
-    private ArrayList<String> options1Items = new ArrayList<String>();
+    private ArrayList<ProvinceBean> options1Items = new ArrayList<ProvinceBean>();
     private ArrayList<ArrayList<String>> options2Items = new ArrayList<ArrayList<String>>();
     private ArrayList<ArrayList<ArrayList<String>>> options3Items = new ArrayList<ArrayList<ArrayList<String>>>();
 
@@ -121,9 +122,12 @@ public class MainActivity extends AppCompatActivity {
     public void initAreaPicker() {
         pvOptions = new OptionsPickerView(this);
 
-        options1Items.add(new String("广东"));
-        options1Items.add(new String("湖南"));
-        options1Items.add(new String("广西"));
+//        options1Items.add(new String("广东"));
+//        options1Items.add(new String("湖南"));
+//        options1Items.add(new String("广西"));
+        options1Items.add(new ProvinceBean(0,"广东","广东省，以岭南东道、广南东路得名","其他数据"));
+        options1Items.add(new ProvinceBean(1,"湖南","湖南省地处中国中部、长江中游，因大部分区域处于洞庭湖以南而得名湖南","芒果TV"));
+        options1Items.add(new ProvinceBean(3,"广西","嗯～～",""));
 
         //选项2
         ArrayList<String> options2Items_01=new ArrayList<String>();
