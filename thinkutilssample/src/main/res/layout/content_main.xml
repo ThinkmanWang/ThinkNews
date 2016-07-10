@@ -84,6 +84,12 @@
         android:layout_height="wrap_content"
         android:text="Date Time Picker"/>
 
+    <Button
+        android:id="@+id/btn_area_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="省市县三级联动"/>
+
 </LinearLayout>
 
 </com.thinkman.thinkutils.view.VerticalScrollView>
