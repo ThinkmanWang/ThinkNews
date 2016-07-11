@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btn_area_picker)
     Button m_btnAreaPicker = null;
 
+    @BindView(R.id.btn_guide_page)
+    Button m_btnGuidePage = null;
+
     OptionsPickerView pvOptions;
     private ArrayList<ProvinceBean> options1Items = new ArrayList<ProvinceBean>();
     private ArrayList<ArrayList<String>> options2Items = new ArrayList<ArrayList<String>>();
@@ -309,5 +312,11 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_area_picker)
     public void onAreaPickerClick() {
         pvOptions.show();
+    }
+
+    @OnClick(R.id.btn_guide_page)
+    public void onGuidePageClick() {
+        Intent intent = new Intent(MainActivity.this, GuideActivity.class);
+        this.startActivity(intent);
     }
 }

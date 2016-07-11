@@ -1,7 +1,6 @@
 package com.thinkman.thinknews.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.github.captain_miao.recyclerviewutils.BaseWrapperRecyclerAdapter;
@@ -18,7 +16,6 @@ import com.github.captain_miao.recyclerviewutils.listener.OnRecyclerItemClickLis
 import com.thinkman.thinknews.R;
 import com.thinkman.thinknews.activity.NewsActivity;
 import com.thinkman.thinknews.models.NewsModel;
-import com.thinkman.thinkutils.DisplayUtil;
 
 import java.util.List;
 

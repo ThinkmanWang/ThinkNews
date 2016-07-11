@@ -4,4 +4,5 @@
     <string name="title_activity_progress">ProgressActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_custom_bar">CustomBarActivity</string>
+    <string name="title_activity_guide">GuideActivity</string>
 </resources>

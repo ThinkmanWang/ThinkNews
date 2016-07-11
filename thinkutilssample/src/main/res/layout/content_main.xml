@@ -90,6 +90,12 @@
         android:layout_height="wrap_content"
         android:text="省市县三级联动"/>
 
+    <Button
+        android:id="@+id/btn_guide_page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="引导页"/>
+
 </LinearLayout>
 
 </com.thinkman.thinkutils.view.VerticalScrollView>

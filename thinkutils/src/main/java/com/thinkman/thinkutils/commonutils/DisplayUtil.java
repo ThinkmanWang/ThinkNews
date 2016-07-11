@@ -1,4 +1,4 @@
-package com.thinkman.thinkutils;
+package com.thinkman.thinkutils.commonutils;
 
 import android.content.Context;
 
