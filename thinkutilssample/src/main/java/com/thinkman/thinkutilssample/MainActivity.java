@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.ButterKnife;
@@ -55,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.btn_guide_page)
     Button m_btnGuidePage = null;
+
+    @BindView(R.id.btn_fragment_test)
+    Button m_btnFragmentTest = null;
 
     OptionsPickerView pvOptions;
     private ArrayList<ProvinceBean> options1Items = new ArrayList<ProvinceBean>();
@@ -317,6 +322,12 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_guide_page)
     public void onGuidePageClick() {
         Intent intent = new Intent(MainActivity.this, GuideActivity.class);
+        this.startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_fragment_test)
+    public void onFragmentTestClick() {
+        Intent intent = new Intent(MainActivity.this, FragmentActivity.class);
         this.startActivity(intent);
     }
 }

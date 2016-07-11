@@ -1,6 +1,7 @@
 package com.thinkman.thinkutils.commonutils;
 
 import android.content.Context;
+import android.content.res.Configuration;
 
 /**
  * Created by wangx on 2016/5/9.
@@ -41,4 +42,10 @@ public class DisplayUtil {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
+
+    public static boolean isDevicePad(Context context) {
+        return (context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >=
+                Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
 }
