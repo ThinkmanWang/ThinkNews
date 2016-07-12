@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 
 import com.thinkman.thinkutils.R;
@@ -46,6 +47,18 @@ public class CommonMultiLineAttachBar extends RelativeLayout {
         m_gvImages = (GridViewScrollable) contentView.findViewById(R.id.gv_images);
         mAdapter = new MultiLineAttachBarAdapter(mContext);
         m_gvImages.setAdapter(mAdapter);
+
+        m_gvImages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (null == mItemClickListener) {
+                    return;
+                }
+
+                PhotoInfo info = mAdapter.getItem(position);
+                mItemClickListener.onItemClick(position, info);
+            }
+        });
     }
 
     public void clear() {
@@ -64,5 +77,18 @@ public class CommonMultiLineAttachBar extends RelativeLayout {
 
     public void addPhoto(List<PhotoInfo> list) {
         mAdapter.addAll(list);
+    }
+
+    OnItemClickListener mItemClickListener = null;
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mItemClickListener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int nPosition, PhotoInfo info);
+    }
+
+    public List<PhotoInfo> getItems() {
+        return mAdapter.getItems();
     }
 }

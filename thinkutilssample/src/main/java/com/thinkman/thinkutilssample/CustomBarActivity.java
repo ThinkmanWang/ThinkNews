@@ -49,6 +49,13 @@ public class CustomBarActivity extends AppCompatActivity {
         m_cabPhotos.addPhoto("https://o1wh05aeh.qnssl.com/image/view/app_icons/d6e5302682efc074ee6ac2a5c21374fb/120");
         m_cabPhotos.addPhoto("https://o1wh05aeh.qnssl.com/image/view/app_icons/d6e5302682efc074ee6ac2a5c21374fb/120");
         m_cabPhotos.addPhoto("https://o1wh05aeh.qnssl.com/image/view/app_icons/d6e5302682efc074ee6ac2a5c21374fb/120");
+
+        m_cabPhotos.setOnItemClickListener(new CommonMultiLineAttachBar.OnItemClickListener() {
+            @Override
+            public void onItemClick(int nPosition, PhotoInfo info) {
+                ToastUtils.showToast(CustomBarActivity.this, "" + nPosition + " clicked");
+            }
+        });
     }
 
     private void initAttachBar() {
