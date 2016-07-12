@@ -10,4 +10,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_flow_layout">FlowLayoutActivity</string>
+
+    <string name="highlight1_title">提示1</string>
+    <string name="highlight1_descr">Highlight any UI element and provide a quick
+        one-time description for the user.</string>
+    <string name="highlight2_title">提示2</string>
+    <string name="highlight2_descr">The size of the highlight will be calculated based
+        on the size of the UI element to highlight.</string>
+    <string name="highlight3_title">提示3</string>
+    <string name="highlight3_descr">Highlights are shown only the first time the app is used.</string>
 </resources>

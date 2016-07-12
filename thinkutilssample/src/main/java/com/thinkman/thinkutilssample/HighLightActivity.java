@@ -1,0 +1,27 @@
+package com.thinkman.thinkutilssample;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import com.thinkman.thinkutils.highlight.HighlightManager;
+
+public class HighLightActivity extends AppCompatActivity {
+
+    private HighlightManager highlightManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_high_light);
+
+        highlightManager = new HighlightManager(this);
+        highlightManager.reshowAllHighlights();
+
+        highlightManager.addView(R.id.btn1).setTitle(R.string.highlight1_title)
+                .setDescriptionId(R.string.highlight1_descr);
+        highlightManager.addView(R.id.btn2).setTitle(R.string.highlight2_title)
+                .setDescriptionId(R.string.highlight2_descr);
+        highlightManager.addView(R.id.btn3).setTitle(R.string.highlight3_title)
+                .setDescriptionId(R.string.highlight3_descr);
+    }
+}

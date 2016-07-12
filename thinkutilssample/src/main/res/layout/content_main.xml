@@ -102,6 +102,18 @@
         android:layout_height="wrap_content"
         android:text="Fragment Test for Phone and Pad"/>
 
+    <Button
+        android:id="@+id/btn_my_tags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="我的标签"/>
+
+    <Button
+        android:id="@+id/btn_highlight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="高亮提示"/>
+
 </LinearLayout>
 
 </com.thinkman.thinkutils.view.VerticalScrollView>

@@ -22,6 +22,7 @@ import com.bigkoo.pickerview.TimePickerView;
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 import com.thinkman.thinkutils.view.ImagePickerView;
 import com.thinkman.thinkutilssample.bean.ProvinceBean;
+import com.thinkman.thinkutilssample.models.FlowLayoutActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -60,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.btn_fragment_test)
     Button m_btnFragmentTest = null;
+
+    @BindView(R.id.btn_my_tags)
+    Button m_btnTags = null;
+
+    @BindView(R.id.btn_highlight)
+    Button m_btnHighlight = null;
 
     OptionsPickerView pvOptions;
     private ArrayList<ProvinceBean> options1Items = new ArrayList<ProvinceBean>();
@@ -328,6 +335,18 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_fragment_test)
     public void onFragmentTestClick() {
         Intent intent = new Intent(MainActivity.this, FragmentActivity.class);
+        this.startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_my_tags)
+    public void onTagClick() {
+        Intent intent = new Intent(MainActivity.this, FlowLayoutActivity.class);
+        this.startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_highlight)
+    public void onHighlightClick() {
+        Intent intent = new Intent(MainActivity.this, HighLightActivity.class);
         this.startActivity(intent);
     }
 }

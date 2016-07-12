@@ -146,4 +146,8 @@
         <attr name="labelTextSize" />
     </declare-styleable>
 
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontal_spacing" format="dimension" />
+        <attr name="vertical_spacing" format="dimension" />
+    </declare-styleable>
 </resources>

@@ -45,7 +45,12 @@
         <activity
             android:name=".DetailActivity"
             android:label="@string/title_activity_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".models.FlowLayoutActivity"
+            android:label="@string/title_activity_flow_layout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HighLightActivity"></activity>
     </application>
 
 </manifest>
