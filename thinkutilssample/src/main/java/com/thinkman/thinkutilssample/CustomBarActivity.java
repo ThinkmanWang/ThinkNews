@@ -10,14 +10,19 @@ import android.view.View;
 import com.thinkman.thinkutils.commonutils.ToastUtils;
 import com.thinkman.thinkutils.view.CircleImageText;
 import com.thinkman.thinkutils.view.CommonHorizontalAttachBar;
+import com.thinkman.thinkutils.view.CommonMultiLineAttachBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 public class CustomBarActivity extends AppCompatActivity {
 
     @BindView(R.id.chab_attachment)
     CommonHorizontalAttachBar m_chabAttachment = null;
+
+    @BindView(R.id.cab_photos)
+    CommonMultiLineAttachBar m_cabPhotos = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,22 @@ public class CustomBarActivity extends AppCompatActivity {
     }
 
     private void init() {
+        initAttachBar();
+        initMultiLineAttachBar();
+    }
+
+    private void initMultiLineAttachBar() {
+        m_cabPhotos.addPhoto("https://www.baidu.com/img/bd_logo1.png");
+        m_cabPhotos.addPhoto("https://www.baidu.com/img/bd_logo1.png");
+        m_cabPhotos.addPhoto("https://www.baidu.com/img/bd_logo1.png");
+        m_cabPhotos.addPhoto("https://www.baidu.com/img/bd_logo1.png");
+        m_cabPhotos.addPhoto("https://o1wh05aeh.qnssl.com/image/view/app_icons/d6e5302682efc074ee6ac2a5c21374fb/120");
+        m_cabPhotos.addPhoto("https://o1wh05aeh.qnssl.com/image/view/app_icons/d6e5302682efc074ee6ac2a5c21374fb/120");
+        m_cabPhotos.addPhoto("https://o1wh05aeh.qnssl.com/image/view/app_icons/d6e5302682efc074ee6ac2a5c21374fb/120");
+        m_cabPhotos.addPhoto("https://o1wh05aeh.qnssl.com/image/view/app_icons/d6e5302682efc074ee6ac2a5c21374fb/120");
+    }
+
+    private void initAttachBar() {
         m_chabAttachment.addItem("https://www.baidu.com/img/bd_logo1.png", "百度0");
         m_chabAttachment.addItem("https://o1wh05aeh.qnssl.com/image/view/app_icons/d6e5302682efc074ee6ac2a5c21374fb/120", "小宝");
         m_chabAttachment.addItem("https://www.baidu.com/img/bd_logo1.png", "百度2");
