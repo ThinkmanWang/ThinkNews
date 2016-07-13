@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.thinkman.thinkutils.activity.BaseActivityWithTranslucentBar;
 import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkviewpagerindicator.view.indicator.Indicator;
 import com.thinkman.thinkviewpagerindicator.view.indicator.IndicatorViewPager;
@@ -19,7 +20,7 @@ import com.thinkman.thinkviewpagerindicator.view.indicator.IndicatorViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GuideActivity extends ThinkBaseActivity {
+public class GuideActivity extends BaseActivityWithTranslucentBar {
 
     private IndicatorViewPager indicatorViewPager = null;
     private LayoutInflater inflate;

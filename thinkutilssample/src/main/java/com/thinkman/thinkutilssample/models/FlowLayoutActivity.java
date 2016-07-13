@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 import com.thinkman.thinkutils.layout.FlowLayout;
 import com.thinkman.thinkutilssample.R;
@@ -17,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class FlowLayoutActivity extends AppCompatActivity {
+public class FlowLayoutActivity extends ThinkBaseActivity {
 
     @BindView(R.id.btn_add)
     Button m_btnAdd = null;

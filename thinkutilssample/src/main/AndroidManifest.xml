@@ -36,8 +36,7 @@
             android:label="@string/title_activity_custom_bar"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".GuideActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".GuideActivity" />
         <activity
             android:name=".FragmentActivity"
             android:label="@string/title_activity_fragment"
