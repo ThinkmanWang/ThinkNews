@@ -3,10 +3,11 @@ package com.thinkman.thinkutilssample;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.thinkman.thinkutils.activity.BaseActivityWithActionBar;
 import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkutils.highlight.HighlightManager;
 
-public class HighLightActivity extends ThinkBaseActivity {
+public class HighLightActivity extends BaseActivityWithActionBar {
 
     private HighlightManager highlightManager;
 
@@ -14,6 +15,8 @@ public class HighLightActivity extends ThinkBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_light);
+
+        this.setActionBar(R.mipmap.ic_launcher, R.string.app_name, R.mipmap.ic_launcher);
 
         highlightManager = new HighlightManager(this);
         highlightManager.reshowAllHighlights();
