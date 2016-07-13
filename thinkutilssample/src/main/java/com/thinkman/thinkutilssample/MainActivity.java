@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
+import com.thinkman.thinkutils.activity.BaseActivityWithActionBar;
 import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 import com.thinkman.thinkutils.view.ImagePickerView;
@@ -34,7 +35,7 @@ import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
-public class MainActivity extends ThinkBaseActivity {
+public class MainActivity extends BaseActivityWithActionBar {
 
     @BindView(R.id.et_result) EditText m_etResult;
     @BindView(R.id.ipv_image_picker)
@@ -88,6 +89,8 @@ public class MainActivity extends ThinkBaseActivity {
         setSupportActionBar(toolbar);
 
         ButterKnife.bind(this);
+        this.setDoubleBackExit(true);
+        this.setActionBar(R.mipmap.ic_launcher, R.string.app_name, R.mipmap.ic_launcher);
 
         m_ipvImagePicker.init(this);
 
@@ -289,27 +292,27 @@ public class MainActivity extends ThinkBaseActivity {
         this.startActivity(intent);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @OnClick(R.id.btn_recyclerview)
     public void onRecyclerViewTestClick() {

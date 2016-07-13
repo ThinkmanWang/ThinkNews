@@ -2,17 +2,12 @@ package com.thinkman.thinkutils.activity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 import com.thinkman.thinkutils.R;
-import com.thinkman.thinkutils.commonutils.DisplayUtil;
 
 /**
  * Created by wangx on 2016/7/13.
@@ -23,6 +18,14 @@ public class ThinkBaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        ThinkActivityManager.getInstance().addActivity(this);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ThinkActivityManager.getInstance().delectActivity(this);
     }
 
     @Override
@@ -36,8 +39,37 @@ public class ThinkBaseActivity extends AppCompatActivity {
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
-        //overridePendingTransition(R.anim.out_to_right, R.anim.in_from_left);
+    }
 
+    public void finishAllActivity() {
+        ThinkActivityManager.getInstance().finishAllActivity();
+    }
+
+    private boolean m_bDoubleBackExit = false;
+    public void setDoubleBackExit(boolean isBackExit) {
+        this.m_bDoubleBackExit = isBackExit;
+    }
+
+    private long exitTime;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (m_bDoubleBackExit) {
+                if ((System.currentTimeMillis() - exitTime) > 2000) {
+                    Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                            Toast.LENGTH_SHORT).show();
+                    exitTime = System.currentTimeMillis();
+                } else {
+                    this.finish();
+                }
+                return true;
+            } else {
+                return super.onKeyDown(keyCode, event);
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 //    public void initTranslucentBarColor(int nResBgColor) {
