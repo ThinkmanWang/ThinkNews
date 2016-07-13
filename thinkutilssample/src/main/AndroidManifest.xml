@@ -54,7 +54,8 @@
         <activity
             android:name=".TranslucentActivity"
             android:label="@string/title_activity_translucent" />
-        <activity android:name=".UpdateStatusBarColorActivity"></activity>
+        <activity android:name=".UpdateStatusBarColorActivity"
+            android:theme="@style/AppTheme.NoNoTitle" />
     </application>
 
 </manifest>
