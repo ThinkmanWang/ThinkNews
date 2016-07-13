@@ -53,7 +53,8 @@
         <activity android:name=".HighLightActivity" />
         <activity
             android:name=".TranslucentActivity"
-            android:label="@string/title_activity_translucent"></activity>
+            android:label="@string/title_activity_translucent" />
+        <activity android:name=".UpdateStatusBarColorActivity"></activity>
     </application>
 
 </manifest>

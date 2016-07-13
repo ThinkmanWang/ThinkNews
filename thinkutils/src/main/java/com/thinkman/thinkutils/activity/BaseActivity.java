@@ -45,11 +45,6 @@ public class BaseActivity extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-        // get root content of system window
-//        ViewGroup rootView = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
-//        rootView.setFitsSystemWindows(false);
-        // rootView.setClipToPadding(true);
-
         ViewGroup contentView = (ViewGroup) findViewById(android.R.id.content);
         if (contentView.getChildCount() > 1) {
             contentView.removeViewAt(1);

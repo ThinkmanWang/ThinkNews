@@ -120,6 +120,12 @@
         android:layout_height="wrap_content"
         android:text="透明状态栏"/>
 
+    <Button
+        android:id="@+id/btn_update_statusbar_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="修改状态栏颜色"/>
+
 </LinearLayout>
 
 </com.thinkman.thinkutils.view.VerticalScrollView>
