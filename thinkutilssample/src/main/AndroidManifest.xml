@@ -50,7 +50,10 @@
             android:name=".models.FlowLayoutActivity"
             android:label="@string/title_activity_flow_layout"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HighLightActivity"></activity>
+        <activity android:name=".HighLightActivity" />
+        <activity
+            android:name=".TranslucentActivity"
+            android:label="@string/title_activity_translucent"></activity>
     </application>
 
 </manifest>

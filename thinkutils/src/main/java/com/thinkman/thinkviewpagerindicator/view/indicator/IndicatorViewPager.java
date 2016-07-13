@@ -28,12 +28,6 @@ import com.thinkman.thinkviewpagerindicator.view.indicator.slidebar.ScrollBar;
 import com.thinkman.thinkviewpagerindicator.view.viewpager.RecyclingPagerAdapter;
 import com.thinkman.thinkviewpagerindicator.view.viewpager.SViewPager;
 
-/**
- * 
- * @author试着飞
- * @date 2014年11月1日
- * @version 1.0 将indicatorView，ViewPager联合使用
- */
 public class IndicatorViewPager {
 	private Indicator indicatorView;
 	private ViewPager viewPager;
@@ -48,108 +42,49 @@ public class IndicatorViewPager {
 		indicatorView.setOnItemSelectListener(onItemSelectedListener);
 	}
 
-	/**
-	 * 设置适配器
-	 * 
-	 * @param adapter
-	 */
 	public void setAdapter(IndicatorPagerAdapter adapter) {
 		this.adapter = adapter;
 		viewPager.setAdapter(adapter.getPagerAdapter());
 		indicatorView.setAdapter(adapter.getIndicatorAdapter());
 	}
 
-	/**
-	 * 切换至指定的页面
-	 * 
-	 * @param item
-	 *            页面的索引
-	 * @param anim
-	 *            是否动画效果
-	 */
 	public void setCurrentItem(int item, boolean anim) {
 		viewPager.setCurrentItem(item, anim);
 		indicatorView.setCurrentItem(item, anim);
 	}
 
-	/**
-	 * 设置页面切换监听
-	 * 
-	 * @return
-	 */
 	public void setOnIndicatorPageChangeListener(OnIndicatorPageChangeListener onIndicatorPageChangeListener) {
 		this.onIndicatorPageChangeListener = onIndicatorPageChangeListener;
 	}
 
-	/**
-	 * 设置indicatorView上滑动变化的转换监听，tab在切换过程中会调用此监听。
-	 * 
-	 * @param onTransitionListener
-	 */
 	public void setIndicatorOnTransitionListener(Indicator.OnTransitionListener onTransitionListener) {
 		indicatorView.setOnTransitionListener(onTransitionListener);
 	}
 
-	/**
-	 * 设置indicatorView的滑动块样式
-	 * 
-	 * @param scrollBar
-	 */
 	public void setIndicatorScrollBar(ScrollBar scrollBar) {
 		indicatorView.setScrollBar(scrollBar);
 	}
 
-	/**
-	 * 设置缓存界面的个数，左右两边缓存界面的个数，不会被重新创建。<br>
-	 * 默认是1，表示左右两边 相连的1个界面和当前界面都会被缓存住，比如切换到左边的一个界面，那个界面是不会重新创建的。
-	 * 
-	 * @param limit
-	 */
 	public void setPageOffscreenLimit(int limit) {
 		viewPager.setOffscreenPageLimit(limit);
 	}
 
-	/**
-	 * 设置page间的图片的宽度
-	 * 
-	 * @param marginPixels
-	 */
 	public void setPageMargin(int marginPixels) {
 		viewPager.setPageMargin(marginPixels);
 	}
 
-	/**
-	 * 设置page间的图片
-	 * 
-	 * @param d
-	 */
 	public void setPageMarginDrawable(Drawable d) {
 		viewPager.setPageMarginDrawable(d);
 	}
 
-	/**
-	 * 设置page间的图片
-	 * 
-	 * @param resId
-	 */
 	public void setPageMarginDrawable(int resId) {
 		viewPager.setPageMarginDrawable(resId);
 	}
 
-	/**
-	 * 获取上一次选中的索引
-	 * 
-	 * @return
-	 */
 	public int getPreSelectItem() {
 		return indicatorView.getPreSelectItem();
 	}
 
-	/**
-	 * 获取当前选中的索引
-	 * 
-	 * @return
-	 */
 	public int getCurrentItem() {
 		return viewPager.getCurrentItem();
 	}
@@ -170,9 +105,6 @@ public class IndicatorViewPager {
 		return viewPager;
 	}
 
-	/**
-	 * 通知适配器数据变化，重新加载页面
-	 */
 	public void notifyDataSetChanged() {
 		if (this.adapter != null) {
 			this.adapter.notifyDataSetChanged();
@@ -196,13 +128,7 @@ public class IndicatorViewPager {
 	};
 
 	public static interface OnIndicatorPageChangeListener {
-		/**
-		 * 注意 preItem 可能为 -1。表示之前没有选中过,每次adapter.notifyDataSetChanged也会将preItem
-		 * 设置为-1；
-		 * 
-		 * @param preItem
-		 * @param currentItem
-		 */
+
 		public void onIndicatorPageChange(int preItem, int currentItem);
 	}
 
@@ -237,12 +163,6 @@ public class IndicatorViewPager {
 
 	}
 
-	/**
-	 * viewpage 的每个页面是view的形式
-	 * 
-	 * @author Administrator
-	 * 
-	 */
 	public static abstract class IndicatorViewPagerAdapter implements IndicatorPagerAdapter {
 
 		private Indicator.IndicatorAdapter indicatorAdapter = new Indicator.IndicatorAdapter() {
@@ -313,12 +233,6 @@ public class IndicatorViewPager {
 
 	}
 
-	/**
-	 * viewpage 的每个页面是Fragment的形式
-	 * 
-	 * @author Administrator
-	 * 
-	 */
 	public static abstract class IndicatorFragmentPagerAdapter implements IndicatorPagerAdapter {
 		private FragmentListPageAdapter pagerAdapter;
 
@@ -366,22 +280,10 @@ public class IndicatorViewPager {
 			return FragmentListPageAdapter.POSITION_UNCHANGED;
 		}
 
-		/**
-		 * 获取position位置上的Fragment，Fragment没有被创建时返回null
-		 * 
-		 * @param position
-		 * 
-		 * @return
-		 */
 		public Fragment getExitFragment(int position) {
 			return pagerAdapter.getExitFragment(position);
 		}
 
-		/**
-		 * 获取当前显示的Fragment
-		 * 
-		 * @return
-		 */
 		public Fragment getCurrentFragment() {
 			return pagerAdapter.getCurrentFragment();
 		}

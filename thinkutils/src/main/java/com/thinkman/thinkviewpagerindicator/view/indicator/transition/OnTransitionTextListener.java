@@ -9,12 +9,6 @@ import android.widget.TextView;
 import com.thinkman.thinkviewpagerindicator.view.indicator.Indicator;
 import com.thinkman.thinkviewpagerindicator.view.utils.ColorGradient;
 
-
-/**
- * 
- * @author LuckyJayce
- *
- */
 public class OnTransitionTextListener implements Indicator.OnTransitionListener {
 	private float selectSize = -1;
 	private float unSelectSize = -1;
@@ -66,15 +60,6 @@ public class OnTransitionTextListener implements Indicator.OnTransitionListener 
 		return this;
 	}
 
-	/**
-	 * 如果tabItemView 不是目标的TextView，那么你可以重写该方法返回实际要变化的TextView
-	 * 
-	 * @param tabItemView
-	 *            Indicator的每一项的view
-	 * @param position
-	 *            view在Indicator的位置索引
-	 * @return
-	 */
 	public TextView getTextView(View tabItemView, int position) {
 		return (TextView) tabItemView;
 	}

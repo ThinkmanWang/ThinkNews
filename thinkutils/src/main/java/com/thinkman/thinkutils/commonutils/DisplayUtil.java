@@ -7,6 +7,17 @@ import android.content.res.Configuration;
  * Created by wangx on 2016/5/9.
  */
 public class DisplayUtil {
+
+    public static int getStatusBarHeight(Context context) {
+        int res = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int height = 0;
+        if (res != 0) {
+            height = context.getResources().getDimensionPixelSize(res);
+        }
+
+        return height;
+    }
+
     /**
      * 2014年10月24日 下午9:59:08
      */

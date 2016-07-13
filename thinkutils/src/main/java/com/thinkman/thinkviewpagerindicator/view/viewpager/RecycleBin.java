@@ -5,30 +5,11 @@ import android.os.Build;
 import android.util.SparseArray;
 import android.view.View;
 
-/**
- * The RecycleBin facilitates reuse of views across layouts. The RecycleBin has
- * two levels of storage: ActiveViews and ScrapViews. ActiveViews are those
- * views which were onscreen at the start of a layout. By construction, they are
- * displaying current information. At the end of layout, all views in
- * ActiveViews are demoted to ScrapViews. ScrapViews are old views that could
- * potentially be used by the adapter to avoid allocating views unnecessarily.
- * <p>
- * This class was taken from Android's implementation of
- * {@link android.widget.AbsListView} which is copyrighted 2006 The Android Open
- * Source Project.
- */
 public class RecycleBin {
-	/**
-	 * Views that were on screen at the start of layout. This array is populated
-	 * at the start of layout, and at the end of layout all view in activeViews
-	 * are moved to scrapViews. Views in activeViews represent a contiguous
-	 * range of Views, with position of the first view store in
-	 * mFirstActivePosition.
-	 */
+
 	private View[] activeViews = new View[0];
 	private int[] activeViewTypes = new int[0];
 
-	/** Unsorted views that can be used by the adapter as a convert view. */
 	private SparseArray<View>[] scrapViews;
 
 	private int viewTypeCount;
@@ -54,7 +35,6 @@ public class RecycleBin {
 		return viewType >= 0;
 	}
 
-	/** @return A view from the ScrapViews collection. These are unordered. */
 	View getScrapView(int position, int viewType) {
 		if (viewTypeCount == 1) {
 			return retrieveFromScrap(currentScrapViews, position);
@@ -64,12 +44,6 @@ public class RecycleBin {
 		return null;
 	}
 
-	/**
-	 * Put a view into the ScrapViews list. These views are unordered.
-	 * 
-	 * @param scrap
-	 *            The view to add
-	 */
 	@SuppressLint("NewApi")
 	void addScrapView(View scrap, int position, int viewType) {
 		if (viewTypeCount == 1) {
@@ -83,7 +57,6 @@ public class RecycleBin {
 		}
 	}
 
-	/** Move all views remaining in activeViews to scrapViews. */
 	@SuppressLint("NewApi")
 	void scrapActiveViews() {
 		final View[] activeViews = this.activeViews;
@@ -118,10 +91,6 @@ public class RecycleBin {
 		pruneScrapViews();
 	}
 
-	/**
-	 * Makes sure that the size of scrapViews does not exceed the size of
-	 * activeViews. (This can happen if an adapter does not recycle its views).
-	 */
 	private void pruneScrapViews() {
 		final int maxViews = activeViews.length;
 		final int viewTypeCount = this.viewTypeCount;

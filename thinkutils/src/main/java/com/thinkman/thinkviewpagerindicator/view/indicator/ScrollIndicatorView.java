@@ -11,12 +11,6 @@ import android.widget.HorizontalScrollView;
 import com.thinkman.thinkviewpagerindicator.view.indicator.slidebar.ScrollBar;
 
 
-/**
- * 
- * @author试着飞
- * @date 2014年11月1日
- * @version 1.0 主要用于多个tab可以进行滑动
- */
 public class ScrollIndicatorView extends HorizontalScrollView implements Indicator {
 	private SFixedIndicatorView fixedIndicatorView;
 
@@ -240,7 +234,6 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
 
 		@Override
 		protected void onMeasure(int widthSpec, int heightSpec) {
-			Log.d("pppp", "onMeasure start: layoutWidth " + ((ScrollIndicatorView) getParent()).getMeasuredWidth());
 			if (isAutoSplit) {
 				ScrollIndicatorView group = (ScrollIndicatorView) getParent();
 				int layoutWidth = group.getMeasuredWidth();
@@ -253,8 +246,7 @@ public class ScrollIndicatorView extends HorizontalScrollView implements Indicat
 						maxCellWidth = maxCellWidth < width ? width : maxCellWidth;
 						totalWidth += width;
 					}
-					Log.d("pppp", "onMeasure: layoutWidth" + layoutWidth + " totalWidth:" + totalWidth + " maxCellWidth * count:" + maxCellWidth
-							* count);
+
 					if (totalWidth > layoutWidth) {
 						group.setFillViewport(false);
 						setSplitMethod(SPLITMETHOD_WRAP);

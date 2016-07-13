@@ -114,6 +114,12 @@
         android:layout_height="wrap_content"
         android:text="高亮提示"/>
 
+    <Button
+        android:id="@+id/btn_translucent_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="透明状态栏"/>
+
 </LinearLayout>
 
 </com.thinkman.thinkutils.view.VerticalScrollView>

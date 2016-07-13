@@ -68,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btn_highlight)
     Button m_btnHighlight = null;
 
+    @BindView(R.id.btn_translucent_bar)
+    Button m_btnTranslucentBar = null;
+
     OptionsPickerView pvOptions;
     private ArrayList<ProvinceBean> options1Items = new ArrayList<ProvinceBean>();
     private ArrayList<ArrayList<String>> options2Items = new ArrayList<ArrayList<String>>();
@@ -347,6 +350,12 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_highlight)
     public void onHighlightClick() {
         Intent intent = new Intent(MainActivity.this, HighLightActivity.class);
+        this.startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_translucent_bar)
+    public void onTranslucentBarClick() {
+        Intent intent = new Intent(MainActivity.this, TranslucentActivity.class);
         this.startActivity(intent);
     }
 }

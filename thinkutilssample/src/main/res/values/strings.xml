@@ -20,4 +20,5 @@
         on the size of the UI element to highlight.</string>
     <string name="highlight3_title">提示3</string>
     <string name="highlight3_descr">Highlights are shown only the first time the app is used.</string>
+    <string name="title_activity_translucent">TranslucentActivity</string>
 </resources>
