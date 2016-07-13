@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkutils.commonutils.ToastUtils;
 import com.thinkman.thinkutils.view.CircleImageText;
 import com.thinkman.thinkutils.view.CommonHorizontalAttachBar;
@@ -16,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
 
-public class CustomBarActivity extends AppCompatActivity {
+public class CustomBarActivity extends ThinkBaseActivity {
 
     @BindView(R.id.chab_attachment)
     CommonHorizontalAttachBar m_chabAttachment = null;

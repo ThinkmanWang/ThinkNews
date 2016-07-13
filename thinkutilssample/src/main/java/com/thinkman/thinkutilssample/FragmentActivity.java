@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkutils.commonutils.DisplayUtil;
 import com.thinkman.thinkutils.view.CustomBar;
 
@@ -15,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class FragmentActivity extends AppCompatActivity {
+public class FragmentActivity extends ThinkBaseActivity {
 
     @BindView(R.id.bar_1)
     CustomBar m_bar1 = null;

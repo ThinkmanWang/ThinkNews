@@ -1,5 +1,6 @@
 package com.thinkman.thinkutils.activity;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
@@ -10,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.thinkman.thinkutils.R;
 import com.thinkman.thinkutils.commonutils.DisplayUtil;
 
 /**
@@ -21,6 +23,21 @@ public class ThinkBaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
+
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+        //overridePendingTransition(R.anim.out_to_right, R.anim.in_from_left);
+
     }
 
 //    public void initTranslucentBarColor(int nResBgColor) {

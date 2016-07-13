@@ -3,9 +3,10 @@ package com.thinkman.thinkutilssample;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkutils.highlight.HighlightManager;
 
-public class HighLightActivity extends AppCompatActivity {
+public class HighLightActivity extends ThinkBaseActivity {
 
     private HighlightManager highlightManager;
 

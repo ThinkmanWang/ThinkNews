@@ -12,13 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkviewpagerindicator.view.indicator.Indicator;
 import com.thinkman.thinkviewpagerindicator.view.indicator.IndicatorViewPager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GuideActivity extends AppCompatActivity {
+public class GuideActivity extends ThinkBaseActivity {
 
     private IndicatorViewPager indicatorViewPager = null;
     private LayoutInflater inflate;

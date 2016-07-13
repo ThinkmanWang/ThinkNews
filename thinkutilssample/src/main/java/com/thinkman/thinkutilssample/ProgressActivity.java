@@ -8,13 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkutils.layout.ProgressLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ProgressActivity extends AppCompatActivity {
+public class ProgressActivity extends ThinkBaseActivity {
 
     @BindView(R.id.pl_content)
     ProgressLayout m_plMainLayout;

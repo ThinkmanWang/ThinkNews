@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkutils.view.ThinkRecyclerView;
 import com.thinkman.thinkutils.view.decorator.ThinkBorderDividerItemDecoration;
 import com.thinkman.thinkutilssample.adapter.ThinkBorderDividerItemDecorationAdapter;
@@ -17,7 +18,7 @@ import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
-public class ThinkRecyclerViewActivity extends AppCompatActivity {
+public class ThinkRecyclerViewActivity extends ThinkBaseActivity {
 
     @BindView(R.id.ftr_layout)
     PtrClassicFrameLayout m_ptrLayout = null;

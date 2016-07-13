@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class DetailActivity extends AppCompatActivity {
+import com.thinkman.thinkutils.activity.ThinkBaseActivity;
+
+public class DetailActivity extends ThinkBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

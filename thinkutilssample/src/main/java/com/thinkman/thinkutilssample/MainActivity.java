@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
+import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 import com.thinkman.thinkutils.view.ImagePickerView;
 import com.thinkman.thinkutilssample.bean.ProvinceBean;
@@ -33,7 +34,7 @@ import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrDefaultHandler2;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ThinkBaseActivity {
 
     @BindView(R.id.et_result) EditText m_etResult;
     @BindView(R.id.ipv_image_picker)
