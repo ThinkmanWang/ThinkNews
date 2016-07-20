@@ -61,7 +61,7 @@
     <attr name="hasRightIcon" format="boolean" />
     <attr name="rightIconDrawable" format="color|reference" />
     <attr name="contentHint" format="string" />
-    <attr name="hintTextSize" format="dimension" />
+    <attr name="hintTextSize" format="dimension|reference" />
     <attr name="noticeText" format="string|reference" />
     <attr name="noticeTextSize" format="dimension" />
     <attr name="noticeColor" format="color" />
@@ -149,5 +149,14 @@
     <declare-styleable name="FlowLayout">
         <attr name="horizontal_spacing" format="dimension" />
         <attr name="vertical_spacing" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="SearchEditText">
+        <attr name="hintColor" />
+        <attr name="hintText" />
+
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <attr name="android:inputType" />
     </declare-styleable>
 </resources>

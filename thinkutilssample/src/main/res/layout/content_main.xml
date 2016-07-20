@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:ImagePickerView="http://schemas.android.com/apk/res-auto"
     xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+    xmlns:thinkutils="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ftr_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,6 +41,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <com.thinkman.thinkutils.view.SearchEditText
+        android:id="@+id/set_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        thinkutils:hintText="search"
+        thinkutils:hintColor="@android:color/darker_gray"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp"/>
+
     <Button
         android:id="@+id/btn_progress_layout"
         android:layout_width="match_parent"
@@ -53,6 +63,12 @@
     <com.thinkman.thinkutils.view.CommonTextBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_custombar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CustomBar"/>
 
     <Button
         android:id="@+id/btn_login"
@@ -71,12 +87,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Think Recycler View"/>
-
-    <Button
-        android:id="@+id/btn_custombar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CustomBar"/>
 
     <Button
         android:id="@+id/btn_date_time"
@@ -126,6 +136,7 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:text="修改状态栏颜色"/>
+
 
 </LinearLayout>
 

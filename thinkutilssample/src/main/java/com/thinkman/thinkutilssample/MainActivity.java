@@ -6,12 +6,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -21,8 +24,10 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.thinkman.thinkutils.activity.BaseActivityWithActionBar;
 import com.thinkman.thinkutils.activity.ThinkBaseActivity;
+import com.thinkman.thinkutils.commonutils.ToastUtils;
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 import com.thinkman.thinkutils.view.ImagePickerView;
+import com.thinkman.thinkutils.view.SearchEditText;
 import com.thinkman.thinkutilssample.bean.ProvinceBean;
 import com.thinkman.thinkutilssample.models.FlowLayoutActivity;
 
@@ -75,6 +80,9 @@ public class MainActivity extends BaseActivityWithActionBar {
 
     @BindView(R.id.btn_update_statusbar_color)
     Button m_btnUpdateStatusBarColor = null;
+
+    @BindView(R.id.set_search)
+    SearchEditText m_setSearch = null;
 
     OptionsPickerView pvOptions;
     private ArrayList<ProvinceBean> options1Items = new ArrayList<ProvinceBean>();
@@ -138,6 +146,32 @@ public class MainActivity extends BaseActivityWithActionBar {
             @Override
             public void onTimeSelect(Date date) {
                 m_btnDateTime.setText(getTime(date));
+            }
+        });
+
+        m_setSearch.setOnLeftClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtils.showToast(MainActivity.this, "Search: " + m_setSearch.getEditText().getText().toString());
+            }
+        });
+
+        m_setSearch.setOnRightClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                m_setSearch.getEditText().setText("");
+            }
+        });
+
+        m_setSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH)
+                {
+                    ToastUtils.showToast(MainActivity.this, "Search: " + m_setSearch.getEditText().getText().toString());
+                    return true;
+                }
+                return false;
             }
         });
 
