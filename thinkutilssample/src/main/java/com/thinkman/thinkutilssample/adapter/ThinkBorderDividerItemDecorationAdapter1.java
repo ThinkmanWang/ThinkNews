@@ -53,9 +53,6 @@ public class ThinkBorderDividerItemDecorationAdapter1 extends ThinkRecyclerViewA
         ImageView borderIv = viewHolder.findViewById(R.id.border_item_iv);
         TextView borderTv = viewHolder.findViewById(R.id.border_item_tv);
 
-        SwipeLayout sdv_DeleteView = viewHolder.findViewById(R.id.swipelayout);
-        SwipeLayout.addSwipeView(sdv_DeleteView);
-
         borderIv.setImageResource(data.imageResId);
         borderTv.setText(data.content);
     }
