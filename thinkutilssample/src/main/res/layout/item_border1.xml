@@ -33,23 +33,26 @@ limitations under the License.
         android:background="@color/text_red"
         android:textColor="@color/white"
         android:layout_centerVertical="true"
+
         android:text="删除"/>
 
     <Button
         android:id="@+id/rowButton"
+        android:translationZ="10dp"
         style="?attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/btn_delete"
         android:layout_gravity="right|center_vertical"
         android:gravity="right|center_vertical"
-        android:text="hahahahah"
+        android:text=""
         android:textColor="#757575"
         android:textSize="12sp"
         android:textStyle="normal" />
 
     <RelativeLayout
         android:id="@+id/rl_main"
+        android:translationZ="1dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:thinkutils="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
