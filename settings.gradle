@@ -1,1 +1,1 @@
-include ':app', ':thinkactivity', ':thinkutils', ':thinkviewpagerindicator', ':RecyclerViewUtils', ':thinkutilssample'
+include ':app', ':thinkactivity', ':thinkutils', ':thinkviewpagerindicator', ':RecyclerViewUtils', ':thinkutilssample', ':slidingbutton'
