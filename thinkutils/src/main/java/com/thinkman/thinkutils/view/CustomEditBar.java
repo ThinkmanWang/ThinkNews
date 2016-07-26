@@ -3,6 +3,7 @@ package com.thinkman.thinkutils.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.text.InputType;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thinkman.thinkutils.R;
@@ -39,6 +41,10 @@ public class CustomEditBar extends FrameLayout {
     private int hintColor;
     private String hintText;
     private TextView label;
+    private ImageView iconRight;
+    private ImageView iconLeft;
+    private Drawable rightIconDrawable = null;
+    private Drawable leftIconDrawable = null;
 
     // End Of Content View Elements
     private EditText content;
@@ -64,6 +70,8 @@ public class CustomEditBar extends FrameLayout {
 
         label = (TextView) contentView.findViewById(R.id.label);
         content = (EditText) contentView.findViewById(R.id.edittext);
+        iconLeft = (ImageView) contentView.findViewById(R.id.iv_icon_left);
+        iconRight = (ImageView) contentView.findViewById(R.id.iv_icon_right);
 
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(
@@ -126,6 +134,32 @@ public class CustomEditBar extends FrameLayout {
             addView(view, layoutParams1);
         }
 
+        boolean hasRightIcon = a.getBoolean(R.styleable.CustomEditBar_hasRightIcon, false);
+        if (a.hasValue(R.styleable.CustomEditBar_rightIconDrawable)) {
+            rightIconDrawable = a.getDrawable(R.styleable.CustomEditBar_rightIconDrawable);
+        }
+
+        if (!hasRightIcon) {
+            if (iconRight != null) {
+                iconRight.setVisibility(INVISIBLE);
+            }
+        } else {
+            if (rightIconDrawable != null && iconRight != null) {
+                iconRight.setImageDrawable(rightIconDrawable);
+            }
+            if (iconRight != null) {
+                iconRight.setVisibility(VISIBLE);
+            }
+        }
+
+        leftIconDrawable = a.getDrawable(R.styleable.CustomEditBar_leftIconDrawable);
+        if (leftIconDrawable != null) {
+            iconLeft.setImageDrawable(leftIconDrawable);
+            iconLeft.setVisibility(VISIBLE);
+        } else {
+            iconLeft.setVisibility(GONE);
+        }
+
         a.recycle();
 
     }
@@ -138,5 +172,13 @@ public class CustomEditBar extends FrameLayout {
     }
     public String getHintString() {
         return content.getHint().toString();
+    }
+
+    public ImageView getLeftImageView() {
+        return iconLeft;
+    }
+
+    public ImageView getRightImageView() {
+        return iconRight;
     }
 }

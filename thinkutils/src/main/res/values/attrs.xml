@@ -124,6 +124,9 @@
         <attr name="hintText" />
         <attr name="hasUnderBar" />
         <attr name="isPassword" />
+        <attr name="hasRightIcon" />
+        <attr name="rightIconDrawable" />
+        <attr name="leftIconDrawable"/>
         <!--直接使用系统中已定义的语意明确的属性，不用设置format-->
         <attr name="android:inputType" />
     </declare-styleable>

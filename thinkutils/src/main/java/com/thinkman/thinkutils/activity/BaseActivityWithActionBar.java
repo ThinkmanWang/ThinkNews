@@ -154,4 +154,8 @@ public class BaseActivityWithActionBar extends ThinkBaseActivity {
     public void setActionBarBG(int nResID) {
         mCommonActionBar.setBackgroundResource(nResID);
     }
+
+    public void setActionBarBGColor(int nResID) {
+        mCommonActionBar.setBackgroundColor(nResID);
+    }
 }

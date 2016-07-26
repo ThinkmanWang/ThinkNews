@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.thinkman.thinkutils.adapter.ThinkRecyclerViewAdapter;
 import com.thinkman.thinkutils.adapter.ThinkRecyclerViewHolder;
+import com.thinkman.thinkutils.view.SwipeDeleteView;
 import com.thinkman.thinkutilssample.R;
 import com.thinkman.thinkutilssample.models.ThinkRecyclerViewData;
 
@@ -52,6 +53,8 @@ public class ThinkBorderDividerItemDecorationAdapter extends ThinkRecyclerViewAd
 
         ImageView borderIv = viewHolder.findViewById(R.id.border_item_iv);
         TextView borderTv = viewHolder.findViewById(R.id.border_item_tv);
+
+        SwipeDeleteView sdv_DeleteView = viewHolder.findViewById(R.id.sdv_delete_view);
 
         borderIv.setImageResource(data.imageResId);
         borderTv.setText(data.content);

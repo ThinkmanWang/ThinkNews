@@ -112,7 +112,7 @@ public class CustomBar extends FrameLayout {
             iconRight.setVisibility(INVISIBLE);
         } else {
             if (rightIconDrawable != null) {
-                iconLeft.setImageDrawable(rightIconDrawable);
+                iconRight.setImageDrawable(rightIconDrawable);
             }
             iconRight.setVisibility(VISIBLE);
         }

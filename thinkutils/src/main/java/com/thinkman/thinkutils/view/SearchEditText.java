@@ -113,4 +113,5 @@ public class SearchEditText extends LinearLayout {
     public EditText getEditText() {
         return m_etContent;
     }
+
 }

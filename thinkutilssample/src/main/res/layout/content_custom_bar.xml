@@ -42,6 +42,7 @@
         <com.thinkman.thinkutils.view.CustomEditBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            thinkutils:hasRightIcon="true"
             thinkutils:labelText="hehe"
             thinkutils:hintText="HAHA"/>
 

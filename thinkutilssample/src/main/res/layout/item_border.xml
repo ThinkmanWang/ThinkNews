@@ -18,8 +18,14 @@ limitations under the License.
 
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/App.Card"
+    xmlns:thinkutils="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <com.thinkman.thinkutils.view.SwipeDeleteView
+        android:id="@+id/sdv_delete_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -44,5 +50,6 @@ limitations under the License.
             android:layout_toRightOf="@id/border_item_iv" />
 
     </RelativeLayout>
+    </com.thinkman.thinkutils.view.SwipeDeleteView>
 
 </android.support.v7.widget.CardView>
