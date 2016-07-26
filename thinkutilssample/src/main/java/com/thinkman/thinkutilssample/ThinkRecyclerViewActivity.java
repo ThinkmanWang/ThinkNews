@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.thinkman.thinkutils.activity.ThinkBaseActivity;
+import com.thinkman.thinkutils.layout.ThinkPtrClassicFrameLayout;
 import com.thinkman.thinkutils.view.ThinkRecyclerView;
 import com.thinkman.thinkutils.view.decorator.ThinkBorderDividerItemDecoration;
 import com.thinkman.thinkutilssample.adapter.ThinkBorderDividerItemDecorationAdapter;
@@ -21,7 +22,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 public class ThinkRecyclerViewActivity extends ThinkBaseActivity {
 
     @BindView(R.id.ftr_layout)
-    PtrClassicFrameLayout m_ptrLayout = null;
+    ThinkPtrClassicFrameLayout m_ptrLayout = null;
 
     @BindView(R.id.recycler_view)
     ThinkRecyclerView mRecyclerView = null;
@@ -37,6 +38,7 @@ public class ThinkRecyclerViewActivity extends ThinkBaseActivity {
 
         this.adapter = new ThinkBorderDividerItemDecorationAdapter();
         mRecyclerView.setAdapter(this.adapter);
+        mRecyclerView.setVerticalScrollOnly(true);
         mRecyclerView.addItemDecoration(new ThinkBorderDividerItemDecoration(
                 this.getResources().getDimensionPixelOffset(R.dimen.border_vertical_padding),
                 this.getResources().getDimensionPixelOffset(R.dimen.border_horizontal_padding)));

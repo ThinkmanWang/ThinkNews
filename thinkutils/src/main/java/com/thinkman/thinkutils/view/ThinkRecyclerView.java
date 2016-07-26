@@ -21,6 +21,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 
 /**
  * Description：EasyRecyclerView
@@ -76,5 +77,36 @@ public class ThinkRecyclerView extends RecyclerView {
 
     public void setLinearLayoutManager(LinearLayoutManager linearLayoutManager) {
         mLinearLayoutManager = linearLayoutManager;
+    }
+
+    private boolean m_bVerticalScrollOnly = false;
+    public void setVerticalScrollOnly(boolean bVerticalScroll) {
+        m_bVerticalScrollOnly = bVerticalScroll;
+    }
+
+    private float xDistance, yDistance;
+    private float xLast, yLast;
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                xDistance = yDistance = 0f;
+                xLast = ev.getX();
+                yLast = ev.getY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                final float curX = ev.getX();
+                final float curY = ev.getY();
+                xDistance += Math.abs(curX - xLast);
+                yDistance += Math.abs(curY - yLast);
+                xLast = curX;
+                yLast = curY;
+                if (xDistance > yDistance && m_bVerticalScrollOnly) {
+                    return false;
+                }
+        }
+        return super.onInterceptTouchEvent(ev);
     }
 }
