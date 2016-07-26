@@ -9,6 +9,7 @@ import com.thinkman.thinkutils.layout.ThinkPtrClassicFrameLayout;
 import com.thinkman.thinkutils.view.ThinkRecyclerView;
 import com.thinkman.thinkutils.view.decorator.ThinkBorderDividerItemDecoration;
 import com.thinkman.thinkutilssample.adapter.ThinkBorderDividerItemDecorationAdapter;
+import com.thinkman.thinkutilssample.adapter.ThinkBorderDividerItemDecorationAdapter1;
 import com.thinkman.thinkutilssample.models.ThinkRecyclerViewData;
 
 import java.util.ArrayList;

@@ -8,4 +8,5 @@
     <string name="retry_message">点击屏幕重试</string>
 
     <string name="default_button_label">OK</string>
+    <string name="title_swipe_delete">滑动删除</string>
 </resources>

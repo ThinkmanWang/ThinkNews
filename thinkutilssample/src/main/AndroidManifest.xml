@@ -35,8 +35,7 @@
             android:name=".CustomBarActivity"
             android:label="@string/title_activity_custom_bar"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".GuideActivity" />
+        <activity android:name=".GuideActivity" />
         <activity
             android:name=".FragmentActivity"
             android:label="@string/title_activity_fragment"
@@ -53,8 +52,10 @@
         <activity
             android:name=".TranslucentActivity"
             android:label="@string/title_activity_translucent" />
-        <activity android:name=".UpdateStatusBarColorActivity"
+        <activity
+            android:name=".UpdateStatusBarColorActivity"
             android:theme="@style/AppTheme.NoNoTitle" />
+        <activity android:name=".SwipeDeleteActivity"></activity>
     </application>
 
 </manifest>

@@ -405,4 +405,10 @@ public class MainActivity extends BaseActivityWithActionBar {
         Intent intent = new Intent(MainActivity.this, UpdateStatusBarColorActivity.class);
         this.startActivity(intent);
     }
+
+    @OnClick(R.id.btn_swipe_delete)
+    public void onSwipeClick() {
+        Intent intent = new Intent(MainActivity.this, SwipeDeleteActivity.class);
+        this.startActivity(intent);
+    }
 }

@@ -137,6 +137,12 @@
         android:visibility="gone"
         android:text="修改状态栏颜色"/>
 
+    <Button
+        android:id="@+id/btn_swipe_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="滑动删除"/>
+
 
 </LinearLayout>
 

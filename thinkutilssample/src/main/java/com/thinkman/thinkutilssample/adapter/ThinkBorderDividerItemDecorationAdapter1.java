@@ -19,14 +19,13 @@ package com.thinkman.thinkutilssample.adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.thinkman.thinkutils.adapter.ThinkRecyclerViewAdapter;
 import com.thinkman.thinkutils.adapter.ThinkRecyclerViewHolder;
 import com.thinkman.thinkutils.layout.SwipeLayout;
 import com.thinkman.thinkutilssample.R;
 import com.thinkman.thinkutilssample.models.ThinkRecyclerViewData;
 
-public class ThinkBorderDividerItemDecorationAdapter extends ThinkRecyclerViewAdapter {
+public class ThinkBorderDividerItemDecorationAdapter1 extends ThinkRecyclerViewAdapter {
     /**
      * Please return RecyclerView loading layout Id array
      * 请返回RecyclerView加载的布局Id数组
@@ -34,7 +33,7 @@ public class ThinkBorderDividerItemDecorationAdapter extends ThinkRecyclerViewAd
      * @return 布局Id数组
      */
     @Override public int[] getItemLayouts() {
-        return new int[] { R.layout.item_border };
+        return new int[] { R.layout.item_border1 };
     }
 
 
@@ -54,8 +53,8 @@ public class ThinkBorderDividerItemDecorationAdapter extends ThinkRecyclerViewAd
         ImageView borderIv = viewHolder.findViewById(R.id.border_item_iv);
         TextView borderTv = viewHolder.findViewById(R.id.border_item_tv);
 
-//        SwipeLayout sdv_DeleteView = viewHolder.findViewById(R.id.sdv_delete_view);
-//        SwipeLayout.addSwipeView(sdv_DeleteView);
+        SwipeLayout sdv_DeleteView = viewHolder.findViewById(R.id.swipelayout);
+        SwipeLayout.addSwipeView(sdv_DeleteView);
 
         borderIv.setImageResource(data.imageResId);
         borderTv.setText(data.content);
