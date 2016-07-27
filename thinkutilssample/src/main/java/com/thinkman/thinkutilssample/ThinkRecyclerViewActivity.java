@@ -3,9 +3,11 @@ package com.thinkman.thinkutilssample;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkutils.layout.ThinkPtrClassicFrameLayout;
+import com.thinkman.thinkutils.listener.RecyclerViewTouchListener;
 import com.thinkman.thinkutils.view.ThinkRecyclerView;
 import com.thinkman.thinkutils.view.decorator.ThinkBorderDividerItemDecoration;
 import com.thinkman.thinkutilssample.adapter.ThinkBorderDividerItemDecorationAdapter;
@@ -29,6 +31,7 @@ public class ThinkRecyclerViewActivity extends ThinkBaseActivity {
     ThinkRecyclerView mRecyclerView = null;
 
     private ThinkBorderDividerItemDecorationAdapter adapter;
+    private RecyclerViewTouchListener onRecyclerViewTouchListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +40,15 @@ public class ThinkRecyclerViewActivity extends ThinkBaseActivity {
 
         ButterKnife.bind(this);
 
+        initView();
+        this.initData();
+    }
+
+    private void initView() {
         this.adapter = new ThinkBorderDividerItemDecorationAdapter();
         mRecyclerView.setAdapter(this.adapter);
-        mRecyclerView.setVerticalScrollOnly(true);
+        //mRecyclerView.setVerticalScrollOnly(true);
+
         mRecyclerView.addItemDecoration(new ThinkBorderDividerItemDecoration(
                 this.getResources().getDimensionPixelOffset(R.dimen.border_vertical_padding),
                 this.getResources().getDimensionPixelOffset(R.dimen.border_horizontal_padding)));
@@ -74,7 +83,24 @@ public class ThinkRecyclerViewActivity extends ThinkBaseActivity {
             }
         }, 100);
 
-        this.initData();
+        //init swipe delete
+        onRecyclerViewTouchListener = new RecyclerViewTouchListener(this, mRecyclerView);
+        onRecyclerViewTouchListener
+                .setIndependentViews(R.id.rl_main)
+                .setViewsToFade(R.id.btn_row)
+                .setSwipeOptionViews(R.id.btn_delete)
+                .setSwipeable(R.id.rl_main, R.id.btn_delete, new RecyclerViewTouchListener.OnSwipeOptionsClickListener() {
+                    @Override
+                    public void onSwipeOptionClicked(int viewID, int position) {
+                        String message = "";
+                        if (viewID == R.id.btn_delete) {
+                            message += "删除";
+                        }
+                        message += " position-> " + position;
+                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                    }
+                });
+        mRecyclerView.addOnItemTouchListener(onRecyclerViewTouchListener);
     }
 
     protected void updateData() {

@@ -33,7 +33,6 @@ limitations under the License.
         android:background="@color/text_red"
         android:textColor="@color/white"
         android:layout_centerVertical="true"
-
         android:text="删除"/>
 
     <Button
