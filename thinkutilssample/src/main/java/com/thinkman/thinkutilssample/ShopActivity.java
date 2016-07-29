@@ -27,8 +27,8 @@ public class ShopActivity extends BaseActivityWithActionBar {
     }
 
     private void initView() {
-        m_nbNumber.setBuyMax(50)
-                .setInventory(6) //库存
+        m_nbNumber.setBuyMax(1024)
+                .setInventory(1024) //库存
                 .setCurrentNumber(1)
                 .setOnWarnListener(new NumberButton.OnWarnListener() {
                     @Override
