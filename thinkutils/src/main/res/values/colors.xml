@@ -71,5 +71,5 @@
     <color name="dark_white">#dddddd</color>
     <color name="province_line_border">#D0D0D0</color>
 
-
+    <color name="divider">#999</color>
 </resources>

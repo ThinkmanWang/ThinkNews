@@ -55,7 +55,8 @@
         <activity
             android:name=".UpdateStatusBarColorActivity"
             android:theme="@style/AppTheme.NoNoTitle" />
-        <activity android:name=".SwipeDeleteActivity"></activity>
+        <activity android:name=".SwipeDeleteActivity" />
+        <activity android:name=".ShopActivity"></activity>
     </application>
 
 </manifest>

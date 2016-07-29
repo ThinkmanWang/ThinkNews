@@ -411,4 +411,10 @@ public class MainActivity extends BaseActivityWithActionBar {
         Intent intent = new Intent(MainActivity.this, SwipeDeleteActivity.class);
         this.startActivity(intent);
     }
+
+    @OnClick(R.id.btn_shop)
+    public void onShopClick() {
+        Intent intent = new Intent(MainActivity.this, ShopActivity.class);
+        this.startActivity(intent);
+    }
 }

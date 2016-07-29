@@ -41,7 +41,7 @@ public class ThinkPtrClassicFrameLayout extends PtrClassicFrameLayout {
                 yDistance += Math.abs(curY - yLast);
                 xLast = curX;
                 yLast = curY;
-                if (xDistance > yDistance ) {
+                if (xDistance > yDistance/2 ) {
                     return false;
                 }
         }
