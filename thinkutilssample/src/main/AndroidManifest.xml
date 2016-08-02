@@ -56,7 +56,11 @@
             android:name=".UpdateStatusBarColorActivity"
             android:theme="@style/AppTheme.NoNoTitle" />
         <activity android:name=".SwipeDeleteActivity" />
-        <activity android:name=".ShopActivity"></activity>
+        <activity android:name=".ShopActivity" />
+        <activity
+            android:name=".ThinkRecyclerViewScrollingActivity"
+            android:label="@string/title_activity_think_recycler_view_scrolling"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

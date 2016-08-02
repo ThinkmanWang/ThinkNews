@@ -28,6 +28,7 @@ import com.thinkman.thinkutils.commonutils.ToastUtils;
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 import com.thinkman.thinkutils.view.ImagePickerView;
 import com.thinkman.thinkutils.view.SearchEditText;
+import com.thinkman.thinkutils.view.ThinkHorizontalScrollView;
 import com.thinkman.thinkutilssample.bean.ProvinceBean;
 import com.thinkman.thinkutilssample.models.FlowLayoutActivity;
 
@@ -415,6 +416,12 @@ public class MainActivity extends BaseActivityWithActionBar {
     @OnClick(R.id.btn_shop)
     public void onShopClick() {
         Intent intent = new Intent(MainActivity.this, ShopActivity.class);
+        this.startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_scroll_activity)
+    public void onScrollActivityClick() {
+        Intent intent = new Intent(MainActivity.this, ThinkRecyclerViewScrollingActivity.class);
         this.startActivity(intent);
     }
 }
