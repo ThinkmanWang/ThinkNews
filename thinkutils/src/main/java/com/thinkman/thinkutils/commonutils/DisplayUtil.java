@@ -59,4 +59,13 @@ public class DisplayUtil {
                 Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
+    public static int getScreenHeight(Context context) {
+        final float fontScale = context.getResources().getDisplayMetrics().heightPixels;
+        return (int) (fontScale);
+    }
+
+    public static int getScreenWidth(Context context) {
+        final float fontScale = context.getResources().getDisplayMetrics().widthPixels;
+        return (int) (fontScale);
+    }
 }

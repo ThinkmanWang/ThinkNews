@@ -1,6 +1,7 @@
 package com.thinkman.thinkutils.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,18 @@ public class ImageText extends LinearLayout {
         contentView = LayoutInflater.from(context).inflate(R.layout.layout_image_text, this, true);
         m_ivIcon = (ImageView) contentView.findViewById(R.id.iv_icon);
         m_tvLabel = (TextView) contentView.findViewById(R.id.tv_label);
+
+        final TypedArray a = getContext().obtainStyledAttributes(
+                attrs, R.styleable.ImageText, defStyle, 0);
+
+        float textSize = a.getDimension(R.styleable.ImageText_labelTextSize, getResources().getDimension(R.dimen.textsize_26));
+        m_tvLabel.setTextSize(textSize);
+
+        int labelColor = a.getInt(R.styleable.ImageText_labelColor, getResources().getColor(R.color.text_dark_666));
+        m_tvLabel.setTextColor(labelColor);
+
+        String szLabel = a.getString(R.styleable.ImageText_labelText);
+        m_tvLabel.setText(szLabel);
     }
 
     public void setIcon(int nResId) {
@@ -56,5 +69,13 @@ public class ImageText extends LinearLayout {
 
     public void setLabelColor(int nResId) {
         m_tvLabel.setTextColor(mContext.getResources().getColor(nResId));
+    }
+
+    public ImageView getIcon() {
+        return m_ivIcon;
+    }
+
+    public TextView getLabel() {
+        return  m_tvLabel;
     }
 }

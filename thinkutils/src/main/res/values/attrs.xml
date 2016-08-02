@@ -170,4 +170,10 @@
         <attr name="textSize" format="dimension"/>
         <attr name="textColor" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="ImageText">
+        <attr name="labelText" />
+        <attr name="labelTextSize" />
+        <attr name="labelColor" />
+    </declare-styleable>
 </resources>

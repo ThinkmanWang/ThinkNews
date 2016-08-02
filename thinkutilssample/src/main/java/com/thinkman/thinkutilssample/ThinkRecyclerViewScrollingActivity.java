@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.thinkman.thinkutils.activity.BaseActivityWithActionBar;
+import com.thinkman.thinkutils.commonutils.DisplayUtil;
 import com.thinkman.thinkutils.layout.ThinkPtrClassicFrameLayout;
 import com.thinkman.thinkutils.listener.RecyclerViewTouchListener;
 import com.thinkman.thinkutils.manager.LinearLayoutManager;
@@ -30,8 +31,8 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 
 public class ThinkRecyclerViewScrollingActivity extends BaseActivityWithActionBar {
 
-//    @BindView(R.id.ftr_layout)
-//    ThinkPtrClassicFrameLayout m_ptrLayout = null;
+    @BindView(R.id.ftr_layout)
+    ThinkPtrClassicFrameLayout m_ptrLayout = null;
 
     @BindView(R.id.recycler_view)
     ThinkRecyclerViewScrollable mRecyclerView = null;
@@ -64,47 +65,37 @@ public class ThinkRecyclerViewScrollingActivity extends BaseActivityWithActionBa
         mRecyclerView.setAdapter(this.adapter);
         mRecyclerView.setNestedScrollingEnabled(false);
 
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                int visibleItemCount = layoutManager.getChildCount();
-                int totalItemCount = layoutManager.getItemCount();
-                int lastVisibleItemPos = layoutManager.findLastVisibleItemPosition();
-            }
-        });
         //mRecyclerView.setVerticalScrollOnly(true);
 
-//        m_ptrLayout.setLastUpdateTimeRelateObject(this);
-//        m_ptrLayout.setPtrHandler(new PtrDefaultHandler2() {
-//
-//            @Override
-//            public void onLoadMoreBegin(PtrFrameLayout frame) {
-//                updateData();
-//            }
-//
-//            @Override
-//            public void onRefreshBegin(PtrFrameLayout frame) {
-//                updateData();
-//            }
-//
-//        });
-//        // the following are default settings
-//        m_ptrLayout.setResistance(1.7f); // you can also set foot and header separately
-//        m_ptrLayout.setRatioOfHeaderHeightToRefresh(1.2f);
-//        m_ptrLayout.setDurationToClose(1000);  // you can also set foot and header separately
-//        // default is false
-//        m_ptrLayout.setPullToRefresh(false);
-//
-//        // default is true
-//        m_ptrLayout.setKeepHeaderWhenRefresh(true);
-//        m_ptrLayout.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                // mPtrFrame.autoRefresh();
-//            }
-//        }, 100);
+        m_ptrLayout.setLastUpdateTimeRelateObject(this);
+        m_ptrLayout.setPtrHandler(new PtrDefaultHandler2() {
+
+            @Override
+            public void onLoadMoreBegin(PtrFrameLayout frame) {
+                updateData();
+            }
+
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                updateData();
+            }
+
+        });
+        // the following are default settings
+        m_ptrLayout.setResistance(1.7f); // you can also set foot and header separately
+        m_ptrLayout.setRatioOfHeaderHeightToRefresh(1.2f);
+        m_ptrLayout.setDurationToClose(1000);  // you can also set foot and header separately
+        // default is false
+        m_ptrLayout.setPullToRefresh(false);
+
+        // default is true
+        m_ptrLayout.setKeepHeaderWhenRefresh(true);
+        m_ptrLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // mPtrFrame.autoRefresh();
+            }
+        }, 100);
 
         //init swipe delete
         onRecyclerViewTouchListener = new RecyclerViewTouchListener(this, mRecyclerView);
@@ -128,12 +119,12 @@ public class ThinkRecyclerViewScrollingActivity extends BaseActivityWithActionBa
 
     protected void updateData() {
 
-//        m_ptrLayout.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                m_ptrLayout.refreshComplete();
-//            }
-//        }, 3000);
+        m_ptrLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                m_ptrLayout.refreshComplete();
+            }
+        }, 3000);
 
     }
 
@@ -149,6 +140,8 @@ public class ThinkRecyclerViewScrollingActivity extends BaseActivityWithActionBa
         }
         this.adapter.setList(allData);
         this.adapter.notifyDataSetChanged();
+
+        //m_ptrLayout.setMinimumHeight(mRecyclerView.getMeasuredHeight());
     }
 
     public int getMipmapId(Context context, String mipmapName) {

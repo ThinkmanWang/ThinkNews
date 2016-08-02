@@ -9,16 +9,7 @@ import android.view.View;
 
 import java.lang.reflect.Field;
 
-/**
- * {@link android.support.v7.widget.LinearLayoutManager} which wraps its content. Note that this class will always
- * wrap the content regardless of {@link android.support.v7.widget.RecyclerView} layout parameters.
- * <p/>
- * Now it's impossible to run add/remove animations with child views which have arbitrary dimensions (height for
- * VERTICAL orientation and width for HORIZONTAL). However if child views have fixed dimensions
- * {@link #setChildSize(int)} method might be used to let the layout manager know how big they are going to be.
- * If animations are not used at all then a normal measuring procedure will run and child views will be measured during
- * the measure pass.
- */
+
 public class LinearLayoutManager extends android.support.v7.widget.LinearLayoutManager {
 
     private static boolean canMakeInsetsDirty = true;
