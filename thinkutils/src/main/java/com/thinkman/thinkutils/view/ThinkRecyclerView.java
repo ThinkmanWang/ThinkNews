@@ -56,7 +56,7 @@ public class ThinkRecyclerView extends RecyclerView {
      *
      * @param context context
      */
-    private void initRecyclerView(Context context) {
+    protected void initRecyclerView(Context context) {
         // init LinearLayoutManager
         this.mLinearLayoutManager = new LinearLayoutManager(context);
         // set the VERTICAL layout
