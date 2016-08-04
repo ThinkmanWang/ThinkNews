@@ -172,6 +172,7 @@
     </declare-styleable>
 
     <declare-styleable name="ImageText">
+        <attr name="image" format="reference"/>
         <attr name="labelText" />
         <attr name="labelTextSize" />
         <attr name="labelColor" />

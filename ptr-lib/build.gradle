@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 23
+        versionCode 4
+        versionName "1.0.3"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+}
+
+//apply from: rootProject.file('gradle/android-artifacts.gradle')
+//apply from: rootProject.file('gradle/gradle-jcenter-push.gradle')
+//apply from: "bintrayUpload.gradle"
+

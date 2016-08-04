@@ -68,8 +68,10 @@ public class ThinkRecyclerViewActivity extends ThinkBaseActivity {
 
         });
         // the following are default settings
-        m_ptrLayout.setResistance(1.7f); // you can also set foot and header separately
+        m_ptrLayout.setResistance(2.0f); // you can also set foot and header separately
         m_ptrLayout.setRatioOfHeaderHeightToRefresh(1.2f);
+        m_ptrLayout.setHorizontalFadingEdgeEnabled(false);
+        m_ptrLayout.disableWhenHorizontalMove(true);
         m_ptrLayout.setDurationToClose(1000);  // you can also set foot and header separately
         // default is false
         m_ptrLayout.setPullToRefresh(false);

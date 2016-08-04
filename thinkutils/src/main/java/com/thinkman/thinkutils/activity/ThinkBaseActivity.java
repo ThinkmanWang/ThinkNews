@@ -15,16 +15,12 @@ import com.thinkman.thinkutils.R;
  */
 public class ThinkBaseActivity extends AppCompatActivity {
 
-    protected ProgressDialog m_dlgProgress = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ThinkActivityManager.getInstance().addActivity(this);
 
-        m_dlgProgress = new ProgressDialog(this);
-        m_dlgProgress.setMessage("载入中...");
     }
 
     @Override

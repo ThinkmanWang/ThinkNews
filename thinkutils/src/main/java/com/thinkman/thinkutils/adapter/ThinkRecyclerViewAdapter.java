@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -31,10 +32,11 @@ public abstract class ThinkRecyclerViewAdapter
     private ArrayList mList;
     private ThinkRecyclerViewHolder.OnItemClickListener onItemClickListener;
     private ThinkRecyclerViewHolder.OnItemLongClickListener onItemLongClickListener;
-
+    private HashMap<Integer, Boolean> mSelected = new HashMap<>();
 
     public ThinkRecyclerViewAdapter() {
         this.mList = new ArrayList();
+        mSelected.clear();
     }
 
 
@@ -65,6 +67,7 @@ public abstract class ThinkRecyclerViewAdapter
 
     @SuppressWarnings("unchecked") public void setList(List list) {
         this.mList.clear();
+        mSelected.clear();
         if (list == null) return;
         this.mList.addAll(list);
     }
@@ -72,10 +75,12 @@ public abstract class ThinkRecyclerViewAdapter
 
     public void clear() {
         this.mList.clear();
+        mSelected.clear();
     }
 
 
     public void remove(Object o) {
+        mSelected.remove(mList.indexOf(o));
         this.mList.remove(o);
     }
 
@@ -84,6 +89,42 @@ public abstract class ThinkRecyclerViewAdapter
         return this.mList;
     }
 
+    public List getSelectedItems() {
+        ArrayList lstRet = new ArrayList();
+        for (Integer pos : mSelected.keySet()) {
+            lstRet.add(mList.get(pos));
+        }
+
+        return lstRet;
+    }
+
+    public boolean isSelected(int pos) {
+        return mSelected.containsKey(pos);
+    }
+
+    public void setSelected(int nPos, boolean bSelected) {
+        if (bSelected) {
+            mSelected.put(nPos, bSelected);
+        } else {
+            if (mSelected.containsKey(nPos)) {
+                mSelected.remove(nPos);
+            }
+        }
+    }
+
+    public void selectAll(boolean bSelected) {
+
+        if (false == bSelected) {
+            mSelected.clear();
+            return;
+        }
+
+        int nCount = this.getItemCount();
+
+        for (int pos = 0; pos < nCount; ++pos) {
+            mSelected.put(pos, true);
+        }
+    }
 
     @SuppressWarnings("unchecked") public void addAll(Collection list) {
         this.mList.addAll(list);
