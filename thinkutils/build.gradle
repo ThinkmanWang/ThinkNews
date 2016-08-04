@@ -5,7 +5,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.neenbedankt.android-apt'
 
 
-version = "1.5.10"
+version = "1.6.2"
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 23
-        versionCode 58
+        versionCode 62
         versionName version
     }
     buildTypes {
@@ -47,7 +47,7 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
     //compile 'in.srain.cube:ptr-load-more:1.0.3'
     //compile project(':galleryfinal')
-    compile project(':ptr-lib')
+    //compile project(':ptr-lib')
 }
 
 def siteUrl = 'https://github.com/ThinkmanWang/ThinkNews'      // 项目的主页
