@@ -112,12 +112,18 @@ public class NumberButton extends LinearLayout implements View.OnClickListener, 
             if (count > 1) {
                 //正常减
                 mCount.setText("" + (count - 1));
+                if (mOnWarnListener != null) {
+                    mOnWarnListener.onNumberChanged((count - 1));
+                }
             }
 
         } else if (id == R.id.button_add) {
             if (count < Math.min(mBuyMax, mInventory)) {
                 //正常添加
                 mCount.setText("" + (count + 1));
+                if (mOnWarnListener != null) {
+                    mOnWarnListener.onNumberChanged((count + 1));
+                }
             } else if (mInventory < mBuyMax) {
                 //库存不足
                 warningForInventory();
@@ -137,6 +143,9 @@ public class NumberButton extends LinearLayout implements View.OnClickListener, 
         if (count <= 0) {
             //手动输入
             mCount.setText("1");
+            if (mOnWarnListener != null) {
+                mOnWarnListener.onNumberChanged(1);
+            }
             return;
         }
 
@@ -144,6 +153,9 @@ public class NumberButton extends LinearLayout implements View.OnClickListener, 
         if (count > limit) {
             //超过了数量
             mCount.setText(limit + "");
+            if (mOnWarnListener != null) {
+                mOnWarnListener.onNumberChanged(limit);
+            }
             if (mInventory < mBuyMax) {
                 //库存不足
                 warningForInventory();
@@ -230,5 +242,7 @@ public class NumberButton extends LinearLayout implements View.OnClickListener, 
         void onWarningForInventory(int inventory);
 
         void onWarningForBuyMax(int max);
+
+        void onNumberChanged(int nNum);
     }
 }

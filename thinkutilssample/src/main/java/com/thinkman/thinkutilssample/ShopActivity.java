@@ -40,6 +40,11 @@ public class ShopActivity extends BaseActivityWithActionBar {
                     public void onWarningForBuyMax(int buyMax) {
                         Toast.makeText(ShopActivity.this, "超过最大购买数:" + buyMax, Toast.LENGTH_SHORT).show();
                     }
+
+                    @Override
+                    public void onNumberChanged(int nNum) {
+                        Toast.makeText(ShopActivity.this, "" + nNum, Toast.LENGTH_SHORT).show();
+                    }
                 });
     }
 }
