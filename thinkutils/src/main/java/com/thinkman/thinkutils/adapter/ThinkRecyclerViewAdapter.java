@@ -98,11 +98,21 @@ public abstract class ThinkRecyclerViewAdapter
         return lstRet;
     }
 
+    private boolean m_bSingleSelect = false;
+
+    public void setSingleSelect(boolean bSingle) {
+        m_bSingleSelect = bSingle;
+    }
+
     public boolean isSelected(int pos) {
         return mSelected.containsKey(pos);
     }
 
     public void setSelected(int nPos, boolean bSelected) {
+        if (m_bSingleSelect) {
+            mSelected.clear();
+        }
+
         if (bSelected) {
             mSelected.put(nPos, bSelected);
         } else {
