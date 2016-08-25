@@ -60,6 +60,10 @@
         <activity
             android:name=".ThinkRecyclerViewScrollingActivity"
             android:label="@string/title_activity_think_recycler_view_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
