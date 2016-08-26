@@ -4,6 +4,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
@@ -27,6 +28,16 @@ public class BaseActivityWithTranslucentBar extends ThinkBaseActivity {
         setTransparentStatusBar();
     }
 
+    private int m_nStatusBarColor = Color.TRANSPARENT;
+    public void setStatusBarColor(@ColorInt int color) {
+        m_nStatusBarColor = color;
+        setTransparentStatusBar();
+    }
+
+    public int getStatusBarColor() {
+        return m_nStatusBarColor;
+    }
+
     public void setTransparentStatusBar() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             return;
@@ -36,7 +47,7 @@ public class BaseActivityWithTranslucentBar extends ThinkBaseActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
+            getWindow().setStatusBarColor(m_nStatusBarColor);
         } else {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }

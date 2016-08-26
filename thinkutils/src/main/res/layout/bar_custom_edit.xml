@@ -33,6 +33,7 @@
         android:layout_marginRight="13dp"
         android:layout_marginStart="25dp"
         android:layout_weight="1"
+        android:singleLine="true"
         android:background="@android:color/transparent"
         android:gravity="center_vertical|right"
         android:hint="hint"
