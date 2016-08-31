@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:thinkutils="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.thinkman.thinkutilssample.GroupButtonActivity">
+
+    <com.thinkman.thinkutils.view.GroupButtonView
+        android:id="@+id/gbv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        thinkutils:groupBtnCodeText="type_login#type_register"
+        thinkutils:groupBtnNameText="登录#注册" />
+
+    <com.thinkman.thinkutils.view.GroupButtonView
+        android:id="@+id/gbv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        thinkutils:groupBtnCodeText="week#mon#year#all"
+        thinkutils:groupBtnNameText="周#月#年#总" />
+
+</LinearLayout>

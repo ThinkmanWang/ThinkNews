@@ -424,4 +424,10 @@ public class MainActivity extends BaseActivityWithActionBar {
         Intent intent = new Intent(MainActivity.this, ThinkRecyclerViewScrollingActivity.class);
         this.startActivity(intent);
     }
+
+    @OnClick(R.id.btn_group_button)
+    public void onGroupButtonClick() {
+        Intent intent = new Intent(MainActivity.this, GroupButtonActivity.class);
+        this.startActivity(intent);
+    }
 }
