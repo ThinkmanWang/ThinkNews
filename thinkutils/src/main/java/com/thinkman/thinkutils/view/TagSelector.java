@@ -65,7 +65,7 @@ public class TagSelector extends FlowLayout {
         tvTag.setText(szTag);
         tvTag.setTextColor(mContext.getResources().getColor(R.color.black));
         tvTag.setBackgroundColor(mContext.getResources().getColor(R.color.bg_grey));
-        tvTag.setPadding(20, 20, 20, 20);
+        tvTag.setPadding(40, 40, 40, 40);
         tvTag.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
