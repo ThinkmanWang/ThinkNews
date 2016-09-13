@@ -61,7 +61,7 @@ public class FlowLayoutActivity extends ThinkBaseActivity {
         com.thinkman.thinkutils.dialog.CommonDialogUtils.showInputDialog(this, "标签", "输入新的标签", "标签", new CommonDialogUtils.OnInputDialogResult() {
             @Override
             public void onOk(String szText) {
-                m_tsTags.addTag(szText);
+                m_tsTags.addTag(szText, true);
 //                TextView tvTag = new TextView(FlowLayoutActivity.this);
 //                tvTag.setText(szText);
 //                tvTag.setTextColor(FlowLayoutActivity.this.getResources().getColor(R.color.black));

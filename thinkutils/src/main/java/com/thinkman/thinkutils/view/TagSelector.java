@@ -1,9 +1,14 @@
 package com.thinkman.thinkutils.view;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.thinkman.thinkutils.R;
@@ -18,6 +23,7 @@ import java.util.List;
  */
 public class TagSelector extends FlowLayout {
     private Context mContext = null;
+    private LayoutInflater mInflater = null;
     private View mContentView = null;
 
     public TagSelector(Context context) {
@@ -37,6 +43,7 @@ public class TagSelector extends FlowLayout {
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
         mContext = context;
+        mInflater = LayoutInflater.from(mContext);
     }
 
     public void setBackGround(Color nNormal, Color nSelected) {
@@ -47,25 +54,37 @@ public class TagSelector extends FlowLayout {
 
     }
 
-    HashMap<String, TextView> m_mapTags = new HashMap<>();
-    HashMap<String, TextView> m_mapSelected = new HashMap<>();
+    HashMap<String, RelativeLayout> m_mapTags = new HashMap<>();
+    HashMap<String, RelativeLayout> m_mapSelected = new HashMap<>();
 
     public void addTags(ArrayList<String> lstTag) {
         for (String szTag : lstTag) {
-            addTag(szTag);
+            addTag(szTag, true);
+        }
+    }
+
+    public void initTags(ArrayList<String> lstTag) {
+        for (String szTag : lstTag) {
+            addTag(szTag, false);
         }
     }
 
     public void addTag(String szTag) {
+        addTag(szTag, true);
+    }
+
+    public void addTag(String szTag, boolean bCallback) {
         if (m_mapTags.containsKey(szTag)) {
             return;
         }
 
-        TextView tvTag = new TextView(mContext);
+        final RelativeLayout rlTag = (RelativeLayout) mInflater.inflate(R.layout.layout_tag, null);
+
+        TextView tvTag = (TextView) rlTag.findViewById(R.id.tv_tag);
         tvTag.setText(szTag);
         tvTag.setTextColor(mContext.getResources().getColor(R.color.black));
         tvTag.setBackgroundColor(mContext.getResources().getColor(R.color.bg_grey));
-        tvTag.setPadding(40, 40, 40, 40);
+        rlTag.setBackgroundColor(mContext.getResources().getColor(R.color.bg_grey));
         tvTag.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,11 +92,13 @@ public class TagSelector extends FlowLayout {
                 if (m_mapSelected.containsKey(tvTag.getText().toString())) {
                     tvTag.setTextColor(mContext.getResources().getColor(R.color.black));
                     tvTag.setBackgroundColor(mContext.getResources().getColor(R.color.bg_grey));
+                    rlTag.setBackgroundColor(mContext.getResources().getColor(R.color.bg_grey));
                     m_mapSelected.remove(tvTag.getText().toString());
                 } else {
                     tvTag.setTextColor(mContext.getResources().getColor(R.color.white));
                     tvTag.setBackgroundColor(mContext.getResources().getColor(R.color.blue_order));
-                    m_mapSelected.put(tvTag.getText().toString(), tvTag);
+                    rlTag.setBackgroundColor(mContext.getResources().getColor(R.color.blue_order));
+                    m_mapSelected.put(tvTag.getText().toString(), rlTag);
                 }
 
                 if (m_onTagSelecteListener != null) {
@@ -86,13 +107,36 @@ public class TagSelector extends FlowLayout {
             }
         });
 
-        m_mapTags.put(szTag, tvTag);
+        ImageView ivDel = (ImageView) rlTag.findViewById(R.id.iv_del);
+        ivDel.setTag(szTag);
+        ivDel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String szTag = (String) v.getTag();
+                new AlertDialog.Builder(mContext)
+                        .setMessage("确定要删除标签吗？")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                removeTag(szTag);
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-        if (m_onTagSelecteListener != null) {
+                            }
+                        }).create().show();
+            }
+        });
+
+        m_mapTags.put(szTag, rlTag);
+
+        if (m_onTagSelecteListener != null && bCallback) {
             m_onTagSelecteListener.onTagAdded(szTag);
         }
 
-        addView(tvTag);
+        addView(rlTag);
         invalidate();
     }
 
