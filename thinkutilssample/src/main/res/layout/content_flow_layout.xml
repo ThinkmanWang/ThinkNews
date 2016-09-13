@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:text="添加标签"/>
 
-    <com.thinkman.thinkutils.layout.FlowLayout
-        android:id="@+id/flow_layout"
+    <com.thinkman.thinkutils.view.TagSelector
+        android:id="@+id/ts_tags"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

@@ -421,7 +421,7 @@ public class MainActivity extends BaseActivityWithActionBar {
 
     @OnClick(R.id.btn_scroll_activity)
     public void onScrollActivityClick() {
-        Intent intent = new Intent(MainActivity.this, ThinkRecyclerViewScrollingActivity.class);
+        Intent intent = new Intent(MainActivity.this, ScrollingActivity.class);
         this.startActivity(intent);
     }
 

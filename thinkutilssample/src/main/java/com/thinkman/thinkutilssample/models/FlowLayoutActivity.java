@@ -12,7 +12,10 @@ import android.widget.TextView;
 import com.thinkman.thinkutils.activity.ThinkBaseActivity;
 import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 import com.thinkman.thinkutils.layout.FlowLayout;
+import com.thinkman.thinkutils.view.TagSelector;
 import com.thinkman.thinkutilssample.R;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,8 +26,8 @@ public class FlowLayoutActivity extends ThinkBaseActivity {
     @BindView(R.id.btn_add)
     Button m_btnAdd = null;
 
-    @BindView(R.id.flow_layout)
-    FlowLayout m_flTags = null;
+    @BindView(R.id.ts_tags)
+    TagSelector m_tsTags = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,23 @@ public class FlowLayoutActivity extends ThinkBaseActivity {
         setSupportActionBar(toolbar);
 
         ButterKnife.bind(this);
+
+        m_tsTags.setOnTagSelecteListener(new TagSelector.OnTagListener() {
+            @Override
+            public void onTagClicked(String szTag) {
+
+            }
+
+            @Override
+            public void onTagAdded(String szTag) {
+
+            }
+
+            @Override
+            public void onTagRemoved(String szTag) {
+
+            }
+        });
     }
 
     @OnClick(R.id.btn_add)
@@ -41,14 +61,15 @@ public class FlowLayoutActivity extends ThinkBaseActivity {
         com.thinkman.thinkutils.dialog.CommonDialogUtils.showInputDialog(this, "标签", "输入新的标签", "标签", new CommonDialogUtils.OnInputDialogResult() {
             @Override
             public void onOk(String szText) {
-                TextView tvTag = new TextView(FlowLayoutActivity.this);
-                tvTag.setText(szText);
-                tvTag.setTextColor(FlowLayoutActivity.this.getResources().getColor(R.color.black));
-                tvTag.setBackgroundColor(FlowLayoutActivity.this.getResources().getColor(R.color.bg_grey));
-                tvTag.setPadding(20, 20, 20, 20);
-
-                m_flTags.addView(tvTag);
-                m_flTags.invalidate();
+                m_tsTags.addTag(szText);
+//                TextView tvTag = new TextView(FlowLayoutActivity.this);
+//                tvTag.setText(szText);
+//                tvTag.setTextColor(FlowLayoutActivity.this.getResources().getColor(R.color.black));
+//                tvTag.setBackgroundColor(FlowLayoutActivity.this.getResources().getColor(R.color.bg_grey));
+//                tvTag.setPadding(20, 20, 20, 20);
+//
+//                m_flTags.addView(tvTag);
+//                m_flTags.invalidate();
             }
         });
     }

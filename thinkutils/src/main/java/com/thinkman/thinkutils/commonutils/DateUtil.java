@@ -44,7 +44,7 @@ public class DateUtil
     }
 
     //返回当月天数
-    public static int getMonthLastDay(int year, int month)
+    public static int getMonthDays(int year, int month)
     {
         Calendar a = Calendar.getInstance();
         a.set(Calendar.YEAR, year);
@@ -66,16 +66,13 @@ public class DateUtil
     }
 
     //将long字符串转换成格式时间输出
-    public static String  getTime(long millis){
-//        Date date=new Date(millis);
-//        SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd HH:mm");
-//        return formatter.format(date);
-        return getTime(millis,"yyyy-MM-dd HH:mm:ss");
+    public static String  getTime(long timestamp){
+        return getTime(timestamp * 1000,"yyyy-MM-dd HH:mm:ss");
     }
 
     //将long字符串转换成格式时间输出
-    public static String  getTime(long millis,String format){
-        Date date=new Date(millis);
+    public static String  getTime(long timestamp,String format){
+        Date date=new Date(timestamp * 1000);
         SimpleDateFormat formatter=new SimpleDateFormat(format);
         return formatter.format(date);
     }
@@ -92,11 +89,22 @@ public class DateUtil
         if(date == null){
             return Long.valueOf(0);
         }
-        return date.getTime();
+        return date.getTime() / 1000;
     }
 
 
     public static Long getTime(String time){
-        return getTime(time,"yyyy-MM-dd HH:mm:ss");
+        return getTime(time, "yyyy-MM-dd HH:mm:ss");
     }
+
+    public static long startOfDay(long timestamp) {
+        String szDayStart = String.format("%s 00:00:00", getTime(timestamp, "yyyy-MM-dd"));
+        return getTime(szDayStart);
+    }
+
+    public static long endOfDay(long timestamp) {
+        String szDayStart = String.format("%s 23:59:59", getTime(timestamp, "yyyy-MM-dd"));
+        return getTime(szDayStart);
+    }
+
 }

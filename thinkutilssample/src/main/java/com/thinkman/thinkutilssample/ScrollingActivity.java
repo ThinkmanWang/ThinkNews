@@ -7,7 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.thinkman.thinkutils.commonutils.KeyboardUtil;
+
 public class ScrollingActivity extends AppCompatActivity {
+
+    KeyboardUtil keyboardUtil = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,5 +28,8 @@ public class ScrollingActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        keyboardUtil = new KeyboardUtil(this, findViewById(R.id.cl_main));
+        keyboardUtil.enable();
     }
 }
