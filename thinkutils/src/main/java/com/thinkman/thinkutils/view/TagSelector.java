@@ -246,7 +246,7 @@ public class TagSelector extends FlowLayout {
         ivAdd.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                com.thinkman.thinkutils.dialog.CommonDialogUtils.showInputDialog(mContext, "标签", "输入新的标签", "标签", new CommonDialogUtils.OnInputDialogResult() {
+                com.thinkman.thinkutils.dialog.CommonDialogUtils.showInputDialog(mContext, "新建标签", "", "标签", new CommonDialogUtils.OnInputDialogResult() {
                     @Override
                     public void onOk(String szText) {
                         TagSelector.this.addTag(szText, true);
