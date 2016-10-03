@@ -2,6 +2,7 @@ package com.thinkman.thinkutils.commonutils;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
 
 /**
  * Created by wangx on 2016/5/9.
@@ -18,6 +19,12 @@ public class DisplayUtil {
         return height;
     }
 
+    public static int getActionBarHeight(Context contect) {
+        final TypedArray styledAttributes = contect.getTheme().obtainStyledAttributes(
+                new int[] { android.R.attr.actionBarSize });
+
+        return (int) styledAttributes.getDimension(0, 0);
+    }
     /**
      * 2014年10月24日 下午9:59:08
      */

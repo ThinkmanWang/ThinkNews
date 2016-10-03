@@ -34,6 +34,12 @@ public class ImagePicketAdapter extends ThinkBaseAdapter<PhotoInfo> {
         mListener = listener;
     }
 
+    private boolean m_bShowDel = true;
+
+    public void setIsShowDel(boolean bShowDel) {
+        m_bShowDel = bShowDel;
+    }
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
@@ -47,14 +53,31 @@ public class ImagePicketAdapter extends ThinkBaseAdapter<PhotoInfo> {
             ivImg.setImageResource(R.drawable.selector_image_add);
             ivDel.setVisibility(View.GONE);
         } else {
-            Glide.with(mContext)                             //配置上下文
-                    .load("file://" + this.getItem(position).getPhotoPath())                  //设置图片路径
-                    .error(R.drawable.default_image)           //设置错误图片
-                    .placeholder(R.drawable.default_image)     //设置占位图片
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)//缓存全尺寸
-                    .into(ivImg);
 
-            ivDel.setVisibility(View.VISIBLE);
+            if (this.getItem(position).getPhotoPath().contains("http://")) {
+                Glide.with(mContext)                             //配置上下文
+                        .load(this.getItem(position).getPhotoPath())                  //设置图片路径
+                        .error(R.drawable.default_image)           //设置错误图片
+                        .placeholder(R.drawable.default_image)     //设置占位图片
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)//缓存全尺寸
+                        .into(ivImg);
+            } else {
+                Glide.with(mContext)                             //配置上下文
+                        .load("file://" + this.getItem(position).getPhotoPath())                  //设置图片路径
+                        .error(R.drawable.default_image)           //设置错误图片
+                        .placeholder(R.drawable.default_image)     //设置占位图片
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)//缓存全尺寸
+                        .into(ivImg);
+            }
+
+
+
+            if (m_bShowDel) {
+                ivDel.setVisibility(View.VISIBLE);
+            } else {
+                ivDel.setVisibility(View.GONE);
+            }
+
             ivDel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -83,6 +106,8 @@ public class ImagePicketAdapter extends ThinkBaseAdapter<PhotoInfo> {
                 }
             });
         }
+
+
 
         return convertView;
     }

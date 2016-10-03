@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.thinkman.thinkutils.R;
+import com.thinkman.thinkutils.commonutils.DisplayUtil;
+import com.thinkman.thinkutils.dialog.CommonDialogUtils;
 import com.thinkman.thinkutils.layout.FlowLayout;
 
 import java.util.ArrayList;
@@ -44,6 +46,9 @@ public class TagSelector extends FlowLayout {
     private void init(Context context, AttributeSet attrs, int defStyle) {
         mContext = context;
         mInflater = LayoutInflater.from(mContext);
+
+        romoveAddBtn();
+        initAddBtn();
     }
 
     public void setBackGround(Color nNormal, Color nSelected) {
@@ -57,15 +62,35 @@ public class TagSelector extends FlowLayout {
     HashMap<String, RelativeLayout> m_mapTags = new HashMap<>();
     HashMap<String, RelativeLayout> m_mapSelected = new HashMap<>();
 
-    public void addTags(ArrayList<String> lstTag) {
+    public void addTags(List<String> lstTag) {
         for (String szTag : lstTag) {
             addTag(szTag, true);
         }
     }
 
-    public void initTags(ArrayList<String> lstTag) {
+    public void initTags(List<String> lstTag) {
         for (String szTag : lstTag) {
             addTag(szTag, false);
+        }
+    }
+
+    public void initTagsSelected(List<String> lstSelected) {
+        for (String szTag : m_mapTags.keySet()) {
+            if (lstSelected.contains(szTag)) {
+                m_mapSelected.put(szTag, m_mapTags.get(szTag));
+
+                RelativeLayout rlTag = (RelativeLayout) m_mapTags.get(szTag);
+                TextView tvTag = (TextView) rlTag.findViewById(R.id.tv_tag);
+                tvTag.setTextColor(mContext.getResources().getColor(R.color.white));
+                tvTag.setBackgroundColor(mContext.getResources().getColor(R.color.blue_order));
+                rlTag.setBackgroundColor(mContext.getResources().getColor(R.color.blue_order));
+            }
+        }
+    }
+
+    public void refresh() {
+        for (RelativeLayout rlTag : m_mapTags.values()) {
+
         }
     }
 
@@ -79,6 +104,9 @@ public class TagSelector extends FlowLayout {
         }
 
         final RelativeLayout rlTag = (RelativeLayout) mInflater.inflate(R.layout.layout_tag, null);
+
+        rlTag.setMinimumWidth(DisplayUtil.getActionBarHeight(mContext));
+        rlTag.setMinimumHeight(DisplayUtil.getActionBarHeight(mContext));
 
         TextView tvTag = (TextView) rlTag.findViewById(R.id.tv_tag);
         tvTag.setText(szTag);
@@ -136,7 +164,9 @@ public class TagSelector extends FlowLayout {
             m_onTagSelecteListener.onTagAdded(szTag);
         }
 
+        romoveAddBtn();
         addView(rlTag);
+        initAddBtn();
         invalidate();
     }
 
@@ -192,5 +222,39 @@ public class TagSelector extends FlowLayout {
         }
 
         return lstTags;
+    }
+
+    private final int ID_ADD_BTN = 1024;
+    private void romoveAddBtn() {
+        for (int i = getChildCount() - 1; i >= 0; i--) {
+            View vItem = getChildAt(i);
+            if (vItem.getTag() != null && ID_ADD_BTN == (Integer)vItem.getTag()) {
+                removeView(vItem);
+            }
+        }
+    }
+
+    private void initAddBtn() {
+        ImageView ivAdd = new ImageView(mContext);
+        ivAdd.setMinimumWidth(DisplayUtil.getActionBarHeight(mContext));
+        ivAdd.setMaxWidth(DisplayUtil.getActionBarHeight(mContext));
+        ivAdd.setMinimumHeight(DisplayUtil.getActionBarHeight(mContext));
+        ivAdd.setMaxHeight(DisplayUtil.getActionBarHeight(mContext));
+        ivAdd.setTag(ID_ADD_BTN);
+        ivAdd.setBackgroundResource(R.drawable.selector_image_add);
+
+        ivAdd.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                com.thinkman.thinkutils.dialog.CommonDialogUtils.showInputDialog(mContext, "标签", "输入新的标签", "标签", new CommonDialogUtils.OnInputDialogResult() {
+                    @Override
+                    public void onOk(String szText) {
+                        TagSelector.this.addTag(szText, true);
+                    }
+                });
+            }
+        });
+
+        addView(ivAdd);
     }
 }

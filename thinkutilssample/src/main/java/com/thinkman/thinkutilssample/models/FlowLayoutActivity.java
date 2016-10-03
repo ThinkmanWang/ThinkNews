@@ -62,14 +62,6 @@ public class FlowLayoutActivity extends ThinkBaseActivity {
             @Override
             public void onOk(String szText) {
                 m_tsTags.addTag(szText, true);
-//                TextView tvTag = new TextView(FlowLayoutActivity.this);
-//                tvTag.setText(szText);
-//                tvTag.setTextColor(FlowLayoutActivity.this.getResources().getColor(R.color.black));
-//                tvTag.setBackgroundColor(FlowLayoutActivity.this.getResources().getColor(R.color.bg_grey));
-//                tvTag.setPadding(20, 20, 20, 20);
-//
-//                m_flTags.addView(tvTag);
-//                m_flTags.invalidate();
             }
         });
     }
